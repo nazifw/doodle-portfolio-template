@@ -1,0 +1,25 @@
+# Ad Soyad — Kişisel Web Sitesi
+
+> Ad Soyad, İstanbul'da yaşayan bir Bilgisayar Mühendisliği öğrencisi ve frontend geliştirici. Bu site; özgeçmişini, Grafik Animasyon 1 dersi çalışmalarını, fotoğraf galerisini ve frontend üzerine blog yazılarını içerir. Site Türkçe ve İngilizce (sayfa içi TR/EN düğmesi) yayımlanır.
+
+- E-posta: ornek@mail.com
+- Konu alanları: HTML5, CSS3, JavaScript, GSAP, erişilebilirlik, responsive tasarım, grafik animasyon
+
+## Sayfalar
+
+- [Ana Sayfa | Ad Soyad](index.html): Ad Soyad — Bilgisayar Mühendisliği öğrencisi ve frontend geliştirici. Kendini tanıttığı eskiz defteri: kısa bir hakkımda, Grafik Animasyon çalışmaları ve galeriden kareler.
+- [Hakkımda | Ad Soyad](hakkimda.html): Ad Soyad hakkında: vesikalık fotoğraf, özgeçmiş (eğitim, staj, sertifikalar, diller), haftalık ders programı, yetenekler, ilgi alanları ve ilk animasyon kodu.
+- [Projeler: Grafik Animasyon Çalışmaları | Ad Soyad](projeler.html): Ad Soyad'ın Grafik Animasyon 1 dersi çalışmaları: zıplayan top, kinetik tipografi, logo animasyonu, yürüyüş döngüsü, paralaks sahne ve daha fazlası; görseller ve kısa açıklamalarla.
+- [Galeri | Ad Soyad](galeri.html): Ad Soyad'ın galerisi: kampüs, şehir, doğa ve hobilerden onu en iyi anlatan 12 fotoğraf ve kısa açıklamaları.
+- [Blog: kod defterimden sayfalar | Ad Soyad](blog.html): Ad Soyad&#x27;ın frontend blogu: GSAP ScrollTrigger ile kaydırma animasyonları, CSS değişkenleriyle karanlık mod ve mobile first responsive tasarım üzerine ekran görüntülü yazılar.
+- [İletişim | Ad Soyad](iletisim.html): Ad Soyad ile iletişime geç: Kadıköy / İstanbul adresi, telefon, e-posta ve kağıt uçağa dönüşen doodle iletişim formu. Sık sorulan sorular ve el çizimi İstanbul haritası.
+
+## Blog yazıları
+
+- [GSAP ScrollTrigger ile kaydırma animasyonları | Ad Soyad Blog](blog-scrolltrigger.html): Bu sitedeki kaydırma efektleri nasıl çalışıyor? GSAP ScrollTrigger ile pin, scrub, kendini çizen SVG (stroke-dashoffset) ve Lenis senkronu; gerçek kod ve ekran görüntüleriyle.
+- [CSS değişkenleriyle karanlık mod | Ad Soyad Blog](blog-karanlik-mod.html): CSS custom property token&#x27;ları, [data-theme] seçicisi, localStorage ile tercih hatırlama, ilk boyamada yanıp sönmeyi önleyen head betiği ve View Transitions ile dairesel tema geçişi.
+- [Mobile first responsive tasarım | Ad Soyad Blog](blog-mobile-first.html): Mobile first yaklaşımı: içeriğe göre breakpoint seçimi, clamp() ile akışkan tipografi, 44 piksellik dokunmatik hedefler ve aynı sayfanın 375 ile 1280 piksel genişlikte karşılaştırması.
+
+## Kaynaklar
+
+- [kaynak.txt](kaynak.txt): kullanılan kütüphaneler, fontlar ve araçlar

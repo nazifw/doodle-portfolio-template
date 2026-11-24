@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="tr" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bu sitedeki kaydırma efektleri nasıl çalışıyor? GSAP ScrollTrigger ile pin, scrub, kendini çizen SVG (stroke-dashoffset) ve Lenis senkronu; gerçek kod ve ekran görüntüleriyle." data-i18n-attr="content:blog.st.desc">
+  <meta name="author" content="Ad Soyad">
+  <meta name="theme-color" content="#fbfaf6">
+  <title data-i18n="blog.st.metaTitle">GSAP ScrollTrigger ile kaydırma animasyonları | Ad Soyad Blog</title>
+  <meta property="og:title" content="GSAP ScrollTrigger ile kaydırma animasyonları | Ad Soyad Blog" data-i18n-attr="content:blog.st.metaTitle">
+  <meta property="og:description" content="Bu sitedeki kaydırma efektleri nasıl çalışıyor? GSAP ScrollTrigger ile pin, scrub, kendini çizen SVG (stroke-dashoffset) ve Lenis senkronu; gerçek kod ve ekran görüntüleriyle." data-i18n-attr="content:blog.st.desc">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="img/blog/st-pin-mid.webp">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="article:published_time" content="2026-11-15">
+  <meta property="article:author" content="Ad Soyad">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%8F%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/caveat-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/caveat-400-700-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/kalam-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/kalam-400-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/core.css">
+  <link rel="stylesheet" href="css/pages/blog.css">
+  <script>
+    (function () {
+      var d = document.documentElement, t = null, l = null;
+      try { t = localStorage.getItem("theme"); l = localStorage.getItem("lang"); } catch (e) {}
+      if (t === "dark" || (!t && matchMedia("(prefers-color-scheme: dark)").matches)) d.setAttribute("data-theme", "dark");
+      if (l === "en") { d.lang = "en"; d.classList.add("lang-pending"); }
+      try {
+        if (!matchMedia("(prefers-reduced-motion: reduce)").matches &&
+            (!sessionStorage.getItem("doodle-visited") || sessionStorage.getItem("doodle-transition") === "1")) d.classList.add("doodle-cover");
+      } catch (e) {}
+    })();
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "GSAP ScrollTrigger ile kaydırdıkça canlanan sayfalar",
+  "alternativeHeadline": "Pages that come alive as you scroll, with GSAP ScrollTrigger",
+  "description": "Bu sitedeki kaydırma efektleri nasıl çalışıyor? GSAP ScrollTrigger ile pin, scrub, kendini çizen SVG (stroke-dashoffset) ve Lenis senkronu; gerçek kod ve ekran görüntüleriyle.",
+  "image": [
+    "img/blog/st-pin-mid.webp",
+    "img/blog/st-pin-start.webp",
+    "img/blog/st-markers.webp"
+  ],
+  "datePublished": "2026-11-15",
+  "dateModified": "2026-11-15",
+  "inLanguage": "tr",
+  "wordCount": 604,
+  "timeRequired": "PT4M",
+  "keywords": "GSAP, ScrollTrigger, SVG, Lenis",
+  "articleSection": "Frontend",
+  "url": "blog-scrolltrigger.html",
+  "mainEntityOfPage": "blog-scrolltrigger.html",
+  "author": {
+    "@type": "Person",
+    "name": "Ad Soyad",
+    "email": "mailto:ornek@mail.com",
+    "url": "hakkimda.html",
+    "jobTitle": "Bilgisayar Mühendisliği öğrencisi, frontend geliştirici"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Ad Soyad"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "Ad Soyad — Kod Defteri",
+    "url": "blog.html"
+  }
+}
+  </script>
+</head>
+<body class="blog-page blog-page--post" data-page-name="blog" data-page-name-en="blog">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">İçeriğe geç</a>
+
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Ad Soyad">
+        <span class="doodle" data-doodle="sparkle"></span>ad.soyad
+      </a>
+      <nav aria-label="Ana menü" data-i18n-attr="aria-label:nav.menuLabel">
+        <ul class="nav__links">
+          <li><a class="nav__link" href="index.html" data-page-name="ana sayfa" data-page-name-en="home" data-i18n="nav.home">Ana Sayfa</a></li>
+          <li><a class="nav__link" href="hakkimda.html" data-page-name="hakkımda" data-page-name-en="about" data-i18n="nav.about">Hakkımda</a></li>
+          <li><a class="nav__link" href="projeler.html" data-page-name="projeler" data-page-name-en="projects" data-i18n="nav.work">Projeler</a></li>
+          <li><a class="nav__link" href="blog.html" data-page-name="blog" data-page-name-en="blog" data-i18n="nav.blog">Blog</a></li>
+          <li><a class="nav__link" href="galeri.html" data-page-name="galeri" data-page-name-en="gallery" data-i18n="nav.gallery">Galeri</a></li>
+          <li><a class="nav__link" href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact" data-i18n="nav.contact">İletişim</a></li>
+        </ul>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn lang-toggle" type="button" aria-label="Switch to English">
+          <span class="lang-toggle__label">EN</span>
+        </button>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Temayı değiştir">
+          <span class="doodle doodle--moon" data-doodle="moon"></span>
+          <span class="doodle doodle--sun" data-doodle="sun"></span>
+        </button>
+        <button class="icon-btn burger" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobileMenu">
+          <span class="burger__lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="index.html" data-page-name="ana sayfa" data-page-name-en="home"><small>01</small><span data-i18n="nav.home">Ana Sayfa</span></a>
+    <a href="hakkimda.html" data-page-name="hakkımda" data-page-name-en="about"><small>02</small><span data-i18n="nav.about">Hakkımda</span></a>
+    <a href="projeler.html" data-page-name="projeler" data-page-name-en="projects"><small>03</small><span data-i18n="nav.work">Projeler</span></a>
+    <a href="blog.html" data-page-name="blog" data-page-name-en="blog"><small>04</small><span data-i18n="nav.blog">Blog</span></a>
+    <a href="galeri.html" data-page-name="galeri" data-page-name-en="gallery"><small>05</small><span data-i18n="nav.gallery">Galeri</span></a>
+    <a href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact"><small>06</small><span data-i18n="nav.contact">İletişim</span></a>
+  </div>
+
+  <main id="main" class="blog-main">
+    <div class="blog-progress" aria-hidden="true">
+      <svg class="blog-progress__svg" viewBox="0 0 1000 12" preserveAspectRatio="none"><path class="blog-progress__track" d="M0 6 C 80 2, 160 10, 250 6 S 420 2, 500 6 S 670 10, 750 6 S 920 2, 1000 6"/><path class="blog-progress__ink" pathLength="1" d="M0 6 C 80 2, 160 10, 250 6 S 420 2, 500 6 S 670 10, 750 6 S 920 2, 1000 6"/></svg>
+      <span class="blog-progress__tip"><svg viewBox="0 0 46 26"><path d="M4 5 L32 5 L44 13 L32 21 L4 21 Z" fill="var(--yellow)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><path d="M32 5 L44 13 L32 21 Z" fill="#f3d9b1" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><path d="M40 10.3 L44 13 L40 15.7 Z" fill="var(--ink)"/><path d="M4 5 L10 5 L10 21 L4 21 Z" fill="var(--pink)" stroke="var(--ink)" stroke-width="2"/></svg></span>
+    </div>
+
+    <article class="blog-post" aria-labelledby="postTitle">
+      <header class="blog-post__head container">
+        <a class="blog-back" href="blog.html" data-page-name="blog"><span class="doodle" data-doodle="arrow" style="--size:30px;--c:var(--pink)"></span><span data-i18n="blog.ui.allPosts">Tüm yazılar</span></a>
+        <ul class="blog-tags" aria-label="Etiketler" data-i18n-attr="aria-label:blog.ui.tags">
+          <li class="chip" style="--r:1.2deg">GSAP</li>
+          <li class="chip" style="--r:-1.5deg">ScrollTrigger</li>
+          <li class="chip" style="--r:1.2deg">SVG</li>
+          <li class="chip" style="--r:-1.5deg">Lenis</li>
+        </ul>
+        <h1 id="postTitle" class="blog-post__title" data-split data-i18n="blog.st.title">GSAP ScrollTrigger ile kaydırdıkça canlanan sayfalar</h1>
+        <p class="blog-post__lead" data-reveal="up" data-delay="0.3" data-i18n="blog.st.lead">Bu sitede kaydırdıkça kelimeler koyulaşıyor, çizgiler kendini çiziyor, bölümler bir süre yerinde çivili kalıyor. Hepsinin arkasında dört parça var: <strong>Lenis senkronu</strong>, <strong>pin</strong>, <strong>scrub</strong> ve <strong>stroke-dashoffset</strong> ile çizilen SVG. Bu yazıda her birini sitenin kendi kodundan örnekle anlatıyorum.</p>
+        <p class="blog-post__meta" data-reveal="fade" data-delay="0.45">
+          <img class="blog-post__avatar" src="img/avatar.svg" width="44" height="44" alt="">
+          <span><span class="blog-post__author" data-bind="name">Ad Soyad</span>
+          <span class="blog-post__sub"><time datetime="2026-11-15" data-i18n="blog.st.date">15 Kasım 2026</time> · <span data-i18n="blog.st.read">4 dk okuma</span></span></span>
+        </p>
+      </header>
+
+      <div class="blog-post__layout container">
+        <nav class="blog-toc" aria-label="İçindekiler" data-i18n-attr="aria-label:blog.ui.toc">
+          <details class="blog-toc__box" open>
+            <summary class="blog-toc__sum"><span class="doodle" data-doodle="hash" style="--size:22px;--c:var(--pink)"></span><span data-i18n="blog.ui.toc">İçindekiler</span></summary>
+            <ol class="blog-toc__list">
+            <li><a href="#s-lenis" data-i18n="blog.st.b2">Önce zemin: Lenis ile aynı saate bağlanmak</a></li>
+            <li><a href="#s-pin" data-i18n="blog.st.b6">pin: sahneyi yerine çivilemek</a></li>
+            <li><a href="#s-svg" data-i18n="blog.st.b14">stroke-dashoffset: kendini çizen SVG</a></li>
+            <li><a href="#s-markers" data-i18n="blog.st.b21">markers: körlemesine ayar yapma</a></li>
+            <li><a href="#s-mobil" data-i18n="blog.st.b25">Telefon ve hareket hassasiyeti</a></li>
+            <li><a href="#s-ozet" data-i18n="blog.st.b29">Kısaca</a></li>
+            </ol>
+          </details>
+        </nav>
+
+        <div class="blog-prose">
+        <p data-i18n="blog.st.b1">ScrollTrigger, GSAP'ın bir eklentisi. Yaptığı iş aslında basit: bir animasyonu zamana değil, <em>kaydırma konumuna</em> bağlıyor. “Bu bölümün üstü ekranın ortasına geldiğinde başla, altı ekranın üstünden çıkınca bitir” diyorsun; gerisini o hesaplıyor. Zor olan kısım API değil, hangi efektin ne zaman kullanılacağına karar vermek.</p>
+      <section class="blog-sec" id="s-lenis" aria-labelledby="s-lenis-t">
+        <h2 id="s-lenis-t" data-i18n="blog.st.b2">Önce zemin: Lenis ile aynı saate bağlanmak</h2>
+        <svg class="blog-h2-line" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true" data-draw><path d="M3 9 C 60 3, 120 12, 180 7 S 262 3, 297 8"/></svg>
+        <p data-i18n="blog.st.b3">Sitede yumuşak kaydırma için Lenis kullanıyorum. Lenis kendi <code>requestAnimationFrame</code> döngüsünü çalıştırır, GSAP de kendi döngüsünü. İki ayrı saat olunca ScrollTrigger konumu bir kare geç okur ve pinlenen bölümler hafifçe titrer. Çözüm: Lenis'i GSAP'ın ticker'ına bağlamak, yani tek bir saat kullanmak.</p>
+        <div class="blog-code" data-lang="js">
+          <div class="blog-code__bar">
+            <span class="blog-code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="blog-code__file">core.js</span>
+            <button class="blog-code__copy" type="button" data-juice><span class="doodle" data-doodle="check" style="--size:18px"></span><span class="blog-code__copy-label" data-i18n="blog.ui.copy">kopyala</span></button>
+          </div>
+          <pre tabindex="0"><code class="language-js" data-i18n="blog.st.b4">// Lenis ile ScrollTrigger aynı saatte çalışsın
+const lenis = new Lenis({
+  duration: 1.15,
+  easing: (t) =&gt; Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  smoothWheel: true,
+});
+
+// her Lenis kaydırmasında ScrollTrigger konumları günceller
+lenis.on("scroll", ScrollTrigger.update);
+
+// tek döngü: GSAP'ın ticker'ı Lenis'i de sürer
+gsap.ticker.add((time) =&gt; lenis.raf(time * 1000));
+gsap.ticker.lagSmoothing(0);</code></pre>
+        </div>
+        <p data-i18n="blog.st.b5"><code>lagSmoothing(0)</code> satırı küçük ama önemli: GSAP normalde uzun bir takılmadan sonra zamanı “yumuşatır”. Kaydırmaya bağlı animasyonda bunu istemiyoruz; kaydırma nerede ise animasyon da orada olmalı.</p>
+      </section>
+      <section class="blog-sec" id="s-pin" aria-labelledby="s-pin-t">
+        <h2 id="s-pin-t" data-i18n="blog.st.b6">pin: sahneyi yerine çivilemek</h2>
+        <svg class="blog-h2-line" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true" data-draw><path d="M3 9 C 60 3, 120 12, 180 7 S 262 3, 297 8"/></svg>
+        <p data-i18n="blog.st.b7">Ana sayfadaki “Neden çiziyorum?” bölümü kaydırmaya başladığında ekrana çivilenir. Sayfa aşağı inmez; bunun yerine metindeki kelimeler sırayla soluk griden koyu mürekkebe döner, bazı kelimelerin etrafına daire, altına çizgi çizilir. Bölüm ancak bu “okuma” bittiğinde serbest kalır.</p>
+        <figure class="blog-fig" style="--r:-1.2deg">
+          <button class="blog-fig__frame" type="button" data-zoom>
+            <span class="tape" aria-hidden="true"></span>
+            <img src="img/blog/st-pin-start.webp" width="1280" height="800" loading="lazy" decoding="async" alt="Ana sayfadaki manifesto bölümü, pinlendiği ilk anda: başlık koyu, paragrafın tüm kelimeleri soluk gri." data-i18n-attr="alt:blog.st.b8.alt">
+            <span class="blog-fig__zoom" aria-hidden="true"><span class="doodle" data-doodle="eye" style="--size:24px;--c:#161714"></span></span>
+            <span class="sr-only" data-i18n="blog.ui.zoom">(büyütmek için tıkla)</span>
+          </button>
+          <figcaption data-i18n="blog.st.b8.cap">Pin başladığı an: kelimelerin hepsi <code>opacity: 0.13</code>.</figcaption>
+        </figure>
+        <div class="blog-code" data-lang="js">
+          <div class="blog-code__bar">
+            <span class="blog-code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="blog-code__file">home.js</span>
+            <button class="blog-code__copy" type="button" data-juice><span class="doodle" data-doodle="check" style="--size:18px"></span><span class="blog-code__copy-label" data-i18n="blog.ui.copy">kopyala</span></button>
+          </div>
+          <pre tabindex="0"><code class="language-js" data-i18n="blog.st.b9">const tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".home-manifesto",
+    start: "top top",  // bölümün üstü ekranın üstüne değince
+    end: "+=160%",     // 1,6 ekran boyu kaydırma boyunca
+    pin: true,         // bölüm yerinde çivili kalır
+    scrub: 0.6,        // animasyon kaydırmayı 0,6 sn gecikmeyle izler
+  },
+});
+
+// kelimeler sırayla soluktan koyuya
+tl.fromTo(words, { opacity: 0.13 }, { opacity: 1, stagger: 0.1, ease: "none" });</code></pre>
+        </div>
+        <p data-i18n="blog.st.b10"><code>end: "+=160%"</code> şu demek: pin, başladığı yerden itibaren ekran yüksekliğinin 1,6 katı kadar kaydırma sürer. ScrollTrigger bu süre için sayfaya otomatik boşluk (<code>pinSpacing</code>) ekler; böylece pin bitince alttaki bölüm üst üste binmeden gelir.</p>
+        <figure class="blog-fig" style="--r:1deg">
+          <button class="blog-fig__frame" type="button" data-zoom>
+            <span class="tape" aria-hidden="true"></span>
+            <img src="img/blog/st-pin-mid.webp" width="1280" height="800" loading="lazy" decoding="async" alt="Aynı manifesto bölümü kaydırmanın ortasında: ilk satırlar koyulaşmış, “sade” kelimesinin etrafına daire, “hissettirsin” kelimesinin altına çizgi çizilmiş, son satırlar hâlâ soluk." data-i18n-attr="alt:blog.st.b11.alt">
+            <span class="blog-fig__zoom" aria-hidden="true"><span class="doodle" data-doodle="eye" style="--size:24px;--c:#161714"></span></span>
+            <span class="sr-only" data-i18n="blog.ui.zoom">(büyütmek için tıkla)</span>
+          </button>
+          <figcaption data-i18n="blog.st.b11.cap">Yaklaşık 700 piksel sonra: metin okunuyor, vurgular çiziliyor.</figcaption>
+        </figure>
+        <h3 data-i18n="blog.st.b12">scrub: true mu, sayı mı?</h3>
+        <p data-i18n="blog.st.b13"><code>scrub: true</code> animasyonu kaydırmaya birebir kilitler; tekerleği bıraktığın an animasyon da durur. <code>scrub: 0.6</code> ise animasyonun kaydırmayı 0,6 saniyede “yakalamasını” sağlar. Bu küçük gecikme, kalemle yazılan mürekkebin kağıda yayılması gibi yumuşak bir his veriyor. Metin animasyonlarında 0.5–1 arası, paralaks gibi arka plan işlerinde <code>true</code> kullanıyorum.</p>
+      </section>
+      <section class="blog-sec" id="s-svg" aria-labelledby="s-svg-t">
+        <h2 id="s-svg-t" data-i18n="blog.st.b14">stroke-dashoffset: kendini çizen SVG</h2>
+        <svg class="blog-h2-line" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true" data-draw><path d="M3 9 C 60 3, 120 12, 180 7 S 262 3, 297 8"/></svg>
+        <p data-i18n="blog.st.b15">Sitedeki karalama daireler, alt çizgiler ve footer'daki dalga aynı numarayla çiziliyor. Bir SVG çizgisine kesikli çizgi deseni (<code>stroke-dasharray</code>) verip deseni kaydırırsan (<code>stroke-dashoffset</code>), çizgi görünmezden tam görünüre “akıyormuş” gibi görünür.</p>
+        <div class="blog-code" data-lang="js">
+          <div class="blog-code__bar">
+            <span class="blog-code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="blog-code__file">core.js</span>
+            <button class="blog-code__copy" type="button" data-juice><span class="doodle" data-doodle="check" style="--size:18px"></span><span class="blog-code__copy-label" data-i18n="blog.ui.copy">kopyala</span></button>
+          </div>
+          <pre tabindex="0"><code class="language-js" data-i18n="blog.st.b16">function prepDraw(svg) {
+  const shapes = svg.querySelectorAll("path, line, circle, rect");
+  shapes.forEach((s) =&gt; {
+    s.setAttribute("pathLength", "1"); // gerçek uzunluk ne olursa olsun: 1
+    s.style.strokeDasharray = "1 2";   // 1 birim çizgi, 2 birim boşluk
+    s.style.strokeDashoffset = "1.01"; // çizgi tamamen boşluğa kaydı
+  });
+  return shapes;
+}
+
+gsap.to(prepDraw(svg), { strokeDashoffset: 0, duration: 1.4, ease: "power2.inOut" });</code></pre>
+        </div>
+        <p data-i18n="blog.st.b17">Buradaki püf noktası <code>pathLength="1"</code>. Normalde her yolun uzunluğunu <code>getTotalLength()</code> ile ölçmen gerekir. <code>pathLength</code> tarayıcıya “bu yolun uzunluğunu 1 kabul et” der; artık her şekil için aynı sayılarla çalışabilirsin. Boşluğun 2 olması, çizgi kayarken bir sonraki tekrarın ucunun görünmemesi için. 1 yerine 1.01 ise yuvarlak çizgi ucunun (<code>stroke-linecap: round</code>) başta küçük bir nokta olarak kalmasını engelliyor.</p>
+        <p data-i18n="blog.st.b18">Bu fonksiyon bir kez yazılınca HTML'de tek bir öznitelikle kullanılıyor. Footer'daki dalga, kaydırmaya bağlı (scrub) çiziliyor:</p>
+        <div class="blog-code" data-lang="html">
+          <div class="blog-code__bar">
+            <span class="blog-code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="blog-code__file">footer.html</span>
+            <button class="blog-code__copy" type="button" data-juice><span class="doodle" data-doodle="check" style="--size:18px"></span><span class="blog-code__copy-label" data-i18n="blog.ui.copy">kopyala</span></button>
+          </div>
+          <pre tabindex="0"><code class="language-html">&lt;svg class="footer__wave" viewBox="0 0 1200 60" aria-hidden="true"
+     data-draw="scrub" data-start="top 95%" data-end="top 50%"&gt;
+  &lt;path d="M0 30 C 100 5, 200 55, 300 30 S 500 5, 600 30 ..."/&gt;
+&lt;/svg&gt;</code></pre>
+        </div>
+        <aside class="blog-note" data-reveal="up">
+          <div class="sticky yellow blog-note__paper" style="--r:1.4deg">
+            <span class="pin" aria-hidden="true"></span>
+            <p class="blog-note__title" data-i18n="blog.st.b20.t">Not</p>
+            <p data-i18n="blog.st.b20">Çizilecek SVG'ye <code>aria-hidden="true"</code> vermeyi unutma. Dekor çizgisini ekran okuyucunun “grafik, grafik, grafik” diye okumasına gerek yok.</p>
+          </div>
+        </aside>
+      </section>
+      <section class="blog-sec" id="s-markers" aria-labelledby="s-markers-t">
+        <h2 id="s-markers-t" data-i18n="blog.st.b21">markers: körlemesine ayar yapma</h2>
+        <svg class="blog-h2-line" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true" data-draw><path d="M3 9 C 60 3, 120 12, 180 7 S 262 3, 297 8"/></svg>
+        <p data-i18n="blog.st.b22"><code>start</code> ve <code>end</code> değerlerini kafadan ayarlamaya çalışmak zaman kaybı. Geliştirirken <code>markers: true</code> ekle; ScrollTrigger ekrana dört etiket çizer. Yeşiller başlangıç, kırmızılar bitiş. “scroller” etiketleri ekrandaki çizgiyi, diğerleri tetikleyici öğedeki noktayı gösterir. İkisi üst üste geldiği an animasyon başlar.</p>
+        <div class="blog-code" data-lang="js">
+          <div class="blog-code__bar">
+            <span class="blog-code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="blog-code__file">console</span>
+            <button class="blog-code__copy" type="button" data-juice><span class="doodle" data-doodle="check" style="--size:18px"></span><span class="blog-code__copy-label" data-i18n="blog.ui.copy">kopyala</span></button>
+          </div>
+          <pre tabindex="0"><code class="language-js" data-i18n="blog.st.b23">ScrollTrigger.create({
+  trigger: ".home-stats",
+  start: "top 75%",   // öğenin üstü, ekranın %75'ine gelince
+  end: "bottom 25%",
+  markers: true,      // yayına çıkmadan önce sil!
+});</code></pre>
+        </div>
+        <figure class="blog-fig" style="--r:-0.8deg">
+          <button class="blog-fig__frame" type="button" data-zoom>
+            <span class="tape" aria-hidden="true"></span>
+            <img src="img/blog/st-markers.webp" width="1280" height="800" loading="lazy" decoding="async" alt="Ana sayfadaki proje kartlarının altında ScrollTrigger işaretçileri: yeşil start-stats ve scroller-start-stats etiketleri, üstte kırmızı scroller-end-stats etiketi." data-i18n-attr="alt:blog.st.b24.alt">
+            <span class="blog-fig__zoom" aria-hidden="true"><span class="doodle" data-doodle="eye" style="--size:24px;--c:#161714"></span></span>
+            <span class="sr-only" data-i18n="blog.ui.zoom">(büyütmek için tıkla)</span>
+          </button>
+          <figcaption data-i18n="blog.st.b24.cap">Konsoldan eklediğim işaretçiler: yeşil çizgiler buluştuğunda “Kısaca rakamlar” bölümü canlanıyor.</figcaption>
+        </figure>
+      </section>
+      <section class="blog-sec" id="s-mobil" aria-labelledby="s-mobil-t">
+        <h2 id="s-mobil-t" data-i18n="blog.st.b25">Telefon ve hareket hassasiyeti</h2>
+        <svg class="blog-h2-line" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true" data-draw><path d="M3 9 C 60 3, 120 12, 180 7 S 262 3, 297 8"/></svg>
+        <p data-i18n="blog.st.b26">Pin masaüstünde etkileyici ama telefonda başparmağın altında takılmış gibi hissettirebiliyor. Bu yüzden <code>gsap.matchMedia()</code> ile iki ayrı senaryo kuruyorum: 768 pikselden genişse pin var, değilse aynı animasyon pin olmadan, normal akışta oynuyor. Ekran boyutu değişince GSAP eski senaryoyu temizleyip yenisini kendisi kuruyor.</p>
+        <div class="blog-code" data-lang="js">
+          <div class="blog-code__bar">
+            <span class="blog-code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="blog-code__file">home.js</span>
+            <button class="blog-code__copy" type="button" data-juice><span class="doodle" data-doodle="check" style="--size:18px"></span><span class="blog-code__copy-label" data-i18n="blog.ui.copy">kopyala</span></button>
+          </div>
+          <pre tabindex="0"><code class="language-js" data-i18n="blog.st.b27">const mm = gsap.matchMedia();
+
+mm.add({ desk: "(min-width: 768px)", mob: "(max-width: 767px)" }, (ctx) =&gt; {
+  const { desk } = ctx.conditions;
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: sec,
+      start: desk ? "top top" : "top 75%",
+      end: desk ? "+=160%" : "bottom 45%",
+      pin: desk,  // telefonda pin yok: içerik normal akar
+      scrub: 0.6,
+    },
+  });
+});</code></pre>
+        </div>
+        <p data-i18n="blog.st.b28">Bir de işletim sisteminde “hareketi azalt” ayarını açan kullanıcılar var. Onlar için kural net: <code>prefers-reduced-motion: reduce</code> ise hiçbir ScrollTrigger kurulmuyor, her şey son haliyle, okunur biçimde görünüyor. Animasyon süs; içerik herkesin.</p>
+      </section>
+      <section class="blog-sec" id="s-ozet" aria-labelledby="s-ozet-t">
+        <h2 id="s-ozet-t" data-i18n="blog.st.b29">Kısaca</h2>
+        <svg class="blog-h2-line" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true" data-draw><path d="M3 9 C 60 3, 120 12, 180 7 S 262 3, 297 8"/></svg>
+        <ul class="blog-check">
+          <li><span class="doodle" data-doodle="check" style="--size:26px;--c:var(--blue)"></span><span data-i18n="blog.st.b30.0">Lenis kullanıyorsan GSAP ticker'ına bağla; tek saat, titreme yok.</span></li>
+          <li><span class="doodle" data-doodle="check" style="--size:26px;--c:var(--blue)"></span><span data-i18n="blog.st.b30.1"><code>pin</code> sahneyi sabitler, <code>end: "+=160%"</code> ne kadar süreceğini söyler.</span></li>
+          <li><span class="doodle" data-doodle="check" style="--size:26px;--c:var(--blue)"></span><span data-i18n="blog.st.b30.2">Metinde <code>scrub: 0.6</code> gibi küçük bir gecikme, <code>true</code>'dan daha doğal hissettirir.</span></li>
+          <li><span class="doodle" data-doodle="check" style="--size:26px;--c:var(--blue)"></span><span data-i18n="blog.st.b30.3"><code>pathLength="1"</code> + <code>dasharray "1 2"</code> = ölçmeden çizim.</span></li>
+          <li><span class="doodle" data-doodle="check" style="--size:26px;--c:var(--blue)"></span><span data-i18n="blog.st.b30.4">Telefonda pin'i kapat, hareket azaltmada animasyonu tamamen atla.</span></li>
+        </ul>
+      </section>
+
+        <footer class="blog-end">
+          <p class="blog-end__stamp" aria-hidden="true" data-i18n="blog.ui.stamp">bitti!</p>
+          <p class="blog-end__text" data-i18n="blog.ui.thanks">Okuduğun için teşekkürler. Bir yanlış ya da eklemek istediğin bir şey mi gördün? <a href="iletisim.html" data-page-name="iletişim">Bana yaz</a>, defterime not alayım.</p>
+        </footer>
+        </div>
+      </div>
+    </article>
+
+    <nav class="blog-pager container" aria-labelledby="pagerTitle">
+      <h2 id="pagerTitle" class="blog-pager__title" data-i18n="blog.ui.more">Defterde başka ne var?</h2>
+      <div class="blog-pager__grid">
+          <a class="blog-pager__link blog-pager__link--prev" href="blog-karanlik-mod.html" data-page-name="beyaz defter, siyah defter">
+            <span class="blog-pager__dir" data-i18n="blog.ui.older">← Önceki yazı</span>
+            <span class="blog-pager__name" data-i18n="blog.dm.short">Beyaz defter, siyah defter</span>
+          </a>
+          <a class="blog-pager__link blog-pager__link--next blog-pager__link--home" href="blog.html" data-page-name="blog">
+            <span class="blog-pager__dir" data-i18n="blog.ui.newer">Sonraki yazı →</span>
+            <span class="blog-pager__name" data-i18n="blog.ui.allPosts">Tüm yazılar</span>
+          </a>
+      </div>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <svg class="footer__wave" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true" data-draw="scrub" data-start="top 95%" data-end="top 50%">
+      <path d="M0 30 C 100 5, 200 55, 300 30 S 500 5, 600 30 S 800 55, 900 30 S 1100 5, 1200 30"/>
+    </svg>
+    <div class="container">
+      <p class="footer__big"><a href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact" data-i18n="footer.big">Hadi <span class="scribble-u">konuşalım</span>!</a></p>
+      <div class="footer__row">
+        <div class="footer__socials">
+          <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub" data-bind-href="{github}"><span class="doodle" data-doodle="github" style="--size:26px"></span></a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn" data-bind-href="{linkedin}"><span class="doodle" data-doodle="linkedin" style="--size:26px"></span></a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" data-bind-href="{instagram}"><span class="doodle" data-doodle="instagram" style="--size:26px"></span></a>
+          <a href="mailto:ornek@mail.com" aria-label="E-posta" data-bind-href="mailto:{email}"><span class="doodle" data-doodle="mail" style="--size:26px"></span></a>
+        </div>
+        <p class="footer__copy" data-i18n="footer.copy">© <span data-year>2026</span> Ad Soyad — kalemle, kahveyle ve biraz JavaScript'le çizildi.</p>
+        <a class="footer__admin" href="admin.html" data-i18n="footer.admin">yönetim</a>
+      </div>
+    </div>
+  </footer>
+  <dialog class="blog-lightbox" id="blogLightbox" aria-label="Büyütülmüş ekran görüntüsü" data-i18n-attr="aria-label:blog.ui.lightbox" data-lenis-prevent>
+    <figure class="blog-lightbox__fig">
+      <img class="blog-lightbox__img" src="data:," alt="">
+      <figcaption class="blog-lightbox__cap"></figcaption>
+    </figure>
+    <button class="blog-lightbox__close" type="button" aria-label="Kapat" data-i18n-attr="aria-label:blog.ui.close" data-juice><span class="doodle" data-doodle="x" style="--size:24px;--c:#161714"></span></button>
+  </dialog>
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/pages/blog-scrolltrigger.i18n.js"></script>
+  <script src="js/pages/blog.js"></script>
+</body>
+</html>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="tr" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="contact.meta.title">İletişim | Ad Soyad</title>
+  <meta name="description" content="Ad Soyad ile iletişime geç: Kadıköy / İstanbul adresi, telefon, e-posta ve kağıt uçağa dönüşen doodle iletişim formu. Sık sorulan sorular ve el çizimi İstanbul haritası." data-i18n-attr="content:contact.meta.desc">
+  <meta name="theme-color" content="#fbfaf6">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="İletişim | Ad Soyad" data-i18n-attr="content:contact.meta.title">
+  <meta property="og:description" content="Adres, telefon, e-posta ve kağıt uçağa dönüşen bir iletişim formu." data-i18n-attr="content:contact.meta.og">
+  <meta property="og:image" content="img/profil/vesikalik.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%8F%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/caveat-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/caveat-400-700-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/kalam-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/kalam-400-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/core.css">
+  <link rel="stylesheet" href="css/pages/contact.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "İletişim | Ad Soyad",
+    "description": "Ad Soyad'ın adres, telefon, e-posta ve iletişim formu sayfası.",
+    "inLanguage": ["tr", "en"],
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Ad Soyad",
+      "jobTitle": "Bilgisayar Mühendisliği öğrencisi, frontend geliştirici",
+      "email": "mailto:ornek@mail.com",
+      "telephone": "+90 500 000 00 00",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Örnek Mah. Defter Sok. No:7",
+        "addressLocality": "Kadıköy",
+        "addressRegion": "İstanbul",
+        "addressCountry": "TR"
+      },
+      "affiliation": { "@type": "CollegeOrUniversity", "name": "Örnek Üniversitesi" },
+      "sameAs": ["https://github.com/", "https://linkedin.com/", "https://instagram.com/"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "personal",
+        "email": "ornek@mail.com",
+        "telephone": "+90 500 000 00 00",
+        "availableLanguage": ["Turkish", "English"],
+        "hoursAvailable": "Mo-Fr 10:00-19:00"
+      }
+    }
+  }
+  </script>
+  <script>
+    (function () {
+      var d = document.documentElement, t = null, l = null;
+      try { t = localStorage.getItem("theme"); l = localStorage.getItem("lang"); } catch (e) {}
+      if (t === "dark" || (!t && matchMedia("(prefers-color-scheme: dark)").matches)) d.setAttribute("data-theme", "dark");
+      if (l === "en") { d.lang = "en"; d.classList.add("lang-pending"); }
+      try {
+        if (!matchMedia("(prefers-reduced-motion: reduce)").matches &&
+            (!sessionStorage.getItem("doodle-visited") || sessionStorage.getItem("doodle-transition") === "1")) d.classList.add("doodle-cover");
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body data-page-name="iletişim" data-page-name-en="contact">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">İçeriğe geç</a>
+
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Ad Soyad">
+        <span class="doodle" data-doodle="sparkle"></span>ad.soyad
+      </a>
+      <nav aria-label="Ana menü" data-i18n-attr="aria-label:nav.menuLabel">
+        <ul class="nav__links">
+          <li><a class="nav__link" href="index.html" data-page-name="ana sayfa" data-page-name-en="home" data-i18n="nav.home">Ana Sayfa</a></li>
+          <li><a class="nav__link" href="hakkimda.html" data-page-name="hakkımda" data-page-name-en="about" data-i18n="nav.about">Hakkımda</a></li>
+          <li><a class="nav__link" href="projeler.html" data-page-name="projeler" data-page-name-en="projects" data-i18n="nav.work">Projeler</a></li>
+          <li><a class="nav__link" href="blog.html" data-page-name="blog" data-page-name-en="blog" data-i18n="nav.blog">Blog</a></li>
+          <li><a class="nav__link" href="galeri.html" data-page-name="galeri" data-page-name-en="gallery" data-i18n="nav.gallery">Galeri</a></li>
+          <li><a class="nav__link" href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact" data-i18n="nav.contact">İletişim</a></li>
+        </ul>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn lang-toggle" type="button" aria-label="Switch to English">
+          <span class="lang-toggle__label">EN</span>
+        </button>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Temayı değiştir">
+          <span class="doodle doodle--moon" data-doodle="moon"></span>
+          <span class="doodle doodle--sun" data-doodle="sun"></span>
+        </button>
+        <button class="icon-btn burger" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobileMenu">
+          <span class="burger__lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="index.html" data-page-name="ana sayfa" data-page-name-en="home"><small>01</small><span data-i18n="nav.home">Ana Sayfa</span></a>
+    <a href="hakkimda.html" data-page-name="hakkımda" data-page-name-en="about"><small>02</small><span data-i18n="nav.about">Hakkımda</span></a>
+    <a href="projeler.html" data-page-name="projeler" data-page-name-en="projects"><small>03</small><span data-i18n="nav.work">Projeler</span></a>
+    <a href="blog.html" data-page-name="blog" data-page-name-en="blog"><small>04</small><span data-i18n="nav.blog">Blog</span></a>
+    <a href="galeri.html" data-page-name="galeri" data-page-name-en="gallery"><small>05</small><span data-i18n="nav.gallery">Galeri</span></a>
+    <a href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact"><small>06</small><span data-i18n="nav.contact">İletişim</span></a>
+  </div>
+
+  <main id="main">
+
+    <!-- ================= 1. HERO ================= -->
+    <section class="contact-hero" aria-labelledby="contact-title">
+      <span class="float-doodle contact-hero__deco contact-hero__deco--1" data-parallax="0.4"><span class="doodle" data-doodle="sparkle" style="--size:44px;--c:var(--yellow)"></span></span>
+      <span class="float-doodle contact-hero__deco contact-hero__deco--2" data-parallax="-0.3"><span class="doodle" data-doodle="asterisk" style="--size:38px;--c:var(--pink)"></span></span>
+      <span class="float-doodle contact-hero__deco contact-hero__deco--3" data-parallax="0.6"><span class="doodle" data-doodle="spiral" style="--size:54px;--c:var(--blue)"></span></span>
+
+      <div class="container contact-hero__grid">
+        <div class="contact-hero__text">
+          <p class="contact-status" data-reveal="pop">
+            <span class="contact-status__dot" aria-hidden="true"></span>
+            <span data-i18n="contact.hero.status">Şu an yeni projelere açığım</span>
+          </p>
+
+          <h1 id="contact-title" class="contact-hero__title"><span data-split data-i18n="contact.hero.title">Selam ver!</span><svg class="contact-hand" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+              <path class="contact-hand__palm" d="M34 94 C26 84 18 70 20 58 C21 51 29 50 32 56 L36 64 L30 30 C29 23 38 21 40 28 L45 52 L45 19 C45 11 55 11 55 19 L56 50 L60 23 C61 16 70 17 69 25 L66 53 L73 34 C75 27 83 30 81 37 L74 66 C71 80 66 88 60 95"/>
+              <path class="contact-hand__wave" d="M86 14 C90 20 92 26 92 32 M80 8 C86 12 90 16 92 20 M14 40 C10 46 9 52 10 58"/>
+            </svg></h1>
+
+          <p class="contact-hero__lead" data-reveal="up" data-delay="0.3" data-i18n="contact.hero.lead">Aklında bir proje mi var, bir staj fırsatı mı, yoksa sadece bir <span class="marker">merhaba</span> mı? Aşağıdaki mektubu doldur; kağıt uçağa çevirip bana yollayalım.</p>
+
+          <div class="contact-hero__cta" data-reveal="up" data-delay="0.45">
+            <a class="btn pink" href="#mektup" data-magnetic><span data-i18n="contact.hero.cta">Mektuba başla</span> <span class="doodle" data-doodle="pencil"></span></a>
+            <a class="contact-hero__alt" href="#adres"><span class="doodle" data-doodle="map-pin" style="--size:24px"></span><span data-i18n="contact.hero.alt">adres ve telefon</span></a>
+          </div>
+        </div>
+
+        <div class="contact-hero__art" aria-hidden="true">
+          <svg class="contact-envelope" viewBox="0 0 320 260" focusable="false">
+            <g class="contact-envelope__flap">
+              <path class="contact-envelope__flap-shape" d="M22 92 L160 10 L298 92"/>
+            </g>
+            <g class="contact-envelope__letter">
+              <path class="contact-envelope__paper" d="M50 70 L270 68 L272 220 L48 222 Z"/>
+              <path class="contact-envelope__lines" d="M70 100 L250 98 M70 124 L236 122 M70 148 L248 147 M70 172 L210 171"/>
+              <path class="contact-envelope__heart" d="M160 205 C150 197 140 190 141 181 C142 174 151 172 156 178 L160 182 L164 178 C169 172 178 174 179 181 C180 190 170 197 160 205 Z"/>
+            </g>
+            <g class="contact-envelope__front">
+              <path class="contact-envelope__body" d="M22 92 C80 91 240 93 298 92 L300 246 C220 248 100 245 20 247 Z"/>
+              <path class="contact-envelope__v" d="M22 246 L140 160 M300 246 L180 160"/>
+              <path class="contact-envelope__closed" d="M22 93 L160 176 L298 93"/>
+            </g>
+            <g class="contact-envelope__seal">
+              <circle cx="160" cy="176" r="17"/>
+              <path d="M160 186 C154 181 149 177 150 172 C151 168 156 167 158 170 L160 172 L162 170 C164 167 169 168 170 172 C171 177 166 181 160 186 Z"/>
+            </g>
+          </svg>
+          <span class="contact-hero__plane-note hand-note" data-i18n="contact.hero.note">mektubun buraya!</span>
+          <span class="contact-hero__arrow doodle" data-doodle="arrow-curly" style="--size:90px;--c:var(--pink)"></span>
+        </div>
+      </div>
+
+      <a class="contact-hero__scroll" href="#mektup">
+        <span class="doodle" data-doodle="arrow-down" style="--size:34px"></span>
+        <span data-i18n="contact.hero.scroll">aşağı kaydır, kalemi kap</span>
+      </a>
+    </section>
+
+    <!-- ================= 2. MEKTUP FORMU ================= -->
+    <section class="section contact-letter" id="mektup" aria-labelledby="letter-title">
+      <div class="container">
+        <div class="section-head center">
+          <h2 id="letter-title" data-split data-i18n="contact.letter.title">Bana bir mektup yaz</h2>
+          <p class="contact-letter__intro" data-reveal="fade" data-delay="0.2" data-i18n="contact.letter.intro">Boşlukları doldur, gerisini ben hallederim. Zorunlu alanlar: ad, konu, e-posta ve mesaj.</p>
+        </div>
+
+        <div class="contact-letter__stage">
+          <div class="contact-letter__slide">
+            <form class="contact-paper" id="contactForm" novalidate aria-labelledby="letter-title" autocomplete="on">
+              <span class="tape contact-paper__tape" aria-hidden="true"></span>
+              <span class="contact-paper__crease" aria-hidden="true"></span>
+
+              <div class="contact-paper__postage" aria-hidden="true">
+                <span class="contact-paper__stamp"><span class="doodle" data-doodle="plane" style="--size:34px;--c:#a8411a"></span><small>40 kr</small></span>
+                <svg class="contact-paper__postmark" viewBox="0 0 120 120" focusable="false">
+                  <circle cx="60" cy="60" r="44"/>
+                  <circle cx="60" cy="60" r="34"/>
+                  <path d="M8 46 C30 40 50 52 70 46 S 104 40 116 46 M8 74 C30 68 50 80 70 74 S 104 68 116 74"/>
+                </svg>
+              </div>
+
+              <div class="contact-paper__body">
+                <p class="contact-paper__date"><span id="contactDate">İstanbul, bugün</span></p>
+
+                <p class="contact-paper__greet" data-i18n="contact.form.greet">Sevgili Ad,</p>
+
+                <p class="contact-paper__sentence">
+                  <label class="contact-paper__lbl" for="contact-name"><span data-i18n="contact.form.l1">benim adım</span><span class="sr-only" data-i18n="contact.form.l1sr"> (adın ve soyadın, zorunlu)</span></label>
+                  <span class="contact-field" data-field="name">
+                    <input class="contact-field__input" id="contact-name" name="name" type="text" autocomplete="name" placeholder="adın soyadın" data-i18n-attr="placeholder:contact.form.namePh" maxlength="60" required aria-describedby="contact-name-error" spellcheck="false">
+                    <span class="contact-field__line" aria-hidden="true"></span>
+                    <svg class="contact-field__tick" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M6 22 C10 25 13 29 16 33 C22 22 28 13 36 6"/></svg>
+                    <span class="contact-field__error" id="contact-name-error"></span>
+                  </span><span class="contact-paper__comma">,</span>
+                  <label class="contact-paper__lbl" for="contact-subject"><span data-i18n="contact.form.l2">sana</span><span class="sr-only" data-i18n="contact.form.l2sr"> hangi konuda yazdığını seç (zorunlu)</span></label>
+                  <span class="contact-field contact-field--select" data-field="subject">
+                    <select class="contact-field__input" id="contact-subject" name="subject" required aria-describedby="contact-subject-error">
+                      <option value="" data-i18n="contact.form.subj0">konu seç…</option>
+                      <option value="job" data-i18n="contact.form.subj1">iş teklifi</option>
+                      <option value="collab" data-i18n="contact.form.subj2">proje iş birliği</option>
+                      <option value="question" data-i18n="contact.form.subj3">soru ya da öneri</option>
+                      <option value="hello" data-i18n="contact.form.subj4">sadece merhaba</option>
+                    </select>
+                    <svg class="contact-field__caret" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 8 C8 12 10 15 12 17 C15 13 17 10 20 7"/></svg>
+                    <span class="contact-field__line" aria-hidden="true"></span>
+                    <svg class="contact-field__tick" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M6 22 C10 25 13 29 16 33 C22 22 28 13 36 6"/></svg>
+                    <span class="contact-field__error" id="contact-subject-error"></span>
+                  </span>
+                  <span class="contact-paper__txt contact-paper__txt--1" data-i18n="contact.form.t1">hakkında yazıyorum.</span>
+                  <label class="contact-paper__lbl" for="contact-email"><span data-i18n="contact.form.l3">Bana</span><span class="sr-only" data-i18n="contact.form.l3sr"> ulaşabileceğim e-posta adresin (zorunlu)</span></label>
+                  <span class="contact-field" data-field="email">
+                    <input class="contact-field__input" id="contact-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="ornek@mail.com" data-i18n-attr="placeholder:contact.form.emailPh" maxlength="120" required aria-describedby="contact-email-error" spellcheck="false" autocapitalize="off">
+                    <span class="contact-field__line" aria-hidden="true"></span>
+                    <svg class="contact-field__tick" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M6 22 C10 25 13 29 16 33 C22 22 28 13 36 6"/></svg>
+                    <span class="contact-field__error" id="contact-email-error"></span>
+                  </span>
+                  <span class="contact-paper__txt" data-i18n="contact.form.t3">adresinden ulaşabilirsin.</span>
+                </p>
+
+                <div class="contact-paper__message">
+                  <label class="contact-paper__lbl contact-paper__lbl--block" for="contact-message"><span data-i18n="contact.form.l4">İşte söylemek istediklerim:</span><span class="sr-only" data-i18n="contact.form.l4sr"> (en az 10 karakter, zorunlu)</span></label>
+                  <span class="contact-field contact-field--area" data-field="message">
+                    <textarea class="contact-field__input" id="contact-message" name="message" rows="4" maxlength="1000" required placeholder="Merhaba! Aklımdaki fikir şu…" data-i18n-attr="placeholder:contact.form.msgPh" aria-describedby="contact-message-count contact-message-error"></textarea>
+                    <svg class="contact-field__tick" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M6 22 C10 25 13 29 16 33 C22 22 28 13 36 6"/></svg>
+                    <span class="contact-field__error" id="contact-message-error"></span>
+                  </span>
+                  <p class="contact-counter" id="contact-message-count"><span class="contact-counter__num">0</span> / 1000 <span data-i18n="contact.form.chars">harf</span> · <span class="contact-counter__hint"></span></p>
+                </div>
+
+                <div class="contact-sketch">
+                  <div class="contact-sketch__head">
+                    <p class="contact-sketch__title" id="contact-sketch-title"><span data-i18n="contact.sketch.title">Bir doodle bırak!</span> <small data-i18n="contact.sketch.opt">(isteğe bağlı)</small></p>
+                    <div class="contact-sketch__tools" role="group" aria-label="Kalem rengi" data-i18n-attr="aria-label:contact.sketch.pens">
+                      <button type="button" class="contact-pen is-active" data-pen="#161714" aria-pressed="true" aria-label="Siyah kalem" data-i18n-attr="aria-label:contact.sketch.pen1"></button>
+                      <button type="button" class="contact-pen" data-pen="#6b7a3a" aria-pressed="false" aria-label="Haki kalem" data-i18n-attr="aria-label:contact.sketch.pen2"></button>
+                      <button type="button" class="contact-pen" data-pen="#c4501f" aria-pressed="false" aria-label="Pas rengi kalem" data-i18n-attr="aria-label:contact.sketch.pen3"></button>
+                      <button type="button" class="contact-sketch__clear" id="contactSketchClear" data-i18n="contact.sketch.clear">temizle</button>
+                    </div>
+                  </div>
+                  <div class="contact-sketch__pad">
+                    <canvas class="contact-sketch__canvas" id="contactSketch" role="img" aria-labelledby="contact-sketch-title"></canvas>
+                    <span class="contact-sketch__ph" aria-hidden="true"><span class="doodle" data-doodle="pencil" style="--size:30px;--c:currentColor"></span><span data-i18n="contact.sketch.ph">buraya karala</span></span>
+                  </div>
+                </div>
+
+                <div class="contact-paper__sign">
+                  <p class="contact-paper__love" data-i18n="contact.form.love">Sevgiler,</p>
+                  <output class="contact-paper__signature" for="contact-name" id="contactSignature" aria-label="İmza" data-i18n-attr="aria-label:contact.form.sig">…</output>
+                  <svg class="contact-paper__sigline" viewBox="0 0 240 20" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M4 12 C50 6 100 16 150 10 S 220 6 236 11"/></svg>
+                </div>
+
+                <div class="contact-paper__actions">
+                  <button class="btn blue contact-submit" type="submit" id="contactSubmit" data-magnetic="0.2">
+                    <span class="contact-submit__label">Katla ve gönder</span>
+                    <span class="doodle" data-doodle="plane"></span>
+                  </button>
+                  <p class="contact-paper__ps" data-i18n="contact.form.ps">Not: Bu bir vize projesi. Mektup e-postayla gitmez; bu tarayıcıda saklanır ve yönetim panelinde okunur. Uçak ise gerçekten uçar.</p>
+                </div>
+                <p class="contact-paper__status" id="contactStatus" role="alert"></p>
+              </div>
+            </form>
+
+            <div class="contact-thanks-region" aria-live="polite">
+              <div class="contact-thanks" id="contactThanks" hidden>
+                <span class="tape" aria-hidden="true"></span>
+                <span class="contact-thanks__stamp" aria-hidden="true" data-i18n="contact.thanks.stamp">GÖNDERİLDİ</span>
+                <h3 class="contact-thanks__title" tabindex="-1" id="contactThanksTitle"><span data-i18n="contact.thanks.title">Mektubun yolda!</span> <span class="doodle" data-doodle="plane" style="--size:0.9em;--c:var(--cp-red)"></span></h3>
+                <p class="contact-thanks__msg" id="contactThanksMsg"></p>
+                <figure class="contact-thanks__doodle" id="contactThanksDoodle" hidden>
+                  <img alt="Mektuba eklediğin çizim" data-i18n-attr="alt:contact.thanks.imgAlt" id="contactThanksImg" width="240" height="140">
+                  <figcaption data-i18n="contact.thanks.cap">ekteki çizimin</figcaption>
+                </figure>
+                <button class="btn ghost contact-thanks__again" type="button" id="contactAgain"><span data-i18n="contact.thanks.again">Yeni mektup yaz</span> <span class="doodle" data-doodle="pencil"></span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. İLETİŞİM KANALLARI ================= -->
+    <section class="section contact-channels" aria-labelledby="channels-title">
+      <div class="contact-airmail" aria-hidden="true">
+        <div class="contact-airmail__track">
+          <span>UÇAK İLE · PAR AVION · AIR MAIL · UÇAK İLE · PAR AVION · AIR MAIL · UÇAK İLE · PAR AVION · AIR MAIL · UÇAK İLE · PAR AVION · AIR MAIL ·</span>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="section-head">
+          <h2 id="channels-title" data-split data-i18n="contact.channels.title">Başka yollar da var</h2>
+          <p class="contact-channels__intro" data-reveal="fade" data-delay="0.2" data-i18n="contact.channels.intro">Mektup yazmaya üşendin mi? Sorun değil, her pul ayrı bir kapı.</p>
+        </div>
+
+        <ul class="contact-stamps">
+          <li class="contact-stamps__item" data-reveal="stamp">
+            <article class="contact-stamp contact-stamp--pink">
+              <div class="contact-stamp__inner">
+                <span class="contact-stamp__value" aria-hidden="true">25 kr</span>
+                <span class="doodle contact-stamp__icon" data-doodle="mail"></span>
+                <h3 class="contact-stamp__title"><a class="contact-stamp__link" href="mailto:ornek@mail.com" data-bind-href="mailto:{email}" data-i18n="contact.st.email">E-posta</a></h3>
+                <p class="contact-stamp__text" id="contactEmailText" data-bind="email">ornek@mail.com</p>
+                <button class="contact-copy" type="button" id="contactCopy" aria-describedby="contactEmailText">
+                  <span class="doodle" data-doodle="tape" style="--size:22px"></span><span class="contact-copy__label">kopyala</span>
+                </button>
+                <span class="contact-copy__note hand-note" id="contactCopyNote" aria-live="polite"></span>
+              </div>
+              <span class="contact-stamp__mark" aria-hidden="true"><svg viewBox="0 0 120 120" focusable="false"><circle cx="60" cy="60" r="46"/><circle cx="60" cy="60" r="36"/><path d="M0 50 C30 44 60 56 120 48 M0 70 C30 64 60 76 120 68"/></svg></span>
+            </article>
+          </li>
+          <li class="contact-stamps__item" data-reveal="stamp" data-delay="0.1">
+            <article class="contact-stamp contact-stamp--blue">
+              <div class="contact-stamp__inner">
+                <span class="contact-stamp__value" aria-hidden="true">50 kr</span>
+                <span class="doodle contact-stamp__icon" data-doodle="phone"></span>
+                <h3 class="contact-stamp__title"><a class="contact-stamp__link" href="tel:+905000000000" data-bind-href="tel:{phone}" data-i18n="contact.st.phone">Telefon</a></h3>
+                <p class="contact-stamp__text" data-bind="phone">+90 500 000 00 00</p>
+                <p class="contact-stamp__meta" data-i18n="contact.st.phoneMeta">hafta içi 10:00–19:00</p>
+              </div>
+              <span class="contact-stamp__mark" aria-hidden="true"><svg viewBox="0 0 120 120" focusable="false"><circle cx="60" cy="60" r="46"/><circle cx="60" cy="60" r="36"/><path d="M0 50 C30 44 60 56 120 48 M0 70 C30 64 60 76 120 68"/></svg></span>
+            </article>
+          </li>
+          <li class="contact-stamps__item" data-reveal="stamp" data-delay="0.2">
+            <article class="contact-stamp contact-stamp--yellow">
+              <div class="contact-stamp__inner">
+                <span class="contact-stamp__value" aria-hidden="true">1 TL</span>
+                <span class="doodle contact-stamp__icon" data-doodle="map-pin"></span>
+                <h3 class="contact-stamp__title"><a class="contact-stamp__link" href="#adres" data-i18n="contact.st.loc">Adres</a></h3>
+                <p class="contact-stamp__text" data-bind="address">Örnek Mah. Defter Sok. No:7, Kadıköy / İstanbul</p>
+                <p class="contact-stamp__meta" data-i18n="contact.st.locMeta">uzaktan da çalışırım</p>
+              </div>
+              <span class="contact-stamp__mark" aria-hidden="true"><svg viewBox="0 0 120 120" focusable="false"><circle cx="60" cy="60" r="46"/><circle cx="60" cy="60" r="36"/><path d="M0 50 C30 44 60 56 120 48 M0 70 C30 64 60 76 120 68"/></svg></span>
+            </article>
+          </li>
+          <li class="contact-stamps__item" data-reveal="stamp" data-delay="0.05">
+            <article class="contact-stamp contact-stamp--green">
+              <div class="contact-stamp__inner">
+                <span class="contact-stamp__value" aria-hidden="true">2 TL</span>
+                <span class="doodle contact-stamp__icon" data-doodle="github"></span>
+                <h3 class="contact-stamp__title"><a class="contact-stamp__link" href="https://github.com/" data-bind-href="{github}" target="_blank" rel="noopener">GitHub<span class="sr-only" data-i18n="contact.newTab"> (yeni sekmede açılır)</span></a></h3>
+                <p class="contact-stamp__text">@adsoyad</p>
+                <p class="contact-stamp__meta" data-i18n="contact.st.ghMeta">kodlarım burada</p>
+              </div>
+              <span class="contact-stamp__mark" aria-hidden="true"><svg viewBox="0 0 120 120" focusable="false"><circle cx="60" cy="60" r="46"/><circle cx="60" cy="60" r="36"/><path d="M0 50 C30 44 60 56 120 48 M0 70 C30 64 60 76 120 68"/></svg></span>
+            </article>
+          </li>
+          <li class="contact-stamps__item" data-reveal="stamp" data-delay="0.15">
+            <article class="contact-stamp contact-stamp--purple">
+              <div class="contact-stamp__inner">
+                <span class="contact-stamp__value" aria-hidden="true">5 TL</span>
+                <span class="doodle contact-stamp__icon" data-doodle="linkedin"></span>
+                <h3 class="contact-stamp__title"><a class="contact-stamp__link" href="https://linkedin.com/" data-bind-href="{linkedin}" target="_blank" rel="noopener">LinkedIn<span class="sr-only" data-i18n="contact.newTab"> (yeni sekmede açılır)</span></a></h3>
+                <p class="contact-stamp__text">/in/adsoyad</p>
+                <p class="contact-stamp__meta" data-i18n="contact.st.liMeta">resmi takım elbiseli hâlim</p>
+              </div>
+              <span class="contact-stamp__mark" aria-hidden="true"><svg viewBox="0 0 120 120" focusable="false"><circle cx="60" cy="60" r="46"/><circle cx="60" cy="60" r="36"/><path d="M0 50 C30 44 60 56 120 48 M0 70 C30 64 60 76 120 68"/></svg></span>
+            </article>
+          </li>
+          <li class="contact-stamps__item" data-reveal="stamp" data-delay="0.25">
+            <article class="contact-stamp contact-stamp--orange">
+              <div class="contact-stamp__inner">
+                <span class="contact-stamp__value" aria-hidden="true">10 TL</span>
+                <span class="doodle contact-stamp__icon" data-doodle="instagram"></span>
+                <h3 class="contact-stamp__title"><a class="contact-stamp__link" href="https://instagram.com/" data-bind-href="{instagram}" target="_blank" rel="noopener">Instagram<span class="sr-only" data-i18n="contact.newTab"> (yeni sekmede açılır)</span></a></h3>
+                <p class="contact-stamp__text">@ad.soyad</p>
+                <p class="contact-stamp__meta" data-i18n="contact.st.igMeta">eskizler ve kahveler</p>
+              </div>
+              <span class="contact-stamp__mark" aria-hidden="true"><svg viewBox="0 0 120 120" focusable="false"><circle cx="60" cy="60" r="46"/><circle cx="60" cy="60" r="36"/><path d="M0 50 C30 44 60 56 120 48 M0 70 C30 64 60 76 120 68"/></svg></span>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= 4. ADRES + HARİTA ================= -->
+    <section class="section contact-map" id="adres" aria-labelledby="map-title">
+      <div class="container contact-map__grid">
+        <div class="contact-map__text">
+          <div class="section-head">
+            <h2 id="map-title" data-split data-i18n="contact.map.title">Adres defterim</h2>
+          </div>
+          <p data-reveal="up" data-i18n="contact.map.lead">İstanbul'dayım: Boğaz'ın kıyısında, martıların ve vapur düdüklerinin arasında kod yazıyorum. Yüz yüze bir kahveye her zaman varım.</p>
+
+          <div class="contact-label-wrap" data-reveal="up" data-delay="0.1">
+            <address class="contact-label">
+              <span class="tape contact-label__tape" aria-hidden="true"></span>
+              <span class="contact-label__head" aria-hidden="true" data-i18n="contact.addr.to">alıcı / to</span>
+              <strong class="contact-label__name" data-bind="name">Ad Soyad</strong>
+              <span class="contact-label__row">
+                <span class="doodle" data-doodle="map-pin"></span>
+                <span><span class="sr-only" data-i18n="contact.addr.addrSr">Adres: </span><span data-bind="address">Örnek Mah. Defter Sok. No:7, Kadıköy / İstanbul</span></span>
+              </span>
+              <span class="contact-label__row">
+                <span class="doodle" data-doodle="phone"></span>
+                <span><span class="sr-only" data-i18n="contact.addr.phoneSr">Telefon: </span><a href="tel:+905000000000" data-bind="phone" data-bind-href="tel:{phone}">+90 500 000 00 00</a></span>
+              </span>
+              <span class="contact-label__row">
+                <span class="doodle" data-doodle="mail"></span>
+                <span><span class="sr-only" data-i18n="contact.addr.mailSr">E-posta: </span><a href="mailto:ornek@mail.com" data-bind="email" data-bind-href="mailto:{email}">ornek@mail.com</a></span>
+              </span>
+              <span class="contact-label__note" data-i18n="contact.addr.note">Adres ve telefon şimdilik yer tutucu.</span>
+            </address>
+          </div>
+
+          <div class="contact-map__clock-wrap" data-reveal="pop" data-delay="0.2">
+            <p class="contact-map__clock sticky orange" style="--r:0deg">
+              <span data-i18n="contact.map.clock">İstanbul'da saat şu an</span><br><strong id="contactClock">--:--</strong>
+            </p>
+          </div>
+        </div>
+
+        <figure class="contact-map__figure">
+          <svg class="contact-map__svg" viewBox="0 0 600 440" role="img" aria-labelledby="contact-map-desc" data-draw="scrub" data-start="top 85%" data-end="center 45%" focusable="false">
+            <title id="contact-map-desc" data-i18n="contact.map.svgTitle">El çizimi İstanbul haritası: Boğaz, köprü, Galata Kulesi, vapur ve martılar; konum pini Kadıköy tarafında.</title>
+            <path class="cm-frame" d="M14 18 C150 10 450 16 586 12 C590 150 584 300 588 426 C440 432 160 426 12 430 C16 300 10 150 14 18 Z"/>
+            <path class="cm-coast" d="M262 18 C282 80 236 136 268 196 C296 248 252 316 290 426"/>
+            <path class="cm-coast" d="M340 18 C360 80 316 136 348 196 C376 248 334 316 372 426"/>
+            <path class="cm-coast" d="M272 300 C230 288 196 314 150 300 C120 292 96 300 70 306"/>
+            <path class="cm-coast" d="M276 322 C236 312 200 336 156 324 C124 316 100 326 74 332"/>
+            <path class="cm-bridge" d="M240 190 L372 186"/>
+            <path class="cm-bridge" d="M276 190 L276 150 M336 188 L336 148"/>
+            <path class="cm-bridge" d="M246 190 C262 170 272 154 276 150 C292 176 316 178 336 148 C344 162 356 176 368 186"/>
+            <path class="cm-build" d="M196 268 L198 228 L218 228 L220 268 M194 228 L208 204 L222 228 M206 248 L210 248"/>
+            <path class="cm-build" d="M120 380 C120 350 170 350 170 380 Z M110 380 L180 380 M106 380 L106 336 L112 330 L118 336 L118 380 M172 380 L172 336 L178 330 L184 336 L184 380"/>
+            <path class="cm-build" d="M318 376 L320 352 L328 340 L336 352 L338 376 M310 378 C320 372 336 372 346 378"/>
+            <path class="cm-wave" d="M290 110 q8 -6 16 0 t16 0 M300 260 q8 -6 16 0 t16 0 M120 420 q8 -6 16 0 t16 0 M440 410 q8 -6 16 0 t16 0 M460 60 q8 -6 16 0 t16 0 M80 70 q8 -6 16 0 t16 0"/>
+            <path class="cm-tree" d="M450 150 C440 130 470 120 466 142 C482 136 484 160 466 160 L460 176 M90 180 C80 160 110 150 106 172 C122 166 124 190 106 190 L100 206 M500 300 C490 280 520 270 516 292 C532 286 534 310 516 310 L510 326"/>
+            <path class="cm-route" d="M210 220 C240 140 330 110 400 214"/>
+
+            <text class="cm-label" x="300" y="44" text-anchor="middle" data-i18n="contact.map.l1">Karadeniz</text>
+            <text class="cm-label cm-label--sm" x="130" y="130" data-i18n="contact.map.l2">Avrupa</text>
+            <text class="cm-label cm-label--sm" x="420" y="110" data-i18n="contact.map.l3">Asya</text>
+            <text class="cm-label cm-label--sm" x="230" y="410" data-i18n="contact.map.l4">Marmara</text>
+            <text class="cm-label cm-label--xs" x="298" y="66" transform="rotate(78 298 66)" data-i18n="contact.map.l5">Boğaz</text>
+          </svg>
+
+          <svg class="contact-map__ferry" viewBox="0 0 80 40" aria-hidden="true" focusable="false">
+            <path d="M6 22 L74 22 L64 34 L14 34 Z"/>
+            <path d="M20 22 L22 12 L56 12 L58 22 M32 12 L34 4 L42 4 L42 12"/>
+            <path d="M26 17 L30 17 M38 17 L42 17 M50 17 L54 17"/>
+          </svg>
+          <svg class="contact-map__gull contact-map__gull--1" viewBox="0 0 40 16" aria-hidden="true" focusable="false"><path d="M2 12 C8 2 14 2 20 10 C26 2 32 2 38 12"/></svg>
+          <svg class="contact-map__gull contact-map__gull--2" viewBox="0 0 40 16" aria-hidden="true" focusable="false"><path d="M2 12 C8 2 14 2 20 10 C26 2 32 2 38 12"/></svg>
+          <svg class="contact-map__gull contact-map__gull--3" viewBox="0 0 40 16" aria-hidden="true" focusable="false"><path d="M2 12 C8 2 14 2 20 10 C26 2 32 2 38 12"/></svg>
+          <span class="contact-map__pin" aria-hidden="true">
+            <svg viewBox="0 0 40 56" focusable="false"><path d="M20 54 C14 42 4 32 4 20 C4 10 11 3 20 3 C29 3 36 10 36 20 C36 32 26 42 20 54 Z"/><circle cx="20" cy="20" r="6"/></svg>
+            <span class="contact-map__pin-shadow"></span>
+          </span>
+          <figcaption class="contact-map__cap hand-note" data-i18n="contact.map.cap">buradayım!</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= 5. SSS ================= -->
+    <section class="section contact-faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-head center">
+          <h2 id="faq-title" data-split data-i18n="contact.faq.title">Aklındaki sorular</h2>
+        </div>
+
+        <div class="contact-faq__board">
+          <div class="contact-faq__wrap" data-reveal="up">
+            <details class="contact-note sticky yellow" style="--r:-2deg">
+              <summary class="contact-note__q"><span class="pin" aria-hidden="true"></span><span data-i18n="contact.faq.q1">Ne kadar sürede dönüş yaparsın?</span><span class="contact-note__plus" aria-hidden="true"></span></summary>
+              <div class="contact-note__a"><p data-i18n="contact.faq.a1">Genellikle <strong>24 saat</strong> içinde, en geç 48 saatte. Sınav haftasıysa biraz gecikebilirim ama mutlaka dönerim.</p></div>
+            </details>
+          </div>
+          <div class="contact-faq__wrap" data-reveal="up" data-delay="0.1">
+            <details class="contact-note sticky pink" style="--r:1.5deg">
+              <summary class="contact-note__q"><span class="pin" aria-hidden="true"></span><span data-i18n="contact.faq.q2">Freelance çalışıyor musun?</span><span class="contact-note__plus" aria-hidden="true"></span></summary>
+              <div class="contact-note__a"><p data-i18n="contact.faq.a2">Evet! Küçük ve orta ölçekli web projeleri, açılış sayfaları ve portföy siteleri için freelance çalışıyorum. Derslerle dengeli gidecek şekilde planlarız.</p></div>
+            </details>
+          </div>
+          <div class="contact-faq__wrap" data-reveal="up" data-delay="0.15">
+            <details class="contact-note sticky blue" style="--r:2deg">
+              <summary class="contact-note__q"><span class="pin" aria-hidden="true"></span><span data-i18n="contact.faq.q3">Hangi teknolojileri kullanıyorsun?</span><span class="contact-note__plus" aria-hidden="true"></span></summary>
+              <div class="contact-note__a"><p data-i18n="contact.faq.a3">HTML, CSS ve JavaScript temelim; GSAP ile animasyon, React ile arayüz, biraz da Node.js ve Python. Bu site de saf HTML/CSS/JS ile elle çizildi.</p></div>
+            </details>
+          </div>
+          <div class="contact-faq__wrap" data-reveal="up" data-delay="0.2">
+            <details class="contact-note sticky green" style="--r:-1.5deg">
+              <summary class="contact-note__q"><span class="pin" aria-hidden="true"></span><span data-i18n="contact.faq.q4">Staj fırsatlarına açık mısın?</span><span class="contact-note__plus" aria-hidden="true"></span></summary>
+              <div class="contact-note__a"><p data-i18n="contact.faq.a4">Kesinlikle! Bilgisayar Mühendisliği öğrencisi olarak yaz ve dönem içi frontend stajlarına çok açığım. Mektupta konu olarak “iş teklifi”ni seçmen yeterli.</p></div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <svg class="footer__wave" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true" data-draw="scrub" data-start="top 95%" data-end="top 50%">
+      <path d="M0 30 C 100 5, 200 55, 300 30 S 500 5, 600 30 S 800 55, 900 30 S 1100 5, 1200 30"/>
+    </svg>
+    <div class="container">
+      <p class="footer__big"><a href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact" data-i18n="footer.big">Hadi <span class="scribble-u">konuşalım</span>!</a></p>
+      <div class="footer__row">
+        <div class="footer__socials">
+          <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub" data-bind-href="{github}"><span class="doodle" data-doodle="github" style="--size:26px"></span></a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn" data-bind-href="{linkedin}"><span class="doodle" data-doodle="linkedin" style="--size:26px"></span></a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" data-bind-href="{instagram}"><span class="doodle" data-doodle="instagram" style="--size:26px"></span></a>
+          <a href="mailto:ornek@mail.com" aria-label="E-posta" data-bind-href="mailto:{email}"><span class="doodle" data-doodle="mail" style="--size:26px"></span></a>
+        </div>
+        <p class="footer__copy" data-i18n="footer.copy">© <span data-year>2026</span> Ad Soyad — kalemle, kahveyle ve biraz JavaScript'le çizildi.</p>
+        <a class="footer__admin" href="admin.html" data-i18n="footer.admin">yönetim</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/pages/contact.js"></script>
+</body>
+</html>

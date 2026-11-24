@@ -1,0 +1,1377 @@
+/* =========================================================
+   BLOG — liste (blog.html) + yazı sayfaları (blog-*.html)
+   Mod: Read — okunabilirlik önce, ama defterin karakteri korunur.
+   Mobile first: temel stiller telefon, min-width ile genişler.
+   ========================================================= */
+
+.blog-page {
+  --blog-measure: 66ch;
+  --blog-mono: ui-monospace, "Cascadia Code", "SF Mono", Consolas, "Liberation Mono", monospace;
+  --blog-code-bg: #1b1c19;
+  --blog-code-ink: #ece9df;
+  --blog-gap: clamp(20px, 4vw, 40px);
+}
+
+[data-theme="dark"] .blog-page {
+  --blog-code-bg: #0b0c0a;
+}
+
+.blog-main {
+  padding-top: calc(var(--nav-h) + 12px);
+  /* giriş animasyonundaki yana kaymalar sayfayı yatay kaydırmasın
+     (clip kaydırma kabı oluşturmaz → içindekiler sticky çalışmaya devam eder) */
+  overflow-x: clip;
+}
+
+/* metin seçimi ve imleç: defter paletinden */
+.blog-page ::selection {
+  background: var(--yellow);
+  color: #161714;
+}
+
+/* =========================================================
+   1. LİSTE — HERO
+   ========================================================= */
+.blog-hero {
+  position: relative;
+  padding: clamp(40px, 9vw, 120px) 0 clamp(36px, 6vw, 72px);
+}
+
+.blog-hero__inner {
+  max-width: 1000px;
+}
+
+.blog-hero__title {
+  font-size: clamp(3rem, 8.4vw, 6.4rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  max-width: 13ch;
+}
+
+.blog-hero__lead {
+  margin-top: clamp(18px, 3vw, 30px);
+  max-width: 54ch;
+  font-size: clamp(1.08rem, 0.6vw + 0.95rem, 1.3rem);
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.blog-hero__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-top: 22px;
+  font-family: var(--font-hand);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--pink);
+}
+
+.blog-hero__facts li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.blog-hero__facts li + li::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin-right: 14px;
+  border-radius: 50%;
+  background: var(--ink-soft);
+  opacity: 0.5;
+}
+
+/* "Bu defterde" dizini: sayfa içi gezinme post-it'i */
+.blog-hero__index {
+  margin-top: 34px;
+  max-width: 320px;
+}
+
+.blog-hero__index-paper {
+  padding: 30px 24px 18px;
+}
+
+.blog-hero__index-title {
+  font-family: var(--font-hand);
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #161714 !important;
+  margin-bottom: 6px;
+}
+
+.blog-hero__index ol {
+  counter-reset: idx;
+}
+
+.blog-hero__index li {
+  counter-increment: idx;
+}
+
+.blog-hero__index a {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 0;
+  font-family: var(--font-hand);
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.15;
+  color: #161714;
+  border-bottom: 1.5px dashed rgba(22, 23, 20, 0.22);
+  transition: transform 0.35s var(--ease-bounce), color 0.2s ease;
+}
+
+.blog-hero__index li:last-child a {
+  border-bottom: 0;
+}
+
+.blog-hero__index a::before {
+  content: counter(idx) ".";
+  color: #8f3713;
+  font-weight: 700;
+}
+
+.blog-hero__index a:hover {
+  color: #8f3713;
+  transform: translateX(6px);
+}
+
+.blog-hero__deco {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.blog-hero__d {
+  position: absolute;
+  display: block;
+}
+
+.blog-hero__d--1 { right: 8%; top: 14%; transform: rotate(18deg); }
+.blog-hero__d--2 { right: 22%; bottom: 10%; }
+.blog-hero__d--3 { right: 4%; bottom: 30%; display: none; }
+.blog-hero__d--4 { right: 34%; top: 8%; }
+
+/* =========================================================
+   2. LİSTE — DEFTERDEN KOPARILMIŞ SAYFALAR
+   ========================================================= */
+.blog-list-sec {
+  padding-bottom: clamp(40px, 8vw, 100px);
+}
+
+.blog-list {
+  display: grid;
+  gap: clamp(48px, 9vw, 110px);
+}
+
+.blog-item {
+  --r: 0deg;
+  position: relative;
+}
+
+.blog-card {
+  position: relative;
+  transform: rotate(var(--r));
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.08)) drop-shadow(0 18px 26px rgba(0, 0, 0, 0.16));
+  transition: transform 0.55s var(--ease-bounce), filter 0.45s ease;
+}
+
+[data-theme="dark"] .blog-card {
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.5)) drop-shadow(0 18px 26px rgba(0, 0, 0, 0.55));
+}
+
+/* koparılmış üst kenar: zikzak yırtık + spiral delikleri (mask) */
+.blog-card__paper {
+  position: relative;
+  display: grid;
+  gap: 22px;
+  padding: 46px clamp(18px, 4vw, 44px) clamp(26px, 4vw, 40px);
+  background-color: color-mix(in srgb, var(--paper) 55%, #fff);
+  background-image: repeating-linear-gradient(to bottom, transparent 0 35px, var(--line) 35px 37px);
+  background-position: 0 10px;
+  -webkit-mask:
+    radial-gradient(circle at 50% 24px, #0000 6px, #000 6.6px) 0 0 / 34px 100% repeat-x,
+    conic-gradient(from 135deg at 50% 0, #000 90deg, #0000 0) 0 0 / 14px 9px repeat-x,
+    linear-gradient(#000 0 0) 0 8px / 100% 100% no-repeat;
+  -webkit-mask-composite: source-in, source-over;
+  mask:
+    radial-gradient(circle at 50% 24px, #0000 6px, #000 6.6px) 0 0 / 34px 100% repeat-x,
+    conic-gradient(from 135deg at 50% 0, #000 90deg, #0000 0) 0 0 / 14px 9px repeat-x,
+    linear-gradient(#000 0 0) 0 8px / 100% 100% no-repeat;
+  mask-composite: intersect, add;
+}
+
+[data-theme="dark"] .blog-card__paper {
+  background-color: var(--paper-2);
+}
+
+/* defterin kırmızı kenar çizgisi kartın içinde de */
+.blog-card__paper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: clamp(12px, 2.4vw, 26px);
+  width: 2px;
+  background: var(--margin-line);
+  pointer-events: none;
+}
+
+/* hover'da kıvrılan köşe */
+.blog-card__paper::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(to top left, var(--paper) 0 49%, rgba(0, 0, 0, 0.18) 50%, var(--paper-2) 58%, var(--paper-2));
+  box-shadow: -4px -4px 8px -4px rgba(0, 0, 0, 0.25);
+  border-top-left-radius: 6px;
+  transform: scale(0);
+  transform-origin: 100% 100%;
+  transition: transform 0.45s var(--ease-out);
+  pointer-events: none;
+}
+
+[data-theme="dark"] .blog-card__paper::after {
+  background: linear-gradient(to top left, var(--paper) 0 49%, rgba(0, 0, 0, 0.5) 50%, #2a2b27 58%, #2a2b27);
+}
+
+.blog-card__shot {
+  position: relative;
+  background: #fff;
+  padding: 8px 8px 10px;
+  box-shadow: 0 10px 22px -12px rgba(0, 0, 0, 0.45);
+  transform: rotate(calc(var(--r) * -1.6));
+  transition: transform 0.6s var(--ease-bounce);
+  margin-top: 6px;
+}
+
+.blog-card__shot img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: 50% 0;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.blog-card__shot .tape {
+  width: 84px;
+  height: 26px;
+}
+
+.blog-card__meta {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--pink);
+  margin-bottom: 4px;
+}
+
+.blog-card__title {
+  font-size: clamp(2rem, 5.4vw, 3.1rem);
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.blog-card__title a {
+  background-image: linear-gradient(var(--yellow), var(--yellow));
+  background-repeat: no-repeat;
+  background-size: 0% 0.32em;
+  background-position: 0 88%;
+  transition: background-size 0.5s var(--ease-out);
+}
+
+/* kartın tamamı tıklanabilir */
+.blog-card__title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.blog-card__title a:focus-visible {
+  outline: none;
+}
+
+.blog-card:has(.blog-card__title a:focus-visible) .blog-card__paper {
+  outline: 3px dashed var(--pink);
+  outline-offset: -10px;
+}
+
+.blog-card__excerpt {
+  margin-top: 12px;
+  max-width: 56ch;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.blog-card__excerpt code,
+.blog-hero__lead code {
+  font-family: var(--blog-mono);
+  font-size: 0.86em;
+}
+
+.blog-card__tags,
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.blog-card__tags .chip,
+.blog-tags .chip {
+  font-size: 1.1rem;
+  padding: 1px 12px;
+}
+
+.blog-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-family: var(--font-hand);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.blog-card__cta .doodle {
+  transition: transform 0.45s var(--ease-bounce);
+}
+
+@media (hover: hover) {
+  .blog-card:hover {
+    transform: rotate(0deg) translateY(-12px);
+    filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.08)) drop-shadow(0 34px 34px rgba(0, 0, 0, 0.22));
+  }
+
+  .blog-card:hover .blog-card__paper::after {
+    transform: scale(1);
+  }
+
+  .blog-card:hover .blog-card__shot {
+    transform: rotate(calc(var(--r) * -3)) scale(1.02);
+  }
+
+  .blog-card:hover .blog-card__title a {
+    background-size: 100% 0.32em;
+  }
+
+  .blog-card:hover .blog-card__cta .doodle {
+    transform: translateX(8px) rotate(-8deg);
+  }
+}
+
+/* =========================================================
+   3. LİSTE — TASLAKLAR (post-it)
+   ========================================================= */
+.blog-drafts {
+  padding-top: clamp(40px, 6vw, 80px);
+}
+
+.blog-drafts__head {
+  max-width: 640px;
+  margin-bottom: clamp(36px, 6vw, 64px);
+}
+
+.blog-drafts__head h2 {
+  margin-bottom: 14px;
+}
+
+.blog-drafts__head a,
+.blog-end__text a,
+.blog-prose a {
+  color: var(--ink);
+  text-decoration: underline wavy var(--pink);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 5px;
+  transition: color 0.2s ease;
+}
+
+.blog-drafts__head a:hover,
+.blog-end__text a:hover,
+.blog-prose a:hover {
+  color: var(--pink);
+}
+
+.blog-drafts__list {
+  display: grid;
+  gap: 40px 28px;
+}
+
+.blog-draft__paper {
+  height: 100%;
+  padding-top: 30px;
+}
+
+.blog-draft__soon {
+  display: inline-block;
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #8f3713;
+  border: 2px solid #8f3713;
+  border-radius: var(--wobble-2);
+  padding: 0 10px;
+  transform: rotate(-4deg);
+  margin-bottom: 8px;
+}
+
+.blog-draft__title {
+  font-size: 1.9rem;
+  margin-bottom: 6px;
+  color: #161714;
+}
+
+.blog-draft__paper code {
+  font-family: var(--blog-mono);
+  font-size: 0.85em;
+}
+
+/* =========================================================
+   4. YAZI — BAŞLIK
+   ========================================================= */
+.blog-post__head {
+  padding: clamp(28px, 6vw, 72px) 0 clamp(26px, 4vw, 44px);
+  max-width: 980px;
+}
+
+.blog-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  transition: color 0.2s ease;
+}
+
+.blog-back .doodle {
+  transform: scaleX(-1) rotate(-20deg);
+  transition: transform 0.45s var(--ease-bounce);
+}
+
+.blog-back:hover {
+  color: var(--pink);
+}
+
+.blog-back:hover .doodle {
+  transform: scaleX(-1) rotate(-20deg) translateX(8px);
+}
+
+.blog-post__title {
+  margin-top: 18px;
+  font-size: clamp(2.7rem, 7vw, 5.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.blog-post__lead {
+  margin-top: clamp(16px, 2.6vw, 26px);
+  max-width: 60ch;
+  font-size: clamp(1.12rem, 0.5vw + 1rem, 1.32rem);
+  line-height: 1.7;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.blog-post__lead code {
+  font-family: var(--blog-mono);
+  font-size: 0.86em;
+}
+
+.blog-post__meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+  color: var(--ink-soft);
+}
+
+.blog-post__avatar {
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--ink);
+  border-radius: 50% 45% 55% 48% / 48% 55% 45% 52%;
+  background: var(--sticky);
+  flex: none;
+}
+
+.blog-post__author {
+  display: block;
+  font-family: var(--font-hand);
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.blog-post__sub {
+  font-size: 0.98rem;
+}
+
+/* =========================================================
+   5. YAZI — DÜZEN + İÇİNDEKİLER
+   ========================================================= */
+.blog-post__layout {
+  display: grid;
+  gap: 28px;
+  padding-bottom: clamp(40px, 7vw, 80px);
+}
+
+.blog-prose {
+  min-width: 0; /* grid içinde kod blokları taşmasın */
+  max-width: var(--blog-measure);
+}
+
+.blog-toc {
+  --toc-mark: color-mix(in srgb, var(--yellow) 55%, transparent);
+  min-width: 0;
+}
+
+[data-theme="dark"] .blog-toc {
+  --toc-mark: color-mix(in srgb, var(--yellow) 24%, transparent);
+}
+
+.blog-toc__box {
+  border: 2px dashed var(--ink-faint);
+  border-radius: var(--wobble-2);
+  padding: 4px 18px;
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+}
+
+.blog-toc__sum {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  font-family: var(--font-hand);
+  font-size: 1.55rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+.blog-toc__sum::-webkit-details-marker {
+  display: none;
+}
+
+.blog-toc__sum::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  margin-left: auto;
+  border-right: 2.5px solid var(--ink);
+  border-bottom: 2.5px solid var(--ink);
+  transform: rotate(45deg) translateY(-3px);
+  transition: transform 0.35s var(--ease-bounce);
+}
+
+.blog-toc__box[open] .blog-toc__sum::after {
+  transform: rotate(-135deg) translateY(-2px);
+}
+
+.blog-toc__list {
+  counter-reset: toc;
+  padding: 2px 0 14px;
+}
+
+.blog-toc__list li {
+  counter-increment: toc;
+}
+
+.blog-toc__list a {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  padding: 7px 4px;
+  min-height: 44px;
+  line-height: 1.35;
+  color: var(--ink-soft);
+  transition: color 0.2s ease, transform 0.35s var(--ease-bounce);
+}
+
+.blog-toc__list a::before {
+  content: counter(toc);
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--pink);
+  min-width: 1ch;
+}
+
+.blog-toc__list a:hover {
+  color: var(--ink);
+  transform: translateX(4px);
+}
+
+.blog-toc__list a.is-active {
+  color: var(--ink);
+}
+
+/* aktif bölüm: fosforlu kalem */
+.blog-toc__list a > span,
+.blog-toc__list a {
+  background-image: linear-gradient(100deg, transparent 0.2em, var(--toc-mark) 0.3em, var(--toc-mark) calc(100% - 0.2em), transparent);
+  background-repeat: no-repeat;
+  background-size: 0% 60%;
+  background-position: 1.6em 70%;
+  transition: background-size 0.5s var(--ease-out), color 0.2s ease, transform 0.35s var(--ease-bounce);
+}
+
+.blog-toc__list a.is-active {
+  background-size: calc(100% - 1.6em) 60%;
+}
+
+/* =========================================================
+   6. YAZI — METİN
+   ========================================================= */
+.blog-prose > p,
+.blog-sec > p {
+  font-size: clamp(1.06rem, 0.35vw + 0.98rem, 1.18rem);
+  line-height: 1.8;
+  color: var(--ink-soft);
+  margin-bottom: 1.15em;
+  text-wrap: pretty;
+}
+
+.blog-prose strong,
+.blog-post__lead strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.blog-sec {
+  scroll-margin-top: calc(var(--nav-h) + 24px);
+  padding-top: clamp(28px, 5vw, 52px);
+}
+
+.blog-sec > h2 {
+  font-size: clamp(2.1rem, 4.6vw, 3.1rem);
+  line-height: 1.05;
+  text-wrap: balance;
+  outline-offset: 6px;
+}
+
+.blog-h2-line {
+  width: min(220px, 60%);
+  height: 14px;
+  margin: 4px 0 20px;
+  overflow: visible;
+  color: var(--pink);
+}
+
+.blog-h2-line path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.blog-sec:nth-of-type(3n + 2) .blog-h2-line { color: var(--blue); }
+.blog-sec:nth-of-type(3n + 3) .blog-h2-line { color: var(--yellow); }
+
+.blog-sec > h3 {
+  font-size: clamp(1.75rem, 3vw, 2.2rem);
+  margin: 1.6em 0 0.4em;
+  text-wrap: balance;
+}
+
+/* satır içi kod */
+.blog-prose :not(pre) > code,
+.blog-lightbox__cap code,
+.blog-fig figcaption code {
+  font-family: var(--blog-mono);
+  font-size: 0.84em;
+  padding: 0.08em 0.38em;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--yellow) 22%, transparent);
+  color: var(--ink);
+  white-space: break-spaces;
+  overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   7. KOD BLOKLARI — defter kenarına bantlanmış terminal
+   ========================================================= */
+.blog-code {
+  position: relative;
+  margin: 2rem 0 2.2rem;
+  background: var(--blog-code-bg);
+  color: var(--blog-code-ink);
+  border: var(--stroke) solid #161714;
+  border-radius: 14px 18px 12px 16px / 16px 12px 18px 14px;
+  box-shadow: var(--shadow-hard);
+}
+
+[data-theme="dark"] .blog-code {
+  border-color: rgba(242, 240, 234, 0.28);
+}
+
+.blog-code__bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 8px 6px 16px;
+  border-bottom: 1.5px dashed rgba(242, 240, 234, 0.18);
+}
+
+.blog-code__dots {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.blog-code__dots i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50% 45% 55% 48%;
+  border: 1.5px solid rgba(242, 240, 234, 0.55);
+}
+
+.blog-code__dots i:nth-child(1) { background: #e07a4a; }
+.blog-code__dots i:nth-child(2) { background: #e2c27c; }
+.blog-code__dots i:nth-child(3) { background: #a9b47a; }
+
+.blog-code__file {
+  font-family: var(--blog-mono);
+  font-size: 0.86rem;
+  color: #b9b6aa;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.blog-code__copy {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 14px;
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #f2f0ea;
+  border: 2px solid rgba(242, 240, 234, 0.6);
+  border-radius: var(--wobble-2);
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.35s var(--ease-bounce);
+}
+
+.blog-code__copy .doodle {
+  width: 0;
+  margin-right: -6px;
+  overflow: hidden;
+  transition: width 0.3s var(--ease-bounce), margin 0.3s ease;
+}
+
+.blog-code__copy:hover {
+  background: rgba(242, 240, 234, 0.1);
+  transform: rotate(-3deg);
+}
+
+.blog-code__copy:focus-visible {
+  outline-color: #e2c27c;
+}
+
+.blog-code__copy.is-copied {
+  background: #b3c084;
+  border-color: #b3c084;
+  color: #161714;
+}
+
+.blog-code__copy.is-copied .doodle {
+  width: 18px;
+  margin-right: 0;
+}
+
+.blog-code pre {
+  margin: 0;
+  padding: 16px 18px 20px;
+  overflow-x: auto;
+  font-family: var(--blog-mono);
+  font-size: clamp(0.8rem, 0.25vw + 0.76rem, 0.92rem);
+  line-height: 1.7;
+  tab-size: 2;
+  font-variant-ligatures: none; /* => ok olarak kalsın, ⇒ olmasın */
+  scrollbar-color: #d4a84f transparent;
+  scrollbar-width: thin;
+  border-radius: 0 0 14px 14px;
+}
+
+.blog-code pre:focus-visible {
+  outline: 3px dashed #e2c27c;
+  outline-offset: -6px;
+}
+
+.blog-code pre::-webkit-scrollbar { height: 8px; }
+.blog-code pre::-webkit-scrollbar-thumb { background: #d4a84f; border-radius: 8px; }
+.blog-code pre::-webkit-scrollbar-track { background: transparent; }
+
+.blog-code code {
+  font-family: inherit;
+  white-space: pre;
+}
+
+.blog-code ::selection {
+  background: #e2c27c;
+  color: #161714;
+}
+
+/* sözdizimi renkleri (koyu zemin üstünde ≥ 4.5:1) */
+.tok-c { color: #9da190; font-style: italic; }
+.tok-s { color: #e2c27c; }
+.tok-k { color: #ef9468; }
+.tok-n { color: #c3cf92; }
+.tok-f { color: #a9cfc0; }
+.tok-v { color: #e8b48f; }
+.tok-p { color: #a9cfc0; }
+.tok-t { color: #ef9468; }
+
+/* =========================================================
+   8. EKRAN GÖRÜNTÜLERİ
+   ========================================================= */
+.blog-prose {
+  counter-reset: fig;
+}
+
+.blog-fig {
+  --r: 0deg;
+  margin: 2.4rem 0 2.6rem;
+  counter-increment: fig;
+}
+
+.blog-fig__frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 8px 8px 10px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 16px 30px -14px rgba(0, 0, 0, 0.45);
+  transform: rotate(var(--r));
+  transition: transform 0.5s var(--ease-bounce), box-shadow 0.4s ease;
+  cursor: zoom-in;
+}
+
+.blog-fig__frame img {
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.blog-fig__frame .tape {
+  width: 90px;
+  height: 26px;
+  top: -12px;
+}
+
+.blog-fig__zoom {
+  position: absolute;
+  right: 18px;
+  bottom: 20px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: var(--sticky);
+  border: 2px solid #161714;
+  border-radius: 50% 45% 55% 48% / 48% 55% 45% 52%;
+  transform: scale(0.6) rotate(-20deg);
+  opacity: 0;
+  transition: transform 0.45s var(--ease-bounce), opacity 0.25s ease;
+}
+
+.blog-fig__zoom .doodle {
+  --size: 24px;
+}
+
+[data-theme="dark"] .blog-fig__zoom {
+  background: #e9dcb5;
+}
+
+.blog-fig__frame:hover,
+.blog-fig__frame:focus-visible {
+  transform: rotate(0deg) scale(1.012);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.12), 0 26px 40px -16px rgba(0, 0, 0, 0.5);
+}
+
+.blog-fig__frame:hover .blog-fig__zoom,
+.blog-fig__frame:focus-visible .blog-fig__zoom {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+}
+
+/* dokunmatikte büyüteç hep görünsün */
+@media (hover: none) {
+  .blog-fig__zoom {
+    transform: scale(0.85);
+    opacity: 1;
+  }
+}
+
+.blog-fig figcaption {
+  margin: 14px auto 0;
+  max-width: 58ch;
+  text-align: center;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+
+.blog-fig figcaption::before {
+  content: "Şekil " counter(fig) " · ";
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--pink);
+}
+
+:lang(en) .blog-fig figcaption::before {
+  content: "Figure " counter(fig) " · ";
+}
+
+/* dikey (telefon) ekran görüntüsü: ortada, dar */
+.blog-fig--tall {
+  max-width: 340px;
+  margin-inline: auto;
+}
+
+.blog-fig-pair {
+  display: grid;
+  gap: 8px;
+  margin: 2.4rem 0;
+}
+
+.blog-fig-pair .blog-fig {
+  margin: 0 0 1.6rem;
+}
+
+.blog-fig-pair .blog-fig:first-child {
+  max-width: 300px;
+  margin-inline: auto;
+}
+
+/* =========================================================
+   9. POST-IT NOTLAR + KONTROL LİSTESİ
+   ========================================================= */
+.blog-note {
+  margin: 2.4rem 0 2.6rem;
+  padding-inline: clamp(4px, 3vw, 28px);
+}
+
+.blog-note__paper {
+  max-width: 34rem;
+  padding: 26px 24px 20px;
+}
+
+.blog-note__paper p {
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.blog-note__paper .blog-note__title {
+  font-family: var(--font-hand);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #161714;
+  margin-bottom: 6px;
+}
+
+.blog-note__paper code {
+  font-family: var(--blog-mono);
+  font-size: 0.86em;
+  padding: 0 0.3em;
+  border-radius: 5px;
+  background: rgba(22, 23, 20, 0.08);
+  overflow-wrap: anywhere;
+}
+
+.blog-check {
+  display: grid;
+  gap: 12px;
+  margin: 8px 0 8px;
+}
+
+.blog-check li {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 12px;
+  align-items: start;
+  font-size: clamp(1.04rem, 0.3vw + 0.98rem, 1.14rem);
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+.blog-check .doodle {
+  margin-top: 2px;
+}
+
+/* =========================================================
+   10. SON + SAYFALAMA
+   ========================================================= */
+.blog-end {
+  margin-top: clamp(48px, 8vw, 80px);
+  padding-top: 32px;
+  border-top: 2px dashed var(--ink-faint);
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+}
+
+.blog-end__stamp {
+  font-family: var(--font-hand);
+  font-size: clamp(2.6rem, 6vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--pink);
+  border: 3px solid currentColor;
+  border-radius: var(--wobble);
+  padding: 4px 22px 8px;
+  transform: rotate(-8deg);
+}
+
+.blog-end__text {
+  max-width: 52ch;
+  line-height: 1.7;
+}
+
+.blog-pager {
+  padding: clamp(32px, 6vw, 60px) 0 clamp(40px, 8vw, 90px);
+}
+
+.blog-pager__title {
+  font-size: clamp(2rem, 4.6vw, 3rem);
+  margin-bottom: clamp(22px, 4vw, 36px);
+}
+
+.blog-pager__grid {
+  display: grid;
+  gap: 22px;
+}
+
+.blog-pager__link {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  padding: 22px 24px 20px;
+  background: var(--sticky);
+  color: #161714;
+  border-radius: 2px 2px 26px 2px / 2px 2px 14px 2px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 14px 24px -10px rgba(0, 0, 0, 0.3);
+  transform: rotate(var(--r, -1deg));
+  transition: transform 0.45s var(--ease-bounce), box-shadow 0.35s ease;
+}
+
+.blog-pager__link--prev { --r: -1.2deg; background: #e9dcb5; }
+.blog-pager__link--next { --r: 1deg; background: #cfd3bd; text-align: right; }
+.blog-pager__link--home { background: #e8c4ad; }
+
+.blog-pager__dir {
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #8f3713;
+}
+
+.blog-pager__name {
+  font-family: var(--font-hand);
+  font-size: clamp(1.8rem, 3.6vw, 2.3rem);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.blog-pager__link:hover,
+.blog-pager__link:focus-visible {
+  transform: rotate(0deg) translateY(-6px);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1), 0 24px 32px -12px rgba(0, 0, 0, 0.38);
+}
+
+/* =========================================================
+   11. OKUMA İLERLEMESİ (kalem çizgisi)
+   ========================================================= */
+.blog-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 14px;
+  z-index: 1001;
+  pointer-events: none;
+}
+
+.blog-progress__svg {
+  position: absolute;
+  inset: 2px 0 0;
+  width: 100%;
+  height: 12px;
+  overflow: visible;
+}
+
+.blog-progress__track {
+  fill: none;
+  stroke: var(--ink-faint);
+  stroke-width: 2;
+  stroke-dasharray: 6 8;
+  vector-effect: non-scaling-stroke;
+}
+
+.blog-progress__ink {
+  fill: none;
+  stroke: var(--pink);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-dasharray: 1 2;
+  stroke-dashoffset: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.blog-progress__tip {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 34px;
+  height: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: transform;
+}
+
+.blog-progress.is-started .blog-progress__tip {
+  opacity: 1;
+}
+
+.blog-progress__tip svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* core'un dikey kalemi yazı sayfasında yatay kalemle aynı işi yapıyor: biri yeter */
+.blog-page--post .scroll-pencil {
+  display: none;
+}
+
+/* =========================================================
+   12. LIGHTBOX
+   ========================================================= */
+.blog-lightbox {
+  max-width: none;
+  max-height: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: clamp(14px, 3vw, 36px);
+  border: 0;
+  background: transparent;
+  color: #f2f0ea;
+  overflow: hidden;
+  cursor: zoom-out;
+}
+
+.blog-lightbox[open] {
+  display: grid;
+  place-items: center;
+}
+
+.blog-lightbox::backdrop {
+  background: rgba(14, 15, 13, 0.88);
+  backdrop-filter: blur(3px);
+  animation: blog-lb-in 0.35s ease both;
+}
+
+.blog-lightbox.is-closing::backdrop {
+  animation: blog-lb-out 0.4s ease both;
+}
+
+@keyframes blog-lb-in { from { opacity: 0; } }
+@keyframes blog-lb-out { to { opacity: 0; } }
+
+.blog-lightbox__fig {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  max-width: 100%;
+}
+
+.blog-lightbox__img {
+  width: auto;
+  height: auto;
+  max-width: min(1400px, 100%);
+  max-height: calc(100dvh - 150px);
+  background: #fff;
+  padding: 8px;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+}
+
+.blog-lightbox__cap {
+  max-width: 64ch;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.55;
+  color: #e6e3da;
+}
+
+.blog-lightbox__cap code {
+  color: #f2f0ea;
+}
+
+.blog-lightbox__close {
+  position: fixed;
+  top: clamp(12px, 2.4vw, 24px);
+  right: clamp(12px, 2.4vw, 24px);
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  background: #e9dcb5;
+  border: 2.5px solid #161714;
+  border-radius: var(--wobble-2);
+  box-shadow: 3px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.blog-lightbox__close:focus-visible {
+  outline-color: #e2c27c;
+}
+
+html.blog-lb-open {
+  overflow: hidden;
+}
+
+/* =========================================================
+   13. GENİŞLEYEN EKRANLAR (min-width)
+   ========================================================= */
+@media (min-width: 600px) {
+  .blog-hero__d--3 { display: block; }
+
+  .blog-drafts__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .blog-pager__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .blog-fig-pair {
+    grid-template-columns: minmax(0, 0.42fr) minmax(0, 1fr);
+    align-items: end;
+    gap: 28px;
+  }
+
+  .blog-fig-pair .blog-fig:first-child {
+    max-width: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .blog-hero__inner {
+    max-width: none;
+  }
+
+  .blog-hero__title,
+  .blog-hero__lead,
+  .blog-hero__facts {
+    max-width: min(640px, 60%);
+  }
+
+  .blog-hero__index {
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    width: 300px;
+    margin-top: 0;
+    transform: translateY(-46%);
+  }
+
+  .blog-hero__d--1 { right: 30%; top: 4%; }
+  .blog-hero__d--2 { right: 34%; bottom: 4%; }
+  .blog-hero__d--3 { right: 0; bottom: 2%; }
+  .blog-hero__d--4 { right: 40%; top: 30%; }
+
+  .blog-card__paper {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(28px, 4vw, 56px);
+    padding: 56px clamp(36px, 4vw, 56px) 44px;
+  }
+
+  .blog-item:nth-child(even) .blog-card__shot {
+    order: 2;
+  }
+
+  .blog-item:nth-child(1) { margin-right: 6%; }
+  .blog-item:nth-child(2) { margin-left: 6%; }
+  .blog-item:nth-child(3) { margin-right: 3%; margin-left: 3%; }
+
+  .blog-drafts__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .blog-draft:nth-child(2) { margin-top: 34px; }
+}
+
+@media (min-width: 1100px) {
+  .blog-post__layout {
+    grid-template-columns: minmax(200px, 250px) minmax(0, var(--blog-measure));
+    gap: clamp(40px, 5vw, 80px);
+    align-items: start;
+  }
+
+  .blog-toc {
+    position: sticky;
+    top: calc(var(--nav-h) + 28px);
+    padding-top: clamp(28px, 5vw, 52px);
+  }
+
+  .blog-toc__box {
+    border: 0;
+    padding: 0;
+    background: none;
+  }
+
+  .blog-toc__sum {
+    cursor: default;
+    min-height: 0;
+    margin-bottom: 8px;
+  }
+
+  .blog-toc__sum::after {
+    display: none;
+  }
+
+  .blog-toc__list a {
+    min-height: 0;
+    font-size: 1rem;
+  }
+
+}
+
+/* =========================================================
+   14. HAREKET AZALTMA
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .blog-card,
+  .blog-card__shot,
+  .blog-fig__frame,
+  .blog-pager__link {
+    transition: none;
+  }
+
+  .blog-card:hover {
+    transform: rotate(var(--r));
+  }
+}

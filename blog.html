@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="tr" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ad Soyad&#x27;ın frontend blogu: GSAP ScrollTrigger ile kaydırma animasyonları, CSS değişkenleriyle karanlık mod ve mobile first responsive tasarım üzerine ekran görüntülü yazılar." data-i18n-attr="content:blog.list.desc">
+  <meta name="author" content="Ad Soyad">
+  <meta name="theme-color" content="#fbfaf6">
+  <title data-i18n="blog.list.metaTitle">Blog: kod defterimden sayfalar | Ad Soyad</title>
+  <meta property="og:title" content="Blog: kod defterimden sayfalar | Ad Soyad" data-i18n-attr="content:blog.list.metaTitle">
+  <meta property="og:description" content="Ad Soyad&#x27;ın frontend blogu: GSAP ScrollTrigger ile kaydırma animasyonları, CSS değişkenleriyle karanlık mod ve mobile first responsive tasarım üzerine ekran görüntülü yazılar." data-i18n-attr="content:blog.list.desc">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="img/blog/st-pin-mid.webp">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:locale:alternate" content="en_US">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%8F%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/caveat-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/caveat-400-700-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/kalam-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/kalam-400-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/core.css">
+  <link rel="stylesheet" href="css/pages/blog.css">
+  <script>
+    (function () {
+      var d = document.documentElement, t = null, l = null;
+      try { t = localStorage.getItem("theme"); l = localStorage.getItem("lang"); } catch (e) {}
+      if (t === "dark" || (!t && matchMedia("(prefers-color-scheme: dark)").matches)) d.setAttribute("data-theme", "dark");
+      if (l === "en") { d.lang = "en"; d.classList.add("lang-pending"); }
+      try {
+        if (!matchMedia("(prefers-reduced-motion: reduce)").matches &&
+            (!sessionStorage.getItem("doodle-visited") || sessionStorage.getItem("doodle-transition") === "1")) d.classList.add("doodle-cover");
+      } catch (e) {}
+    })();
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Ad Soyad — Kod Defteri",
+  "alternateName": "Ad Soyad — Code Notebook",
+  "description": "Ad Soyad'ın frontend blogu: GSAP ScrollTrigger ile kaydırma animasyonları, CSS değişkenleriyle karanlık mod ve mobile first responsive tasarım üzerine ekran görüntülü yazılar.",
+  "url": "blog.html",
+  "inLanguage": [
+    "tr",
+    "en"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Ad Soyad",
+    "email": "mailto:ornek@mail.com",
+    "url": "hakkimda.html"
+  },
+  "blogPost": [
+    {
+      "@type": "BlogPosting",
+      "headline": "GSAP ScrollTrigger ile kaydırdıkça canlanan sayfalar",
+      "description": "Bu sitedeki kaydırma efektleri nasıl çalışıyor? GSAP ScrollTrigger ile pin, scrub, kendini çizen SVG (stroke-dashoffset) ve Lenis senkronu; gerçek kod ve ekran görüntüleriyle.",
+      "url": "blog-scrolltrigger.html",
+      "image": "img/blog/st-pin-mid.webp",
+      "datePublished": "2026-11-15",
+      "inLanguage": "tr",
+      "wordCount": 604,
+      "author": {
+        "@type": "Person",
+        "name": "Ad Soyad"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "CSS değişkenleriyle karanlık mod: beyaz defter, siyah defter",
+      "description": "CSS custom property token'ları, [data-theme] seçicisi, localStorage ile tercih hatırlama, ilk boyamada yanıp sönmeyi önleyen head betiği ve View Transitions ile dairesel tema geçişi.",
+      "url": "blog-karanlik-mod.html",
+      "image": "img/blog/dm-split.webp",
+      "datePublished": "2026-10-30",
+      "inLanguage": "tr",
+      "wordCount": 650,
+      "author": {
+        "@type": "Person",
+        "name": "Ad Soyad"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Mobile first responsive tasarım: önce 375 piksel",
+      "description": "Mobile first yaklaşımı: içeriğe göre breakpoint seçimi, clamp() ile akışkan tipografi, 44 piksellik dokunmatik hedefler ve aynı sayfanın 375 ile 1280 piksel genişlikte karşılaştırması.",
+      "url": "blog-mobile-first.html",
+      "image": "img/blog/mf-1280.webp",
+      "datePublished": "2026-10-12",
+      "inLanguage": "tr",
+      "wordCount": 678,
+      "author": {
+        "@type": "Person",
+        "name": "Ad Soyad"
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body class="blog-page blog-page--list" data-page-name="blog" data-page-name-en="blog">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">İçeriğe geç</a>
+
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Ad Soyad">
+        <span class="doodle" data-doodle="sparkle"></span>ad.soyad
+      </a>
+      <nav aria-label="Ana menü" data-i18n-attr="aria-label:nav.menuLabel">
+        <ul class="nav__links">
+          <li><a class="nav__link" href="index.html" data-page-name="ana sayfa" data-page-name-en="home" data-i18n="nav.home">Ana Sayfa</a></li>
+          <li><a class="nav__link" href="hakkimda.html" data-page-name="hakkımda" data-page-name-en="about" data-i18n="nav.about">Hakkımda</a></li>
+          <li><a class="nav__link" href="projeler.html" data-page-name="projeler" data-page-name-en="projects" data-i18n="nav.work">Projeler</a></li>
+          <li><a class="nav__link" href="blog.html" data-page-name="blog" data-page-name-en="blog" data-i18n="nav.blog">Blog</a></li>
+          <li><a class="nav__link" href="galeri.html" data-page-name="galeri" data-page-name-en="gallery" data-i18n="nav.gallery">Galeri</a></li>
+          <li><a class="nav__link" href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact" data-i18n="nav.contact">İletişim</a></li>
+        </ul>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn lang-toggle" type="button" aria-label="Switch to English">
+          <span class="lang-toggle__label">EN</span>
+        </button>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Temayı değiştir">
+          <span class="doodle doodle--moon" data-doodle="moon"></span>
+          <span class="doodle doodle--sun" data-doodle="sun"></span>
+        </button>
+        <button class="icon-btn burger" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobileMenu">
+          <span class="burger__lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="index.html" data-page-name="ana sayfa" data-page-name-en="home"><small>01</small><span data-i18n="nav.home">Ana Sayfa</span></a>
+    <a href="hakkimda.html" data-page-name="hakkımda" data-page-name-en="about"><small>02</small><span data-i18n="nav.about">Hakkımda</span></a>
+    <a href="projeler.html" data-page-name="projeler" data-page-name-en="projects"><small>03</small><span data-i18n="nav.work">Projeler</span></a>
+    <a href="blog.html" data-page-name="blog" data-page-name-en="blog"><small>04</small><span data-i18n="nav.blog">Blog</span></a>
+    <a href="galeri.html" data-page-name="galeri" data-page-name-en="gallery"><small>05</small><span data-i18n="nav.gallery">Galeri</span></a>
+    <a href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact"><small>06</small><span data-i18n="nav.contact">İletişim</span></a>
+  </div>
+
+  <main id="main" class="blog-main">
+    <section class="blog-hero" aria-labelledby="blogTitle">
+      <div class="blog-hero__deco" aria-hidden="true">
+        <span class="blog-hero__d blog-hero__d--1" data-parallax="0.4"><span class="doodle" data-doodle="pencil" style="--size:clamp(40px,5vw,70px);--c:var(--pink)"></span></span>
+        <span class="blog-hero__d blog-hero__d--2" data-parallax="0.25"><span class="doodle" data-doodle="code" style="--size:clamp(44px,6vw,84px);--c:var(--blue)"></span></span>
+        <span class="blog-hero__d blog-hero__d--3" data-parallax="0.55"><span class="doodle" data-doodle="coffee" style="--size:clamp(36px,4.5vw,64px);--c:var(--ink)"></span></span>
+        <span class="blog-hero__d blog-hero__d--4" data-parallax="0.3"><span class="doodle" data-doodle="sparkle" style="--size:clamp(26px,3vw,40px);--c:var(--yellow)"></span></span>
+      </div>
+      <div class="container blog-hero__inner">
+        <h1 id="blogTitle" class="blog-hero__title" data-split data-i18n="blog.list.title">Kod defterimden <span class="scribble-u" data-color="var(--pink)">koparılan</span> sayfalar</h1>
+        <p class="blog-hero__lead" data-reveal="up" data-delay="0.35" data-i18n="blog.list.lead">Frontend öğrenirken defterime aldığım notları burada temize çekiyorum. Her yazı bu sitede gerçekten kullandığım bir tekniği anlatıyor; kodu ve ekran görüntüleri sitenin kendisinden.</p>
+        <ul class="blog-hero__facts" data-reveal="fade" data-delay="0.55">
+          <li data-i18n="blog.list.count">3 yazı</li>
+          <li data-i18n="blog.list.total">toplam ~13 dk okuma</li>
+          <li><span data-i18n="blog.list.last">son yazı:</span> <time datetime="2026-11-15" data-i18n="blog.st.date">15 Kasım 2026</time></li>
+        </ul>
+        <nav class="blog-hero__index" aria-labelledby="indexTitle">
+          <div class="blog-hero__index-in" data-reveal="pop" data-delay="0.7">
+            <div class="sticky yellow blog-hero__index-paper" style="--r:3deg">
+              <span class="tape" aria-hidden="true"></span>
+              <p class="blog-hero__index-title" id="indexTitle" data-i18n="blog.list.index">Bu defterde</p>
+              <ol>
+                <li><a href="#post-st" data-i18n="blog.st.short">Kaydırdıkça canlanan sayfalar</a></li>
+                <li><a href="#post-dm" data-i18n="blog.dm.short">Beyaz defter, siyah defter</a></li>
+                <li><a href="#post-mf" data-i18n="blog.mf.short">Önce 375 piksel</a></li>
+              </ol>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </section>
+
+    <section class="blog-list-sec" aria-label="Yazılar" data-i18n-attr="aria-label:blog.list.posts">
+      <ol class="blog-list container">
+        <li class="blog-item" id="post-st" style="--r:-1.4deg">
+          <article class="blog-card" aria-labelledby="card-st">
+            <div class="blog-card__paper">
+              <div class="blog-card__shot">
+                <span class="tape" aria-hidden="true"></span>
+                <img src="img/blog/st-pin-mid.webp" width="1280" height="800" fetchpriority="high" decoding="async" alt="">
+              </div>
+              <div class="blog-card__body">
+                <p class="blog-card__meta"><time datetime="2026-11-15" data-i18n="blog.st.date">15 Kasım 2026</time><span aria-hidden="true"> · </span><span data-i18n="blog.st.read">4 dk okuma</span></p>
+                <h2 class="blog-card__title" id="card-st"><a href="blog-scrolltrigger.html" data-page-name="kaydırdıkça canlanan sayfalar" data-i18n="blog.st.title">GSAP ScrollTrigger ile kaydırdıkça canlanan sayfalar</a></h2>
+                <p class="blog-card__excerpt" data-i18n="blog.st.excerpt">Pin, scrub, kendini çizen SVG ve Lenis senkronu: bu sitenin “kaydırdıkça vay be” dedirten dört parçası, gerçek koduyla.</p>
+                <ul class="blog-card__tags" aria-label="Etiketler" data-i18n-attr="aria-label:blog.ui.tags"><li class="chip" style="--r:1.2deg">GSAP</li><li class="chip" style="--r:-1.5deg">ScrollTrigger</li><li class="chip" style="--r:1.2deg">SVG</li><li class="chip" style="--r:-1.5deg">Lenis</li></ul>
+                <span class="blog-card__cta" aria-hidden="true"><span data-i18n="blog.ui.readPost">Yazıyı oku</span><span class="doodle" data-doodle="arrow" style="--size:34px;--c:var(--pink)"></span></span>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" id="post-dm" style="--r:1.1deg">
+          <article class="blog-card" aria-labelledby="card-dm">
+            <div class="blog-card__paper">
+              <div class="blog-card__shot">
+                <span class="tape" aria-hidden="true"></span>
+                <img src="img/blog/dm-split.webp" width="1280" height="800" loading="lazy" decoding="async" alt="">
+              </div>
+              <div class="blog-card__body">
+                <p class="blog-card__meta"><time datetime="2026-10-30" data-i18n="blog.dm.date">30 Ekim 2026</time><span aria-hidden="true"> · </span><span data-i18n="blog.dm.read">5 dk okuma</span></p>
+                <h2 class="blog-card__title" id="card-dm"><a href="blog-karanlik-mod.html" data-page-name="beyaz defter, siyah defter" data-i18n="blog.dm.title">CSS değişkenleriyle karanlık mod: beyaz defter, siyah defter</a></h2>
+                <p class="blog-card__excerpt" data-i18n="blog.dm.excerpt">Token'lar, <code>[data-theme]</code>, localStorage, ilk boyamadaki beyaz flaşı önleyen dört satır ve ay düğmesinden yayılan dairesel geçiş.</p>
+                <ul class="blog-card__tags" aria-label="Etiketler" data-i18n-attr="aria-label:blog.ui.tags"><li class="chip" style="--r:1.2deg">CSS</li><li class="chip" style="--r:-1.5deg">Custom Properties</li><li class="chip" style="--r:1.2deg">localStorage</li><li class="chip" style="--r:-1.5deg">View Transitions</li></ul>
+                <span class="blog-card__cta" aria-hidden="true"><span data-i18n="blog.ui.readPost">Yazıyı oku</span><span class="doodle" data-doodle="arrow" style="--size:34px;--c:var(--pink)"></span></span>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" id="post-mf" style="--r:-0.7deg">
+          <article class="blog-card" aria-labelledby="card-mf">
+            <div class="blog-card__paper">
+              <div class="blog-card__shot">
+                <span class="tape" aria-hidden="true"></span>
+                <img src="img/blog/mf-1280.webp" width="1280" height="800" loading="lazy" decoding="async" alt="">
+              </div>
+              <div class="blog-card__body">
+                <p class="blog-card__meta"><time datetime="2026-10-12" data-i18n="blog.mf.date">12 Ekim 2026</time><span aria-hidden="true"> · </span><span data-i18n="blog.mf.read">4 dk okuma</span></p>
+                <h2 class="blog-card__title" id="card-mf"><a href="blog-mobile-first.html" data-page-name="önce 375 piksel" data-i18n="blog.mf.title">Mobile first responsive tasarım: önce 375 piksel</a></h2>
+                <p class="blog-card__excerpt" data-i18n="blog.mf.excerpt">Breakpoint'leri cihaza değil içeriğe göre seçmek, <code>clamp()</code> ile büyüyen başlıklar, parmak boyu dokunmatik hedefler ve 375 ile 1280'in yan yana kıyası.</p>
+                <ul class="blog-card__tags" aria-label="Etiketler" data-i18n-attr="aria-label:blog.ui.tags"><li class="chip" style="--r:1.2deg">Responsive</li><li class="chip" style="--r:-1.5deg">CSS</li><li class="chip" style="--r:1.2deg">clamp()</li><li class="chip" style="--r:-1.5deg" data-i18n="blog.mf.tag3">Erişilebilirlik</li></ul>
+                <span class="blog-card__cta" aria-hidden="true"><span data-i18n="blog.ui.readPost">Yazıyı oku</span><span class="doodle" data-doodle="arrow" style="--size:34px;--c:var(--pink)"></span></span>
+              </div>
+            </div>
+          </article>
+        </li>
+      </ol>
+    </section>
+
+    <section class="blog-drafts section" aria-labelledby="draftsTitle">
+      <div class="container">
+        <div class="blog-drafts__head">
+          <h2 id="draftsTitle" data-split data-i18n="blog.list.drafts">Defterdeki taslaklar</h2>
+          <p data-reveal="up" data-i18n="blog.list.draftsLead">Henüz temize çekilmemiş ama sırada bekleyen konular. Hangisini önce okumak istersin? <a href="iletisim.html" data-page-name="iletişim">Bana yaz</a>, sırayı sen belirle.</p>
+        </div>
+        <ul class="blog-drafts__list">
+          <li class="blog-draft" data-reveal="up" data-delay="0.00">
+            <div class="sticky yellow blog-draft__paper" style="--r:-3deg">
+              <span class="tape" aria-hidden="true"></span>
+              <p class="blog-draft__soon" data-i18n="blog.list.soon">yakında</p>
+              <h3 class="blog-draft__title" data-i18n="blog.list.d0.t">Erişilebilir form doğrulama</h3>
+              <p data-i18n="blog.list.d0.d">Hata mesajı kırmızı yazıdan ibaret değil.</p>
+            </div>
+          </li>
+          <li class="blog-draft" data-reveal="up" data-delay="0.12">
+            <div class="sticky blue blog-draft__paper" style="--r:2deg">
+              <span class="tape" aria-hidden="true"></span>
+              <p class="blog-draft__soon" data-i18n="blog.list.soon">yakında</p>
+              <h3 class="blog-draft__title" data-i18n="blog.list.d1.t">Lighthouse 100'e giden yol</h3>
+              <p data-i18n="blog.list.d1.d">Performans puanını yükselten küçük alışkanlıklar.</p>
+            </div>
+          </li>
+          <li class="blog-draft" data-reveal="up" data-delay="0.24">
+            <div class="sticky pink blog-draft__paper" style="--r:-1.5deg">
+              <span class="tape" aria-hidden="true"></span>
+              <p class="blog-draft__soon" data-i18n="blog.list.soon">yakında</p>
+              <h3 class="blog-draft__title" data-i18n="blog.list.d2.t">Kaynayan çizgi: SVG filtreleri</h3>
+              <p data-i18n="blog.list.d2.d">Çizimleri titreten <code>feTurbulence</code> numarası.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <svg class="footer__wave" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true" data-draw="scrub" data-start="top 95%" data-end="top 50%">
+      <path d="M0 30 C 100 5, 200 55, 300 30 S 500 5, 600 30 S 800 55, 900 30 S 1100 5, 1200 30"/>
+    </svg>
+    <div class="container">
+      <p class="footer__big"><a href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact" data-i18n="footer.big">Hadi <span class="scribble-u">konuşalım</span>!</a></p>
+      <div class="footer__row">
+        <div class="footer__socials">
+          <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub" data-bind-href="{github}"><span class="doodle" data-doodle="github" style="--size:26px"></span></a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn" data-bind-href="{linkedin}"><span class="doodle" data-doodle="linkedin" style="--size:26px"></span></a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" data-bind-href="{instagram}"><span class="doodle" data-doodle="instagram" style="--size:26px"></span></a>
+          <a href="mailto:ornek@mail.com" aria-label="E-posta" data-bind-href="mailto:{email}"><span class="doodle" data-doodle="mail" style="--size:26px"></span></a>
+        </div>
+        <p class="footer__copy" data-i18n="footer.copy">© <span data-year>2026</span> Ad Soyad — kalemle, kahveyle ve biraz JavaScript'le çizildi.</p>
+        <a class="footer__admin" href="admin.html" data-i18n="footer.admin">yönetim</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/pages/blog.js"></script>
+</body>
+</html>

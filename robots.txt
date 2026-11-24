@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /tools/
+
+# Yapay zeka arama motorları için site özeti (GEO)
+# /llms.txt
+
+Sitemap: https://ornek-alanadi.com/sitemap.xml

@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="tr" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ad Soyad hakkında: vesikalık fotoğraf, özgeçmiş (eğitim, staj, sertifikalar, diller), haftalık ders programı, yetenekler, ilgi alanları ve ilk animasyon kodu." data-i18n-attr="content:about.meta.desc">
+  <meta name="theme-color" content="#fbfaf6">
+  <title data-i18n="about.meta.title">Hakkımda | Ad Soyad</title>
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Hakkımda | Ad Soyad">
+  <meta property="og:description" content="Bir Bilgisayar Mühendisliği öğrencisinin eskiz defterinden: özgeçmiş, ders programı, yetenekler ve ilk animasyon kodu.">
+  <meta property="og:image" content="img/profil/vesikalik.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%8F%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/caveat-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/caveat-400-700-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/kalam-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/kalam-400-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/core.css">
+  <link rel="stylesheet" href="css/pages/about.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "name": "Hakkımda | Ad Soyad",
+    "description": "Ad Soyad'ın özgeçmişi, haftalık ders programı, yetenekleri ve ilgi alanları.",
+    "inLanguage": ["tr", "en"],
+    "mainEntity": {
+      "@type": "Person",
+      "@id": "#ad-soyad",
+      "name": "Ad Soyad",
+      "jobTitle": "Bilgisayar Mühendisliği öğrencisi ve frontend geliştirici",
+      "email": "mailto:ornek@mail.com",
+      "image": "img/profil/vesikalik.jpg",
+      "address": { "@type": "PostalAddress", "addressLocality": "İstanbul", "addressCountry": "TR" },
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "Örnek Üniversitesi", "department": "Bilgisayar Mühendisliği" },
+        { "@type": "HighSchool", "name": "Örnek Anadolu Lisesi" }
+      ],
+      "knowsAbout": ["HTML", "CSS", "JavaScript", "GSAP", "Git", "Python", "SQL", "Web tasarımı", "Web animasyonu", "Erişilebilirlik", "Arayüz tasarımı", "Veri yapıları", "Algoritmalar"],
+      "knowsLanguage": [
+        { "@type": "Language", "name": "Türkçe", "alternateName": "tr" },
+        { "@type": "Language", "name": "English", "alternateName": "en" },
+        { "@type": "Language", "name": "Deutsch", "alternateName": "de" }
+      ],
+      "hasCredential": [
+        { "@type": "EducationalOccupationalCredential", "name": "Frontend Web Geliştirme Sertifikası", "credentialCategory": "certificate", "dateCreated": "2024" },
+        { "@type": "EducationalOccupationalCredential", "name": "Responsive Web Tasarım Sertifikası", "credentialCategory": "certificate", "dateCreated": "2024" }
+      ]
+    }
+  }
+  </script>
+  <script>
+    (function () {
+      var d = document.documentElement, t = null, l = null;
+      try { t = localStorage.getItem("theme"); l = localStorage.getItem("lang"); } catch (e) {}
+      if (t === "dark" || (!t && matchMedia("(prefers-color-scheme: dark)").matches)) d.setAttribute("data-theme", "dark");
+      if (l === "en") { d.lang = "en"; d.classList.add("lang-pending"); }
+      try {
+        if (!matchMedia("(prefers-reduced-motion: reduce)").matches &&
+            (!sessionStorage.getItem("doodle-visited") || sessionStorage.getItem("doodle-transition") === "1")) d.classList.add("doodle-cover");
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body data-page-name="hakkımda" data-page-name-en="about">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">İçeriğe geç</a>
+
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Ad Soyad">
+        <span class="doodle" data-doodle="sparkle"></span>ad.soyad
+      </a>
+      <nav aria-label="Ana menü" data-i18n-attr="aria-label:nav.menuLabel">
+        <ul class="nav__links">
+          <li><a class="nav__link" href="index.html" data-page-name="ana sayfa" data-page-name-en="home" data-i18n="nav.home">Ana Sayfa</a></li>
+          <li><a class="nav__link" href="hakkimda.html" data-page-name="hakkımda" data-page-name-en="about" data-i18n="nav.about">Hakkımda</a></li>
+          <li><a class="nav__link" href="projeler.html" data-page-name="projeler" data-page-name-en="projects" data-i18n="nav.work">Projeler</a></li>
+          <li><a class="nav__link" href="blog.html" data-page-name="blog" data-page-name-en="blog" data-i18n="nav.blog">Blog</a></li>
+          <li><a class="nav__link" href="galeri.html" data-page-name="galeri" data-page-name-en="gallery" data-i18n="nav.gallery">Galeri</a></li>
+          <li><a class="nav__link" href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact" data-i18n="nav.contact">İletişim</a></li>
+        </ul>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn lang-toggle" type="button" aria-label="Switch to English">
+          <span class="lang-toggle__label">EN</span>
+        </button>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Temayı değiştir">
+          <span class="doodle doodle--moon" data-doodle="moon"></span>
+          <span class="doodle doodle--sun" data-doodle="sun"></span>
+        </button>
+        <button class="icon-btn burger" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobileMenu">
+          <span class="burger__lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="index.html" data-page-name="ana sayfa" data-page-name-en="home"><small>01</small><span data-i18n="nav.home">Ana Sayfa</span></a>
+    <a href="hakkimda.html" data-page-name="hakkımda" data-page-name-en="about"><small>02</small><span data-i18n="nav.about">Hakkımda</span></a>
+    <a href="projeler.html" data-page-name="projeler" data-page-name-en="projects"><small>03</small><span data-i18n="nav.work">Projeler</span></a>
+    <a href="blog.html" data-page-name="blog" data-page-name-en="blog"><small>04</small><span data-i18n="nav.blog">Blog</span></a>
+    <a href="galeri.html" data-page-name="galeri" data-page-name-en="gallery"><small>05</small><span data-i18n="nav.gallery">Galeri</span></a>
+    <a href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact"><small>06</small><span data-i18n="nav.contact">İletişim</span></a>
+  </div>
+
+  <main id="main" class="about">
+
+    <!-- ============ 1. TANIŞMA ============ -->
+    <section class="about-hero" aria-labelledby="aboutTitle">
+      <span class="float-doodle about-hero__deco about-hero__deco--1 doodle boil" data-doodle="star" data-parallax="0.6" style="--size:46px;--c:var(--yellow);--sw:3"></span>
+      <span class="float-doodle about-hero__deco about-hero__deco--2 doodle" data-doodle="spiral" data-parallax="-0.4" style="--size:70px;--c:var(--blue)"></span>
+      <span class="float-doodle about-hero__deco about-hero__deco--3 doodle boil" data-doodle="sparkle" data-parallax="0.9" style="--size:34px;--c:var(--pink)"></span>
+
+      <div class="container about-hero__grid">
+        <div class="about-hero__text">
+          <h1 class="about-hero__title" id="aboutTitle">
+            <span class="about-hero__hi" data-i18n="about.hero.hi" data-split>Merhaba, ben</span>
+            <span class="about-hero__name"><span data-bind="name">Ad Soyad</span><svg class="about-hero__swoosh" viewBox="0 0 300 40" preserveAspectRatio="none" aria-hidden="true"><path d="M6 26 C70 12 160 10 292 18"/><path d="M40 34 C110 26 190 26 262 30"/></svg></span>
+          </h1>
+          <p class="about-hero__bio" data-reveal="up" data-delay="0.3" data-i18n="about.hero.bio">
+            <span data-bind="city">İstanbul</span>'da yaşayan, <span data-bind="university">Örnek Üniversitesi</span> <span data-bind="department">Bilgisayar Mühendisliği</span> 2. sınıf öğrencisiyim.
+            Gündüzleri <span class="marker">algoritma çözüyor</span>, geceleri <abbr title="HyperText Markup Language (Hiper Metin İşaretleme Dili)">HTML</abbr>, <abbr title="Cascading Style Sheets (Basamaklı Stil Sayfaları)">CSS</abbr> ve <abbr title="JavaScript">JS</abbr> ile <span class="marker pink">elle çizilmiş gibi duran arayüzler</span> kuruyorum.
+          </p>
+          <ul class="about-hero__chips" data-reveal="up" data-delay="0.45" aria-label="Kısa bilgiler" data-i18n-attr="aria-label:about.hero.chipsLabel">
+            <li class="chip fill-yellow" style="--r:-2deg"><span class="doodle" data-doodle="map-pin" style="--size:20px;--c:#161714"></span><span data-bind="city">İstanbul</span></li>
+            <li class="chip" style="--r:1.5deg" data-i18n="about.hero.chip2">frontend geliştirici</li>
+            <li class="chip fill-blue" style="--r:-1deg">TR · EN</li>
+            <li class="chip fill-green" style="--r:2deg" data-i18n="about.hero.chip4">staja açık</li>
+          </ul>
+          <p class="about-hero__cue" data-reveal="fade" data-delay="0.7">
+            <span class="doodle" data-doodle="arrow-down"></span><span data-i18n="about.hero.cue">aşağı kaydır, defter kendini doldursun</span>
+          </p>
+        </div>
+
+        <div class="about-hero__stage">
+          <div class="about-hero__drop">
+            <div class="about-hero__tilt">
+              <figure class="polaroid about-polaroid" style="--r:3deg">
+                <span class="tape about-polaroid__tape" aria-hidden="true"></span>
+                <div class="about-polaroid__photo">
+                  <img src="img/profil/vesikalik.jpg" width="600" height="800" decoding="async" fetchpriority="high"
+                       alt="Ad Soyad'ın vesikalık fotoğrafı" data-i18n-attr="alt:about.photo.alt">
+                </div>
+                <svg class="about-polaroid__doodles" viewBox="0 0 300 400" aria-hidden="true">
+                  <path class="d-crown" d="M104 22 L110 -22 L134 4 L150 -34 L168 4 L192 -22 L198 22 C166 17 136 17 104 22 Z"/>
+                  <path class="d-spark" d="M268 40 L290 18 M276 66 L308 62 M256 18 L260 -10"/>
+                  <path class="d-spark" d="M-6 300 C-28 286 -18 262 4 270 C26 278 12 306 -12 296"/>
+                </svg>
+                <figcaption class="caption" data-i18n="about.photo.caption">ben · vesikalık hâlim</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <ul class="about-hero__notes" aria-label="Kenara düşülmüş notlar" data-i18n-attr="aria-label:about.notes.label">
+            <li class="about-note about-note--a">
+              <span class="about-note__text" data-i18n="about.notes.a">bu benim!</span>
+              <svg class="about-note__arrow" viewBox="0 0 120 90" aria-hidden="true"><path d="M10 12 C40 8 78 22 96 66"/><path d="M80 58 L97 70 L104 50"/></svg>
+            </li>
+            <li class="about-note about-note--b">
+              <span class="about-note__text" data-i18n="about.notes.b">kahve bağımlısı</span>
+              <svg class="about-note__arrow" viewBox="0 0 120 90" aria-hidden="true"><path d="M110 20 C80 10 40 30 18 60"/><path d="M16 40 L16 63 L38 62"/></svg>
+            </li>
+            <li class="about-note about-note--c">
+              <span class="about-note__text" data-i18n="about.notes.c">gece kuşu</span>
+              <svg class="about-note__arrow" viewBox="0 0 120 90" aria-hidden="true"><path d="M14 80 C30 50 60 30 104 26"/><path d="M86 14 L106 26 L88 40"/></svg>
+            </li>
+            <li class="about-note about-note--d">
+              <span class="about-note__text" data-i18n="about.notes.d">CSS'e âşık</span>
+              <svg class="about-note__arrow" viewBox="0 0 120 90" aria-hidden="true"><path d="M100 80 C96 50 70 30 20 24"/><path d="M36 10 L18 24 L34 40"/></svg>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 2. ÖZGEÇMİŞ (hikâye yolu) ============ -->
+    <section class="section about-story" aria-labelledby="cvTitle">
+      <div class="container">
+        <div class="section-head center">
+          <h2 id="cvTitle" data-split data-i18n="about.cv.title">Özgeçmiş</h2>
+          <p class="about-lead" data-reveal="up" data-i18n="about.cv.lead">Eğitim, staj ve sertifikalar tek bir yolda. Kağıt uçağı takip et: kaydırdıkça yol çiziliyor, her durakta özgeçmişime bir damga basılıyor.</p>
+        </div>
+      </div>
+
+      <div class="about-story__track">
+        <svg class="about-story__svg" aria-hidden="true" focusable="false">
+          <path class="about-story__ghost"/>
+          <path class="about-story__path"/>
+        </svg>
+        <div class="about-story__rider" aria-hidden="true">
+          <svg viewBox="0 0 64 44">
+            <path d="M3 21 L61 5 L24 28 Z" fill="#fbfaf6" stroke="#161714" stroke-width="2.4" stroke-linejoin="round"/>
+            <path d="M24 28 L61 5 L33 40 Z" fill="#cfd3bd" stroke="#161714" stroke-width="2.4" stroke-linejoin="round"/>
+            <path d="M24 28 L27 41 L33 40" fill="#d4a84f" stroke="#161714" stroke-width="2.4" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <ol class="about-story__list">
+          <li class="about-mile about-mile--left">
+            <div class="about-mile__stamp" style="--sc:var(--blue);--sr:-12deg" aria-hidden="true">
+              <span class="about-mile__burst"></span>
+              <span class="about-mile__stamp-in"><small data-i18n="about.cv.s1">başlangıç</small>2019</span>
+            </div>
+            <article class="about-mile__card sketch-box">
+              <p class="about-mile__meta"><span class="about-mile__tag about-mile__tag--edu" data-i18n="about.cv.tagEdu">eğitim</span><time datetime="2019">2019</time> – <time datetime="2023">2023</time></p>
+              <h3 data-i18n="about.cv.m1.t">Örnek Anadolu Lisesi</h3>
+              <p data-i18n="about.cv.m1.p">Sayısal bölüm, diploma notu 89/100. Bilişim dersinde ilk web sayfamı yaptım; robotik kulübünde kodun gerçek dünyada bir şeyleri hareket ettirdiğini gördüm ve iş ciddileşti.</p>
+              <span class="hand-note about-mile__note" data-i18n="about.cv.m1.n">her şey burada başladı</span>
+            </article>
+          </li>
+
+          <li class="about-mile about-mile--right">
+            <div class="about-mile__stamp" style="--sc:var(--pink);--sr:9deg" aria-hidden="true">
+              <span class="about-mile__burst"></span>
+              <span class="about-mile__stamp-in"><small data-i18n="about.cv.s2">kabul!</small>2023</span>
+            </div>
+            <article class="about-mile__card sketch-box alt">
+              <p class="about-mile__meta"><span class="about-mile__tag about-mile__tag--edu" data-i18n="about.cv.tagEdu">eğitim</span><time datetime="2023">2023</time> – <span data-i18n="about.cv.now">devam ediyor</span></p>
+              <h3><span data-bind="university">Örnek Üniversitesi</span> · <span data-bind="department">Bilgisayar Mühendisliği</span></h3>
+              <p data-i18n="about.cv.m2.p">Lisans, 2. sınıf. <abbr title="Genel Not Ortalaması">GNO</abbr> 3,24 / 4,00. Veri yapıları, algoritmalar ve web tasarım dersleriyle "çalışıyor" ile "iyi çalışıyor" arasındaki farkı öğreniyorum.</p>
+              <span class="hand-note about-mile__note" data-i18n="about.cv.m2.n">hâlâ devam ediyor ✎</span>
+            </article>
+          </li>
+
+          <li class="about-mile about-mile--left">
+            <div class="about-mile__stamp" style="--sc:var(--green);--sr:-6deg" aria-hidden="true">
+              <span class="about-mile__burst"></span>
+              <span class="about-mile__stamp-in"><small data-i18n="about.cv.s3">onaylı</small>2024</span>
+            </div>
+            <article class="about-mile__card sketch-box alt-2">
+              <p class="about-mile__meta"><span class="about-mile__tag about-mile__tag--cert" data-i18n="about.cv.tagCert">sertifika</span><time datetime="2024">2024</time></p>
+              <h3 data-i18n="about.cv.m3.t">Frontend Web Geliştirme</h3>
+              <p data-i18n="about.cv.m3.p">120 saatlik çevrim içi program: modern CSS, erişilebilirlik ve JavaScript ile 12 küçük proje. En sevdiğim: kendi kendini çizen bir yapılacaklar listesi.</p>
+              <span class="hand-note about-mile__note" data-i18n="about.cv.m3.n">gece 3'te bitti</span>
+            </article>
+          </li>
+
+          <li class="about-mile about-mile--right">
+            <div class="about-mile__stamp" style="--sc:var(--orange);--sr:12deg" aria-hidden="true">
+              <span class="about-mile__burst"></span>
+              <span class="about-mile__stamp-in"><small data-i18n="about.cv.s4">staj</small>2025</span>
+            </div>
+            <article class="about-mile__card sketch-box">
+              <p class="about-mile__meta"><span class="about-mile__tag about-mile__tag--job" data-i18n="about.cv.tagJob">deneyim</span><time datetime="2025-07">2025</time> <span data-i18n="about.cv.summer">yaz</span></p>
+              <h3 data-i18n="about.cv.m4.t">Frontend stajyeri · Örnek Teknoloji A.Ş.</h3>
+              <p data-i18n="about.cv.m4.p">20 iş günlük zorunlu yaz stajı. Kod incelemesi, Git akışı ve tasarımdan koda süreçleri; bir de "canlıya çıkarken" kalbin nasıl attığını öğrendim.</p>
+              <span class="hand-note about-mile__note" data-i18n="about.cv.m4.n">ilk PR'ım birleşti!</span>
+            </article>
+          </li>
+
+          <li class="about-mile about-mile--left about-mile--next">
+            <div class="about-mile__stamp" style="--sc:var(--purple);--sr:-8deg" aria-hidden="true">
+              <span class="about-mile__burst"></span>
+              <span class="about-mile__stamp-in"><small data-i18n="about.cv.s5">sırada</small>?</span>
+            </div>
+            <article class="about-mile__card sketch-box alt">
+              <p class="about-mile__meta"><span class="about-mile__tag" data-i18n="about.cv.tagNext">yakında</span></p>
+              <h3 data-i18n="about.cv.m5.t">Sonraki sayfa: belki seninle</h3>
+              <p data-i18n="about.cv.m5.p">Yeni bir staj, açık kaynak katkıları ya da birlikte çizeceğimiz bir proje. Defterin bu sayfası henüz boş.</p>
+              <a class="about-mile__link scribble-u" href="iletisim.html" data-page-name="iletişim" data-i18n="about.cv.m5.a">birlikte yazalım →</a>
+            </article>
+          </li>
+        </ol>
+      </div>
+
+      <!-- sertifikalar + diller -->
+      <div class="container about-cvx">
+        <div class="about-cvx__sheet about-cvx__sheet--certs sketch-box alt-2">
+          <h3 class="about-cvx__title"><span class="doodle" data-doodle="check" style="--size:34px;--c:var(--green)"></span><span data-i18n="about.cert.title">Sertifikalar</span></h3>
+          <ul class="about-certs">
+            <li class="about-cert">
+              <span class="about-cert__name" data-i18n="about.cert.c1">Frontend Web Geliştirme</span>
+              <span class="about-cert__by" data-i18n="about.cert.c1b">çevrim içi program · 120 saat</span>
+              <time class="about-cert__year" datetime="2024">2024</time>
+              <span class="about-cert__stamp" aria-hidden="true" data-i18n="about.cert.ok">onaylı</span>
+            </li>
+            <li class="about-cert">
+              <span class="about-cert__name" data-i18n="about.cert.c2">Responsive Web Tasarım</span>
+              <span class="about-cert__by" data-i18n="about.cert.c2b">çevrim içi kurs · 300 saat</span>
+              <time class="about-cert__year" datetime="2024">2024</time>
+              <span class="about-cert__stamp" aria-hidden="true" data-i18n="about.cert.ok">onaylı</span>
+            </li>
+            <li class="about-cert">
+              <span class="about-cert__name" data-i18n="about.cert.c3">Git ve GitHub ile Sürüm Kontrolü</span>
+              <span class="about-cert__by" data-i18n="about.cert.c3b">üniversite topluluğu atölyesi</span>
+              <time class="about-cert__year" datetime="2023">2023</time>
+              <span class="about-cert__stamp" aria-hidden="true" data-i18n="about.cert.ok">onaylı</span>
+            </li>
+            <li class="about-cert">
+              <span class="about-cert__name" data-i18n="about.cert.c4">Web Erişilebilirliğine Giriş</span>
+              <span class="about-cert__by" data-i18n="about.cert.c4b">çevrim içi kurs · <abbr title="Web İçeriği Erişilebilirlik Yönergeleri">WCAG</abbr> 2.2</span>
+              <time class="about-cert__year" datetime="2025">2025</time>
+              <span class="about-cert__stamp" aria-hidden="true" data-i18n="about.cert.ok">onaylı</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="about-cvx__sheet about-cvx__sheet--langs sketch-box">
+          <h3 class="about-cvx__title"><span class="doodle" data-doodle="globe" style="--size:34px;--c:var(--blue)"></span><span data-i18n="about.lang.title">Diller</span></h3>
+          <dl class="about-langs">
+            <div class="about-lang" data-level="5">
+              <dt data-i18n="about.lang.tr">Türkçe</dt>
+              <dd><span class="about-lang__dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span data-i18n="about.lang.trL">ana dil</span></dd>
+            </div>
+            <div class="about-lang" data-level="4">
+              <dt data-i18n="about.lang.en">İngilizce</dt>
+              <dd><span class="about-lang__dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span data-i18n="about.lang.enL">B2 · teknik dokümanlarda akıcı</span></dd>
+            </div>
+            <div class="about-lang" data-level="1">
+              <dt data-i18n="about.lang.de">Almanca</dt>
+              <dd><span class="about-lang__dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span data-i18n="about.lang.deL">A1 · "Guten Tag"tan ibaret</span></dd>
+            </div>
+          </dl>
+          <p class="about-langs__note hand-note" data-i18n="about.lang.note">seviyeler <abbr title="Avrupa Ortak Dil Referans Çerçevesi">CEFR</abbr>'ye göre</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3. DERS PROGRAMI ============ -->
+    <section class="section about-tt" aria-labelledby="ttTitle">
+      <div class="container">
+        <div class="section-head center">
+          <h2 id="ttTitle" data-split data-i18n="about.tt.title">Haftalık ders programım</h2>
+          <p class="about-lead" data-reveal="up" data-i18n="about.tt.lead">Bilgisayar Mühendisliği 2. sınıf, güz dönemi. Kareli defterime kurşun kalemle doldurdum; fosforlu kalemin rengi dersin türünü söylüyor.</p>
+        </div>
+
+        <div class="about-tt__sheet">
+          <span class="tape about-tt__tape about-tt__tape--l" aria-hidden="true"></span>
+          <span class="tape about-tt__tape about-tt__tape--r" aria-hidden="true"></span>
+
+          <ul class="about-tt__legend" aria-label="Renk açıklaması" data-i18n-attr="aria-label:about.tt.legendLabel">
+            <li data-type="cs" data-i18n="about.tt.lg.cs">bölüm dersi</li>
+            <li data-type="math" data-i18n="about.tt.lg.math">matematik</li>
+            <li data-type="web" data-i18n="about.tt.lg.web">web ve tasarım</li>
+            <li data-type="lang" data-i18n="about.tt.lg.lang">dil</li>
+          </ul>
+          <p class="about-tt__swipe" aria-hidden="true"><span data-i18n="about.tt.swipe">tabloyu yana kaydır</span> <span class="doodle" data-doodle="arrow" style="--size:30px;--c:#a8431a"></span></p>
+
+          <div class="about-tt__scroll" role="region" aria-labelledby="ttCaption" tabindex="0">
+            <table class="about-tt__table">
+              <caption id="ttCaption" data-i18n="about.tt.caption">2025–2026 güz dönemi · haftalık ders programı</caption>
+              <colgroup>
+                <col class="about-tt__colTime">
+                <col span="5">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th scope="col" class="about-tt__corner" data-i18n="about.tt.time">Saat</th>
+                  <th scope="col" data-day="1"><span data-i18n="about.tt.d1">Pazartesi</span></th>
+                  <th scope="col" data-day="2"><span data-i18n="about.tt.d2">Salı</span></th>
+                  <th scope="col" data-day="3"><span data-i18n="about.tt.d3">Çarşamba</span></th>
+                  <th scope="col" data-day="4"><span data-i18n="about.tt.d4">Perşembe</span></th>
+                  <th scope="col" data-day="5"><span data-i18n="about.tt.d5">Cuma</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-start="08:30" data-end="10:20">
+                  <th scope="row"><time>08:30</time><span>–</span><time>10:20</time></th>
+                  <td data-day="1" data-type="cs"><span class="about-tt__in"><b data-i18n="about.tt.ds">Veri Yapıları</b><small>BIL201 · D-204</small></span></td>
+                  <td data-day="2" data-type="cs"><span class="about-tt__in"><b data-i18n="about.tt.alg">Algoritmalar</b><small>BIL205 · D-105</small></span></td>
+                  <td data-day="3" data-type="math"><span class="about-tt__in"><b data-i18n="about.tt.de">Diferansiyel Denklemler</b><small>MAT203 · A-08</small></span></td>
+                  <td data-day="4" data-type="math"><span class="about-tt__in"><b data-i18n="about.tt.la">Lineer Cebir</b><small>MAT201 · A-12</small></span></td>
+                  <td data-day="5" data-type="math"><span class="about-tt__in"><b data-i18n="about.tt.prob">Olasılık ve İstatistik</b><small>IST201 · B-110</small></span></td>
+                </tr>
+                <tr data-start="10:30" data-end="12:20">
+                  <th scope="row"><time>10:30</time><span>–</span><time>12:20</time></th>
+                  <td data-day="1" data-type="math"><span class="about-tt__in"><b data-i18n="about.tt.la">Lineer Cebir</b><small>MAT201 · A-12</small></span></td>
+                  <td data-day="2" data-type="math"><span class="about-tt__in"><b data-i18n="about.tt.prob">Olasılık ve İstatistik</b><small>IST201 · B-110</small></span></td>
+                  <td data-day="3" data-type="cs"><span class="about-tt__in"><b data-i18n="about.tt.dsl">Veri Yapıları (lab)</b><small>BIL201L · Lab-1</small></span></td>
+                  <td data-day="4" data-type="cs"><span class="about-tt__in"><b data-i18n="about.tt.alg">Algoritmalar</b><small>BIL205 · D-105</small></span></td>
+                  <td data-day="5" data-type="math"><span class="about-tt__in"><b data-i18n="about.tt.de">Diferansiyel Denklemler</b><small>MAT203 · A-08</small></span></td>
+                </tr>
+                <tr class="about-tt__lunch" data-start="12:20" data-end="13:30">
+                  <th scope="row"><time>12:20</time><span>–</span><time>13:30</time></th>
+                  <td colspan="5"><span class="about-tt__in"><span data-i18n="about.tt.lunch">öğle arası · yemekhane kuyruğu · bir kahve daha</span></span></td>
+                </tr>
+                <tr data-start="13:30" data-end="15:20">
+                  <th scope="row"><time>13:30</time><span>–</span><time>15:20</time></th>
+                  <td data-day="1" data-type="web"><span class="about-tt__in"><b data-i18n="about.tt.web">Web Tasarım</b><small>WEB211 · Lab-3</small></span></td>
+                  <td data-day="2" data-type="web" rowspan="2" class="about-tt__fav"><span class="about-tt__in"><b data-i18n="about.tt.ga">Grafik Animasyon 1</b><small>GRA213 · Lab-5</small><em data-i18n="about.tt.fav">en sevdiğim!</em></span></td>
+                  <td data-day="3" data-type="lang"><span class="about-tt__in"><b data-i18n="about.tt.eng">Akademik İngilizce</b><small>ING201 · Y-02</small></span></td>
+                  <td data-day="4" data-type="web"><span class="about-tt__in"><b data-i18n="about.tt.webp">Web Tasarım (uygulama)</b><small>WEB211 · Lab-3</small></span></td>
+                  <td data-day="5" data-type="lang"><span class="about-tt__in"><b data-i18n="about.tt.eng">Akademik İngilizce</b><small>ING201 · Y-02</small></span></td>
+                </tr>
+                <tr data-start="15:30" data-end="17:20">
+                  <th scope="row"><time>15:30</time><span>–</span><time>17:20</time></th>
+                  <td data-day="1" class="is-free"><span class="about-tt__in"><span data-i18n="about.tt.f1">boş · kütüphane</span></span></td>
+                  <td data-day="3" class="is-free"><span class="about-tt__in"><span data-i18n="about.tt.f2">topluluk toplantısı</span></span></td>
+                  <td data-day="4" class="is-free"><span class="about-tt__in"><span data-i18n="about.tt.f3">boş · basketbol</span></span></td>
+                  <td data-day="5" class="is-free"><span class="about-tt__in"><span data-i18n="about.tt.f4">hafta sonu modu</span></span></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th scope="row" data-i18n="about.tt.total">Toplam</th>
+                  <td colspan="5" data-i18n="about.tt.sum">8 ders · haftada 15 blok · 30 <abbr title="Avrupa Kredi Transfer Sistemi">AKTS</abbr></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <p class="about-tt__now" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. YETENEKLER ============ -->
+    <section class="section about-skills" aria-labelledby="skillsTitle">
+      <div class="container about-skills__grid">
+        <div class="about-skills__intro">
+          <div class="section-head">
+            <h2 id="skillsTitle" data-split data-i18n="about.sk.title">Yetenekler</h2>
+          </div>
+          <p data-reveal="up" data-i18n="about.sk.lead">Her çubuk, kalemin o konuda ne kadar karaladığını gösteriyor. Ne kadar sık tarama, o kadar çok pratik. Yüzdeler kaydırınca kendini çiziyor.</p>
+          <div class="about-skills__memo-wrap" data-reveal="pop" data-delay="0.2">
+            <div class="sticky pink about-skills__memo" style="--r:-4deg">
+              <span class="tape" aria-hidden="true"></span>
+              <p data-i18n="about.sk.memo"><strong>not:</strong> yüzdeler tamamen bilimsel yöntemlerle, yani gece yarısı kendi kendime sorarak hesaplandı.</p>
+            </div>
+          </div>
+        </div>
+
+        <ul class="about-skills__list">
+          <li class="about-meter" style="--lvl:90;--c:var(--orange)">
+            <div class="about-meter__top">
+              <h3 class="about-meter__name" id="skHtml"><abbr title="HyperText Markup Language (Hiper Metin İşaretleme Dili)" data-i18n-attr="title:about.abbr.html">HTML</abbr></h3>
+              <span class="about-meter__quip" data-i18n="about.sk.q1">semantik etiket aşığı</span>
+              <span class="about-meter__val" aria-hidden="true"><span class="about-meter__pct">%</span><span class="about-meter__num" data-value="90">90</span></span>
+            </div>
+            <meter class="sr-only" min="0" max="100" value="90" aria-labelledby="skHtml">%90</meter>
+            <div class="about-meter__bar" aria-hidden="true">
+              <svg class="about-meter__frame" viewBox="0 0 400 44" preserveAspectRatio="none"><path d="M5 7 C110 3 270 6 395 4 C397 16 394 28 396 39 C270 42 120 38 4 40 C2 28 6 18 5 7 Z"/></svg>
+              <div class="about-meter__area"><div class="about-meter__fill"><div class="about-meter__hatch"></div></div><div class="about-meter__pen"></div></div>
+            </div>
+          </li>
+          <li class="about-meter" style="--lvl:85;--c:var(--blue)">
+            <div class="about-meter__top">
+              <h3 class="about-meter__name" id="skCss"><abbr title="Cascading Style Sheets (Basamaklı Stil Sayfaları)" data-i18n-attr="title:about.abbr.css">CSS</abbr></h3>
+              <span class="about-meter__quip" data-i18n="about.sk.q2">flexbox ile barışığım</span>
+              <span class="about-meter__val" aria-hidden="true"><span class="about-meter__pct">%</span><span class="about-meter__num" data-value="85">85</span></span>
+            </div>
+            <meter class="sr-only" min="0" max="100" value="85" aria-labelledby="skCss">%85</meter>
+            <div class="about-meter__bar" aria-hidden="true">
+              <svg class="about-meter__frame" viewBox="0 0 400 44" preserveAspectRatio="none"><path d="M4 5 C120 7 260 3 396 6 C394 18 397 30 395 40 C260 38 130 42 5 39 C7 28 3 16 4 5 Z"/></svg>
+              <div class="about-meter__area"><div class="about-meter__fill"><div class="about-meter__hatch"></div></div><div class="about-meter__pen"></div></div>
+            </div>
+          </li>
+          <li class="about-meter" style="--lvl:75;--c:var(--yellow)">
+            <div class="about-meter__top">
+              <h3 class="about-meter__name" id="skJs">JavaScript</h3>
+              <span class="about-meter__quip" data-i18n="about.sk.q3"><code>console.log</code> ustası</span>
+              <span class="about-meter__val" aria-hidden="true"><span class="about-meter__pct">%</span><span class="about-meter__num" data-value="75">75</span></span>
+            </div>
+            <meter class="sr-only" min="0" max="100" value="75" aria-labelledby="skJs">%75</meter>
+            <div class="about-meter__bar" aria-hidden="true">
+              <svg class="about-meter__frame" viewBox="0 0 400 44" preserveAspectRatio="none"><path d="M6 6 C130 4 250 7 394 5 C396 17 395 29 396 38 C250 41 140 37 5 40 C4 30 7 17 6 6 Z"/></svg>
+              <div class="about-meter__area"><div class="about-meter__fill"><div class="about-meter__hatch"></div></div><div class="about-meter__pen"></div></div>
+            </div>
+          </li>
+          <li class="about-meter" style="--lvl:70;--c:var(--pink)">
+            <div class="about-meter__top">
+              <h3 class="about-meter__name" id="skGit">Git</h3>
+              <span class="about-meter__quip" data-i18n="about.sk.q4"><code>merge conflict</code>'ten korkmam (artık)</span>
+              <span class="about-meter__val" aria-hidden="true"><span class="about-meter__pct">%</span><span class="about-meter__num" data-value="70">70</span></span>
+            </div>
+            <meter class="sr-only" min="0" max="100" value="70" aria-labelledby="skGit">%70</meter>
+            <div class="about-meter__bar" aria-hidden="true">
+              <svg class="about-meter__frame" viewBox="0 0 400 44" preserveAspectRatio="none"><path d="M5 7 C110 3 270 6 395 4 C397 16 394 28 396 39 C270 42 120 38 4 40 C2 28 6 18 5 7 Z"/></svg>
+              <div class="about-meter__area"><div class="about-meter__fill"><div class="about-meter__hatch"></div></div><div class="about-meter__pen"></div></div>
+            </div>
+          </li>
+          <li class="about-meter" style="--lvl:65;--c:var(--green)">
+            <div class="about-meter__top">
+              <h3 class="about-meter__name" id="skPy">Python</h3>
+              <span class="about-meter__quip" data-i18n="about.sk.q5">otomasyon betikleri</span>
+              <span class="about-meter__val" aria-hidden="true"><span class="about-meter__pct">%</span><span class="about-meter__num" data-value="65">65</span></span>
+            </div>
+            <meter class="sr-only" min="0" max="100" value="65" aria-labelledby="skPy">%65</meter>
+            <div class="about-meter__bar" aria-hidden="true">
+              <svg class="about-meter__frame" viewBox="0 0 400 44" preserveAspectRatio="none"><path d="M4 5 C120 7 260 3 396 6 C394 18 397 30 395 40 C260 38 130 42 5 39 C7 28 3 16 4 5 Z"/></svg>
+              <div class="about-meter__area"><div class="about-meter__fill"><div class="about-meter__hatch"></div></div><div class="about-meter__pen"></div></div>
+            </div>
+          </li>
+          <li class="about-meter" style="--lvl:60;--c:var(--purple)">
+            <div class="about-meter__top">
+              <h3 class="about-meter__name" id="skSql"><abbr title="Structured Query Language (Yapılandırılmış Sorgu Dili)" data-i18n-attr="title:about.abbr.sql">SQL</abbr></h3>
+              <span class="about-meter__quip" data-i18n="about.sk.q6"><code>JOIN</code>'lerle aram iyi</span>
+              <span class="about-meter__val" aria-hidden="true"><span class="about-meter__pct">%</span><span class="about-meter__num" data-value="60">60</span></span>
+            </div>
+            <meter class="sr-only" min="0" max="100" value="60" aria-labelledby="skSql">%60</meter>
+            <div class="about-meter__bar" aria-hidden="true">
+              <svg class="about-meter__frame" viewBox="0 0 400 44" preserveAspectRatio="none"><path d="M6 6 C130 4 250 7 394 5 C396 17 395 29 396 38 C250 41 140 37 5 40 C4 30 7 17 6 6 Z"/></svg>
+              <div class="about-meter__area"><div class="about-meter__fill"><div class="about-meter__hatch"></div></div><div class="about-meter__pen"></div></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ 5. İLGİ ALANLARI (ol + ul) ============ -->
+    <section class="section about-likes" aria-labelledby="likesTitle">
+      <div class="container">
+        <div class="section-head center">
+          <h2 id="likesTitle" data-split data-i18n="about.likes.title">İlgi alanlarım</h2>
+          <p class="about-lead" data-reveal="up" data-i18n="about.likes.lead">Biri sıralı, biri karmakarışık: favori teknolojilerimi kürsüye çıkardım, gerisini bir post-it'e karaladım.</p>
+        </div>
+
+        <div class="about-likes__grid">
+          <div class="about-top5">
+            <h3 class="about-top5__title" data-i18n="about.top.title">En sevdiğim 5 teknoloji</h3>
+            <ol class="about-top5__list">
+              <li class="about-top5__item"><span class="about-top5__name">CSS</span><span class="about-top5__why" data-i18n="about.top.1"><code>:has()</code> geldiğinden beri her gün bayram</span></li>
+              <li class="about-top5__item"><span class="about-top5__name">JavaScript</span><span class="about-top5__why" data-i18n="about.top.2">sayfaya can veren kısım</span></li>
+              <li class="about-top5__item"><span class="about-top5__name"><abbr title="GreenSock Animation Platform">GSAP</abbr></span><span class="about-top5__why" data-i18n="about.top.3">bu sayfadaki her zıplamanın sorumlusu</span></li>
+              <li class="about-top5__item"><span class="about-top5__name">Figma</span><span class="about-top5__why" data-i18n="about.top.4">önce çiz, sonra kodla</span></li>
+              <li class="about-top5__item"><span class="about-top5__name">Git</span><span class="about-top5__why" data-i18n="about.top.5">kodun zaman makinesi</span></li>
+            </ol>
+          </div>
+
+          <div class="about-likes__pad-wrap">
+            <div class="about-likes__pad">
+              <span class="tape" aria-hidden="true"></span>
+              <h3 class="about-likes__padTitle" data-i18n="about.likes.padTitle">Kod dışında ve içinde</h3>
+              <ul class="about-likes__list">
+                <li data-i18n="about.likes.l1">web animasyonu ve mikro etkileşimler</li>
+                <li data-i18n="about.likes.l2">arayüz ve tipografi tasarımı</li>
+                <li data-i18n="about.likes.l3">erişilebilir web</li>
+                <li data-i18n="about.likes.l4">küçük oyun prototipleri</li>
+                <li data-i18n="about.likes.l5">eskiz ve karikatür</li>
+                <li data-i18n="about.likes.l6">basketbol</li>
+                <li data-i18n="about.likes.l7">bilim kurgu romanları</li>
+                <li data-i18n="about.likes.l8">filtre kahve demlemek</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6. İLK ANİMASYON KODUM (pre/code) ============ -->
+    <section class="section about-code" aria-labelledby="codeTitle">
+      <div class="container">
+        <div class="section-head center">
+          <h2 id="codeTitle" data-split data-i18n="about.code.title">İlk animasyon kodum</h2>
+          <p class="about-lead" data-reveal="up" data-i18n="about.code.lead">2019'da defterime yazdığım ilk animasyon: tek bir <code>@keyframes</code> kuralı ve <code>animation</code> özelliğiyle zıplayan bir top. Bugün hâlâ aynı sırrı kullanıyorum: <mark>önce ez, sonra yaylandır</mark>.</p>
+        </div>
+
+        <div class="about-code__grid">
+          <figure class="about-code__page">
+            <span class="about-code__rings" aria-hidden="true"></span>
+            <pre class="about-code__pre" tabindex="0" aria-labelledby="codeCap"><code class="language-css"><span class="about-code__ln"><span class="tk-c" data-i18n="about.code.c1">/* 2019 · ilk animasyonum: zıplayan top */</span></span>
+<span class="about-code__ln"><span class="tk-s">.ball</span> {</span>
+<span class="about-code__ln">  <span class="tk-p">width</span>: <span class="tk-v">60px</span>;</span>
+<span class="about-code__ln">  <span class="tk-p">aspect-ratio</span>: <span class="tk-v">1</span>;</span>
+<span class="about-code__ln">  <span class="tk-p">border-radius</span>: <span class="tk-v">50%</span>;</span>
+<span class="about-code__ln">  <span class="tk-p">animation</span>: <span class="tk-v">bounce .8s ease-out infinite alternate</span>;</span>
+<span class="about-code__ln">}</span>
+<span class="about-code__ln"> </span>
+<span class="about-code__ln"><span class="tk-a">@keyframes</span> <span class="tk-s">bounce</span> {</span>
+<span class="about-code__ln">  <span class="tk-s">from</span> { <span class="tk-p">transform</span>: <span class="tk-v">translateY(0) scale(1.15, .85)</span>; } <span class="tk-c" data-i18n="about.code.c2">/* ez */</span></span>
+<span class="about-code__ln">  <span class="tk-s">to</span>   { <span class="tk-p">transform</span>: <span class="tk-v">translateY(-140px) scale(.95, 1.05)</span>; } <span class="tk-c" data-i18n="about.code.c3">/* yaylan */</span></span>
+<span class="about-code__ln">}</span></code></pre>
+            <figcaption id="codeCap" class="about-code__cap" data-i18n="about.code.cap">bounce.css · 12 satır · defterin 3. sayfası</figcaption>
+          </figure>
+
+          <div class="about-code__stage">
+            <div class="about-code__arena" aria-hidden="true">
+              <div class="about-code__ball"><span class="about-code__ballFace"></span></div>
+              <span class="about-code__shadow"></span>
+              <span class="about-code__floor"></span>
+            </div>
+            <div class="about-code__controls">
+              <button class="btn pink about-code__run" type="button" aria-pressed="false" data-magnetic="0.25">
+                <span class="doodle" data-doodle="lightning"></span><span class="about-code__runLabel">çalıştır</span>
+              </button>
+              <p class="about-code__count" aria-live="polite"><span data-i18n="about.code.count">zıplama</span>: <strong class="about-code__n">0</strong></p>
+            </div>
+            <p class="about-code__tip" data-i18n="about.code.tip">Düğmeye bas ya da odaklanıp <kbd>Enter</kbd>'a bas: yukarıdaki kod gerçekten çalışıyor.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7. ALET ÇANTASI ============ -->
+    <section class="section about-tools" aria-labelledby="toolsTitle">
+      <div class="container">
+        <div class="section-head center">
+          <h2 id="toolsTitle" data-split data-i18n="about.tools.title">Alet çantam</h2>
+        </div>
+
+        <div class="about-tools__board sketch-box alt-2">
+          <p class="about-tools__hint hand-note" aria-hidden="true">
+            <span data-i18n="about.tools.hint">psst… çıkartmaları istediğin gibi diz!</span>
+            <svg viewBox="0 0 120 60"><path d="M6 10 C40 4 80 18 100 46"/><path d="M84 42 L101 48 L106 30"/></svg>
+          </p>
+          <button class="about-tools__reset btn ghost" type="button" hidden>
+            <span class="doodle" data-doodle="loop"></span><span data-i18n="about.tools.reset">toparla</span>
+          </button>
+
+          <ul class="about-tools__list" aria-label="Kullandığım araçlar" data-i18n-attr="aria-label:about.tools.label">
+            <li class="about-sticker" style="--x:5%;--y:14%;--r:-7deg;--bg:#cfd3bd">
+              <span class="about-sticker__body"><span class="doodle" data-doodle="code"></span><span class="about-sticker__name">VS Code</span><small data-i18n="about.tools.t1">kod yuvam</small></span>
+            </li>
+            <li class="about-sticker" style="--x:24%;--y:52%;--r:6deg;--bg:#e8c4ad">
+              <span class="about-sticker__body"><span class="doodle" data-doodle="flower"></span><span class="about-sticker__name">Figma</span><small data-i18n="about.tools.t2">önce çiz</small></span>
+            </li>
+            <li class="about-sticker" style="--x:26%;--y:8%;--r:4deg;--bg:#efcfb2">
+              <span class="about-sticker__body"><span class="doodle" data-doodle="loop"></span><span class="about-sticker__name">Git</span><small data-i18n="about.tools.t3">zaman makinesi</small></span>
+            </li>
+            <li class="about-sticker" style="--x:45%;--y:30%;--r:-4deg;--bg:#d8d4c8">
+              <span class="about-sticker__body"><span class="doodle" data-doodle="github"></span><span class="about-sticker__name">GitHub</span><small data-i18n="about.tools.t4">vitrin</small></span>
+            </li>
+            <li class="about-sticker" style="--x:5%;--y:62%;--r:3deg;--bg:#d5d9b8">
+              <span class="about-sticker__body"><span class="doodle" data-doodle="globe"></span><span class="about-sticker__name">Chrome DevTools</span><small data-i18n="about.tools.t5">dedektif modu</small></span>
+            </li>
+            <li class="about-sticker about-sticker--term" style="--x:64%;--y:10%;--r:8deg;--bg:#e9dcb5">
+              <span class="about-sticker__body"><span class="about-sticker__glyph" aria-hidden="true">&gt;_</span><span class="about-sticker__name">Terminal</span><small data-i18n="about.tools.t6">siyah ekran, beyaz yalan yok</small></span>
+            </li>
+            <li class="about-sticker" style="--x:47%;--y:66%;--r:5deg;--bg:#f7f4ea">
+              <span class="about-sticker__body"><span class="doodle" data-doodle="hash"></span><span class="about-sticker__name">Notion</span><small data-i18n="about.tools.t7">ikinci beynim</small></span>
+            </li>
+            <li class="about-sticker" style="--x:80%;--y:40%;--r:-9deg;--bg:#e8c4ad">
+              <span class="about-sticker__body"><span class="doodle" data-doodle="music"></span><span class="about-sticker__name">Spotify</span><small data-i18n="about.tools.t8">lo-fi olmadan olmaz</small></span>
+            </li>
+            <li class="about-sticker" style="--x:66%;--y:62%;--r:-3deg;--bg:#efcfb2">
+              <span class="about-sticker__body"><span class="doodle" data-doodle="coffee"></span><span class="about-sticker__name" data-i18n="about.tools.n9">Kahve</span><small data-i18n="about.tools.t9">en önemli araç</small></span>
+            </li>
+            <li class="about-sticker" style="--x:84%;--y:8%;--r:10deg;--bg:#d5d9b8">
+              <span class="about-sticker__body"><span class="doodle" data-doodle="pencil"></span><span class="about-sticker__name" data-i18n="about.tools.n10">Eskiz defteri</span><small data-i18n="about.tools.t10">her şey burada başlar</small></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 8. EĞLENCELİ BİLGİLER ============ -->
+    <section class="section about-facts" aria-labelledby="factsTitle">
+      <div class="container">
+        <div class="section-head center">
+          <h2 id="factsTitle" data-split data-i18n="about.facts.title">Bunları biliyor muydun?</h2>
+          <p class="about-lead" data-reveal="up" data-i18n="about.facts.lead">Post-it'lere tıkla (ya da odaklanıp <kbd>Enter</kbd>'a bas): arkalarında küçük itiraflar var.</p>
+        </div>
+
+        <ul class="about-facts__grid">
+          <li class="about-fact" style="--r:-3deg">
+            <button class="about-flip" type="button" aria-pressed="false">
+              <span class="about-flip__inner">
+                <span class="about-flip__face about-flip__face--front" style="--c:#e9dcb5">
+                  <span class="about-flip__q" data-i18n="about.facts.q1">Günde kaç kahve?</span>
+                  <span class="about-flip__hint" aria-hidden="true" data-i18n="about.facts.hint">çevir ↻</span>
+                </span>
+                <span class="about-flip__face about-flip__face--back" style="--c:#e8c4ad" aria-hidden="true">
+                  <span class="about-flip__a" data-i18n="about.facts.a1">Üç. Dördüncüsü her zaman "son" olandır.</span>
+                </span>
+              </span>
+            </button>
+          </li>
+          <li class="about-fact" style="--r:2deg">
+            <button class="about-flip" type="button" aria-pressed="false">
+              <span class="about-flip__inner">
+                <span class="about-flip__face about-flip__face--front" style="--c:#cfd3bd">
+                  <span class="about-flip__q" data-i18n="about.facts.q2">Yazdığım ilk kod?</span>
+                  <span class="about-flip__hint" aria-hidden="true" data-i18n="about.facts.hint">çevir ↻</span>
+                </span>
+                <span class="about-flip__face about-flip__face--back" style="--c:#e9dcb5" aria-hidden="true">
+                  <span class="about-flip__a" data-i18n="about.facts.a2"><code>&lt;marquee&gt;</code> ile kayan "Hoş geldiniz" yazısı. 2019. Hiç utanmıyorum.</span>
+                </span>
+              </span>
+            </button>
+          </li>
+          <li class="about-fact" style="--r:-1.5deg">
+            <button class="about-flip" type="button" aria-pressed="false">
+              <span class="about-flip__inner">
+                <span class="about-flip__face about-flip__face--front" style="--c:#d5d9b8">
+                  <span class="about-flip__q" data-i18n="about.facts.q3">En sevdiğim kısayol?</span>
+                  <span class="about-flip__hint" aria-hidden="true" data-i18n="about.facts.hint">çevir ↻</span>
+                </span>
+                <span class="about-flip__face about-flip__face--back" style="--c:#d8d4c8" aria-hidden="true">
+                  <span class="about-flip__a" data-i18n="about.facts.a3"><kbd>Ctrl</kbd> + <kbd>Z</kbd>. Keşke hayatta da çalışsa.</span>
+                </span>
+              </span>
+            </button>
+          </li>
+          <li class="about-fact" style="--r:3deg">
+            <button class="about-flip" type="button" aria-pressed="false">
+              <span class="about-flip__inner">
+                <span class="about-flip__face about-flip__face--front" style="--c:#e8c4ad">
+                  <span class="about-flip__q" data-i18n="about.facts.q4">Gece mi, gündüz mü?</span>
+                  <span class="about-flip__hint" aria-hidden="true" data-i18n="about.facts.hint">çevir ↻</span>
+                </span>
+                <span class="about-flip__face about-flip__face--back" style="--c:#d5d9b8" aria-hidden="true">
+                  <span class="about-flip__a" data-i18n="about.facts.a4">Gece. En iyi CSS'ler saat 02.00'den sonra yazılır.</span>
+                </span>
+              </span>
+            </button>
+          </li>
+          <li class="about-fact" style="--r:-2.5deg">
+            <button class="about-flip" type="button" aria-pressed="false">
+              <span class="about-flip__inner">
+                <span class="about-flip__face about-flip__face--front" style="--c:#efcfb2">
+                  <span class="about-flip__q" data-i18n="about.facts.q5">Tab mı, boşluk mu?</span>
+                  <span class="about-flip__hint" aria-hidden="true" data-i18n="about.facts.hint">çevir ↻</span>
+                </span>
+                <span class="about-flip__face about-flip__face--back" style="--c:#cfd3bd" aria-hidden="true">
+                  <span class="about-flip__a" data-i18n="about.facts.a5">İki boşluk. Bu konu tartışmaya kapalıdır.</span>
+                </span>
+              </span>
+            </button>
+          </li>
+          <li class="about-fact" style="--r:1.5deg">
+            <button class="about-flip" type="button" aria-pressed="false">
+              <span class="about-flip__inner">
+                <span class="about-flip__face about-flip__face--front" style="--c:#d8d4c8">
+                  <span class="about-flip__q" data-i18n="about.facts.q6">Kod dışında?</span>
+                  <span class="about-flip__hint" aria-hidden="true" data-i18n="about.facts.hint">çevir ↻</span>
+                </span>
+                <span class="about-flip__face about-flip__face--back" style="--c:#efcfb2" aria-hidden="true">
+                  <span class="about-flip__a" data-i18n="about.facts.a6">Eskiz defteri, basketbol ve hiç bitmeyen bir dizi listesi.</span>
+                </span>
+              </span>
+            </button>
+          </li>
+        </ul>
+        <p class="sr-only" aria-live="polite" id="aboutFactsLive"></p>
+      </div>
+    </section>
+
+    <!-- ============ 9. KAPANIŞ ============ -->
+    <section class="section about-outro" aria-labelledby="outroTitle">
+      <div class="container">
+        <h2 class="sr-only" id="outroTitle" data-i18n="about.outro.title">Son söz</h2>
+        <figure class="about-outro__figure">
+          <span class="about-outro__mark" aria-hidden="true">“</span>
+          <blockquote class="about-quote">
+            <p>Her büyük proje bir karalamayla başlar.</p>
+          </blockquote>
+          <figcaption class="about-outro__sign">
+            <span class="about-outro__who">— <span data-bind="name">Ad Soyad</span>, <cite data-i18n="about.outro.cite">Eskiz Defteri, 1. sayfa</cite></span>
+            <svg class="about-outro__signature" viewBox="0 0 320 110" aria-hidden="true" data-draw="scrub" data-start="top 90%" data-end="top 55%">
+              <path d="M14 78 C30 40 44 18 52 22 C60 28 40 70 34 84 C48 56 66 44 74 52 C80 60 70 74 82 72 C92 70 98 54 104 56 C110 60 100 76 112 74 C124 72 130 40 140 30 C150 22 146 60 142 80 C156 58 170 50 176 58 C182 66 168 78 182 76 C196 74 204 56 214 58 C222 62 212 80 226 76 C240 72 250 52 262 52 C276 54 262 78 280 72 C292 68 300 58 306 50"/>
+              <path d="M20 96 C90 88 190 90 300 84"/>
+            </svg>
+          </figcaption>
+        </figure>
+
+        <div class="about-outro__actions">
+          <a class="btn blue about-outro__btn" href="projeler.html" data-page-name="projeler" data-magnetic="0.3">
+            <span class="doodle" data-doodle="rocket"></span><span data-i18n="about.outro.work">Projelerime bak</span>
+          </a>
+          <a class="btn pink about-outro__btn" href="iletisim.html" data-page-name="iletişim" data-magnetic="0.3">
+            <span class="doodle" data-doodle="mail"></span><span data-i18n="about.outro.contact">İletişime geç</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer class="footer">
+    <svg class="footer__wave" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true" data-draw="scrub" data-start="top 95%" data-end="top 50%">
+      <path d="M0 30 C 100 5, 200 55, 300 30 S 500 5, 600 30 S 800 55, 900 30 S 1100 5, 1200 30"/>
+    </svg>
+    <div class="container">
+      <p class="footer__big"><a href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact" data-i18n="footer.big">Hadi <span class="scribble-u">konuşalım</span>!</a></p>
+      <div class="footer__row">
+        <div class="footer__socials">
+          <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub" data-bind-href="{github}"><span class="doodle" data-doodle="github" style="--size:26px"></span></a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn" data-bind-href="{linkedin}"><span class="doodle" data-doodle="linkedin" style="--size:26px"></span></a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" data-bind-href="{instagram}"><span class="doodle" data-doodle="instagram" style="--size:26px"></span></a>
+          <a href="mailto:ornek@mail.com" aria-label="E-posta" data-bind-href="mailto:{email}"><span class="doodle" data-doodle="mail" style="--size:26px"></span></a>
+        </div>
+        <p class="footer__copy" data-i18n="footer.copy">© <span data-year>2026</span> Ad Soyad — kalemle, kahveyle ve biraz JavaScript'le çizildi.</p>
+        <a class="footer__admin" href="admin.html" data-i18n="footer.admin">yönetim</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/pages/about.js"></script>
+</body>
+</html>

@@ -1,0 +1,1897 @@
+/* =========================================================
+   İLETİŞİM — "Bana bir mektup yaz"
+   Önek: .contact-…
+   ========================================================= */
+
+main#main {
+  overflow-x: clip;
+}
+
+/* Fiziksel kağıt objelerinin renkleri (iki temada da açık kalır) */
+.contact-paper,
+.contact-thanks,
+.contact-stamp {
+  --cp-paper: #fbfaf6;
+  --cp-ink: #161714;
+  --cp-ink-soft: rgba(22, 23, 20, 0.66);
+  --cp-pen: #4f5a2a;
+  --cp-red: #a8411a;
+  --cp-green: #4d6524;
+  --cp-line: rgba(122, 132, 80, 0.26);
+  --cp-margin: rgba(196, 80, 31, 0.55);
+  color-scheme: light;
+}
+
+[data-theme="dark"] .contact-paper,
+[data-theme="dark"] .contact-thanks,
+[data-theme="dark"] .contact-stamp {
+  --cp-paper: #f2ecd9;
+  --cp-line: rgba(122, 132, 80, 0.3);
+}
+
+/* =========================================================
+   1. HERO
+   ========================================================= */
+.contact-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: calc(var(--nav-h) + clamp(30px, 6vw, 70px)) 0 clamp(90px, 10vw, 120px);
+  display: flex;
+  align-items: center;
+}
+
+.contact-hero__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: clamp(30px, 5vw, 70px);
+}
+
+.contact-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-hand);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--ink);
+  padding: 4px 18px 4px 14px;
+  border: 2px solid var(--ink);
+  border-radius: var(--wobble-2);
+  background: var(--paper);
+  box-shadow: var(--shadow-hard-sm);
+  transform: rotate(-2deg);
+  margin-bottom: 18px;
+}
+
+.contact-status__dot {
+  position: relative;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #5f7a2e;
+  box-shadow: 0 0 0 2px var(--ink);
+  flex: none;
+}
+
+.contact-status__dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #5f7a2e;
+  animation: contact-ping 1.6s var(--ease-out) infinite;
+}
+
+@keyframes contact-ping {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.8); opacity: 0; }
+}
+
+.contact-hero__title {
+  font-size: clamp(3.6rem, 9vw, 8rem);
+  line-height: 0.95;
+  white-space: nowrap;
+  margin-bottom: 22px;
+  position: relative;
+}
+
+.contact-hand {
+  display: inline-block;
+  width: 0.82em;
+  height: 0.82em;
+  vertical-align: -0.06em;
+  margin-left: 0.08em;
+  overflow: visible;
+  transform-origin: 40% 92%;
+}
+
+.contact-hand path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-hand .contact-hand__palm {
+  fill: var(--yellow);
+  stroke-width: 3.6;
+}
+
+.contact-hand .contact-hand__wave {
+  stroke: var(--pink);
+}
+
+.contact-hero__lead {
+  font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+  max-width: 36ch;
+  margin-bottom: 30px;
+}
+
+.contact-hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 26px;
+}
+
+.contact-hero__note {
+  font-size: 1.5rem;
+}
+
+.contact-hero__art {
+  position: relative;
+  width: min(100%, 440px);
+  justify-self: center;
+}
+
+.contact-envelope {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.contact-envelope path,
+.contact-envelope circle {
+  stroke: var(--ink);
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.contact-envelope__flap-shape,
+.contact-envelope__body {
+  fill: var(--paper-2) !important;
+}
+
+.contact-envelope__paper {
+  fill: var(--paper) !important;
+}
+
+.contact-envelope__lines {
+  stroke: var(--blue) !important;
+  stroke-width: 2.6 !important;
+}
+
+.contact-envelope__heart {
+  fill: var(--pink) !important;
+  stroke-width: 2.4 !important;
+}
+
+.contact-envelope__closed,
+.contact-envelope__seal {
+  opacity: 0; /* son hâl: kapak açık (JS başlangıç durumunu kurar) */
+}
+
+.contact-envelope__seal circle {
+  fill: var(--pink);
+}
+
+.contact-envelope__seal path {
+  fill: #fbfaf6;
+  stroke-width: 2;
+}
+
+.contact-hero__plane-note {
+  position: absolute;
+  top: -8%;
+  right: -2%;
+  font-size: 1.7rem;
+  transform: rotate(8deg);
+}
+
+.contact-hero__arrow {
+  position: absolute;
+  top: 4%;
+  right: 2%;
+  --size: 70px !important;
+  transform: rotate(140deg);
+}
+
+.contact-hero__deco--1 { top: 18%; left: 8%; }
+.contact-hero__deco--2 { top: 84%; left: 54%; }
+.contact-hero__deco--3 { top: 14%; right: 9%; }
+
+.contact-hero__scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.contact-hero__scroll .doodle {
+  animation: contact-bob 1.8s ease-in-out infinite;
+}
+
+@keyframes contact-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* =========================================================
+   2. MEKTUP FORMU
+   ========================================================= */
+.contact-letter__intro {
+  max-width: 46ch;
+  margin: 14px auto 0;
+}
+
+.contact-letter__stage {
+  position: relative;
+  max-width: 880px;
+  margin-inline: auto;
+}
+
+.contact-letter__slide {
+  display: grid;
+  will-change: transform;
+}
+
+.contact-letter__slide > * {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+
+/* --- kağıt --- */
+.contact-paper {
+  --L: 4rem; /* defter satır aralığı */
+  position: relative;
+  background-color: var(--cp-paper);
+  background-image: repeating-linear-gradient(to bottom, transparent 0 calc(var(--L) - 2px), var(--cp-line) calc(var(--L) - 2px) var(--L));
+  background-position: 0 calc(var(--pad-top) + 0.4rem);
+  color: var(--cp-ink);
+  --pad-top: clamp(40px, 6vw, 70px);
+  padding: var(--pad-top) clamp(22px, 6vw, 72px) clamp(36px, 5vw, 60px) clamp(46px, 9vw, 110px);
+  border-radius: 4px 6px 8px 3px;
+  box-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.06),
+    0 30px 60px -24px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(22, 23, 20, 0.08);
+  transform-origin: 50% 50%;
+}
+
+.contact-paper[hidden] {
+  display: none;
+}
+
+/* kırmızı kenar çizgisi + delikler */
+.contact-paper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: clamp(30px, 6.5vw, 80px);
+  width: 2px;
+  background: var(--cp-margin);
+}
+
+.contact-paper::after {
+  content: "";
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: clamp(8px, 2vw, 22px);
+  width: 14px;
+  background: radial-gradient(circle at 7px 7px, rgba(22, 23, 20, 0.22) 0 6px, transparent 7px) 0 0 / 14px 25% repeat-y;
+}
+
+[data-theme="dark"] .contact-paper,
+[data-theme="dark"] .contact-thanks {
+  box-shadow: 6px 8px 0 rgba(226, 194, 124, 0.2), 0 30px 60px -24px rgba(226, 194, 124, 0.12);
+}
+
+.contact-paper__tape {
+  top: -16px;
+  left: 18%;
+  transform: rotate(-6deg);
+}
+
+.contact-paper__crease {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    linear-gradient(90deg, transparent 49.6%, rgba(22, 23, 20, 0.18) 50%, transparent 50.4%),
+    linear-gradient(135deg, rgba(22, 23, 20, 0.1), transparent 30%),
+    linear-gradient(225deg, rgba(22, 23, 20, 0.1), transparent 30%),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(22, 23, 20, 0.12));
+}
+
+/* pul + damga */
+.contact-paper__postage {
+  position: absolute;
+  top: clamp(18px, 3vw, 30px);
+  right: clamp(16px, 3vw, 34px);
+  width: 120px;
+  height: 120px;
+  pointer-events: none;
+}
+
+.contact-paper__stamp {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 72px;
+  height: 86px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 2px;
+  background: #e8c4ad;
+  border: 2px solid #fff;
+  outline: 2px dashed rgba(22, 23, 20, 0.35);
+  outline-offset: -7px;
+  transform: rotate(5deg);
+  box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.35);
+}
+
+.contact-paper__stamp small {
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--cp-ink);
+  line-height: 1;
+}
+
+.contact-paper__postmark {
+  position: absolute;
+  top: 26px;
+  right: 30px;
+  width: 104px;
+  height: 104px;
+  overflow: visible;
+  transform: rotate(-14deg);
+  opacity: 0.75;
+}
+
+.contact-paper__postmark circle,
+.contact-paper__postmark path {
+  fill: none;
+  stroke: #4f5a2a;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+/* içerik */
+.contact-paper__body {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-paper__date {
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  color: var(--cp-ink-soft);
+  text-align: right;
+  line-height: var(--L);
+  padding-right: 130px;
+}
+
+.contact-paper__greet {
+  font-family: var(--font-hand);
+  font-size: clamp(2.2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--cp-ink);
+  line-height: var(--L);
+}
+
+.contact-paper__sentence {
+  font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+  line-height: var(--L);
+  color: var(--cp-ink);
+  margin-bottom: calc(var(--L) * 0.5);
+}
+
+.contact-paper__lbl {
+  color: var(--cp-ink);
+  cursor: pointer;
+}
+
+.contact-paper__lbl--block {
+  display: block;
+  font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+  line-height: var(--L);
+}
+
+/* --- satır içi alan --- */
+.contact-field {
+  --state: var(--cp-pen);
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  margin: 0 1.25em 0 0.15em;
+  max-width: 100%;
+}
+
+.contact-field::before {
+  /* odakta fosforlu vurgulama */
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: 12%;
+  bottom: 4%;
+  background: rgba(212, 168, 79, 0.36);
+  border-radius: 6px 10px 4px 12px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.45s var(--ease-out);
+  pointer-events: none;
+}
+
+.contact-field:focus-within::before {
+  transform: scaleX(1);
+}
+
+.contact-field__input {
+  position: relative;
+  font-family: var(--font-hand);
+  font-size: clamp(1.6rem, 2.4vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--cp-pen);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0 0.25em;
+  width: 11ch;
+  min-width: 7ch;
+  max-width: 100%;
+  outline: none;
+  transition: width 0.3s var(--ease-out);
+}
+
+.contact-field__input::placeholder {
+  color: rgba(22, 23, 20, 0.5);
+  font-weight: 400;
+}
+
+.contact-field__line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 9px;
+  pointer-events: none;
+}
+
+.contact-field__line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 3px;
+  border-bottom: 2px dashed rgba(22, 23, 20, 0.38);
+}
+
+.contact-field__line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--state);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10' preserveAspectRatio='none'%3E%3Cpath d='M2 6 C30 2 60 8 90 5 S 150 2 198 5' fill='none' stroke='%23000' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10' preserveAspectRatio='none'%3E%3Cpath d='M2 6 C30 2 60 8 90 5 S 150 2 198 5' fill='none' stroke='%23000' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.55s var(--ease-out);
+}
+
+.contact-field:focus-within .contact-field__line::after,
+.contact-field.is-invalid .contact-field__line::after,
+.contact-field.is-valid .contact-field__line::after {
+  transform: scaleX(1);
+}
+
+.contact-field.is-invalid { --state: var(--cp-red); }
+.contact-field.is-valid { --state: var(--cp-green); }
+
+/* tik */
+.contact-field__tick {
+  position: absolute;
+  right: -1.15em;
+  top: 50%;
+  width: 1.2em;
+  height: 1.2em;
+  margin-top: -0.7em;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.contact-field__tick path {
+  fill: none;
+  stroke: var(--cp-green);
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  transition: stroke-dashoffset 0.6s var(--ease-out);
+}
+
+.contact-field.is-valid .contact-field__tick path {
+  stroke-dashoffset: 0;
+}
+
+/* hata notu: kırmızı-pembe kalemle karalanır */
+.contact-field__error {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 1px);
+  z-index: 4;
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--cp-red);
+  white-space: nowrap;
+  padding: 0 6px 2px 2px;
+  background: var(--cp-paper);
+  border-radius: 6px;
+  transform: rotate(-2deg);
+  transform-origin: left top;
+  clip-path: inset(-4px 100% -4px -4px);
+  transition: clip-path 0.55s var(--ease-out);
+  pointer-events: none;
+}
+
+.contact-field__error:empty {
+  display: none;
+}
+
+.contact-field__error::after {
+  /* karalama alt çizgi */
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: 4px;
+  bottom: -3px;
+  height: 6px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6' preserveAspectRatio='none'%3E%3Cpath d='M1 3 C10 1 20 5 30 3 S 50 1 60 3 S 80 5 99 2' fill='none' stroke='%23a8411a' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+
+.contact-field.is-invalid .contact-field__error {
+  clip-path: inset(-4px -8px -8px -4px);
+}
+
+.contact-field.is-flip .contact-field__error {
+  left: auto;
+  right: 0;
+  transform-origin: right top;
+}
+
+/* select */
+.contact-field--select .contact-field__input {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  padding-right: 1.3em;
+  width: auto;
+  min-width: 0;
+}
+
+.contact-field--select option {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: #161714;
+  background: #fbfaf6;
+}
+
+.contact-field__caret {
+  position: absolute;
+  right: 0.1em;
+  top: 50%;
+  width: 0.9em;
+  height: 0.9em;
+  margin-top: -0.4em;
+  pointer-events: none;
+  transition: transform 0.4s var(--ease-bounce);
+}
+
+.contact-field__caret path {
+  fill: none;
+  stroke: var(--cp-pen);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.contact-field--select:focus-within .contact-field__caret {
+  transform: rotate(180deg);
+}
+
+.contact-field--select .contact-field__tick {
+  right: -1.35em;
+}
+
+/* textarea */
+.contact-paper__message {
+  margin-bottom: calc(var(--L) * 0.6);
+}
+
+.contact-field--area {
+  display: block;
+  margin: 4px 0 0;
+}
+
+.contact-field--area::before {
+  display: none;
+}
+
+.contact-field--area .contact-field__input {
+  display: block;
+  width: 100%;
+  min-height: calc(2.5rem * 4 + 24px);
+  font-size: clamp(1.5rem, 2.2vw, 1.75rem);
+  line-height: 2.5rem;
+  padding: 10px 2.2em 14px 14px;
+  resize: vertical;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.5);
+  background-image: repeating-linear-gradient(to bottom, transparent 0 calc(2.5rem - 2px), rgba(22, 23, 20, 0.12) calc(2.5rem - 2px) 2.5rem);
+  background-position: 0 10px;
+  background-attachment: local;
+  border: 2px dashed rgba(22, 23, 20, 0.35);
+  border-radius: var(--wobble-3);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-field--area .contact-field__input:focus {
+  border-style: solid;
+  border-color: var(--cp-pen);
+  box-shadow: 4px 5px 0 rgba(79, 90, 42, 0.25);
+}
+
+.contact-field--area.is-invalid .contact-field__input {
+  border-style: solid;
+  border-color: var(--cp-red);
+  box-shadow: 4px 5px 0 rgba(168, 65, 26, 0.2);
+}
+
+.contact-field--area.is-valid .contact-field__input {
+  border-color: var(--cp-green);
+}
+
+.contact-field--area .contact-field__tick {
+  right: 14px;
+  top: 14px;
+  margin-top: 0;
+}
+
+.contact-field--area .contact-field__error {
+  position: absolute;
+  left: auto;
+  right: 12px;
+  top: auto;
+  bottom: -14px;
+  transform: rotate(-2deg);
+}
+
+.contact-counter {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  color: var(--cp-ink-soft);
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+.contact-counter__num {
+  font-weight: 700;
+  color: var(--cp-pen);
+  display: inline-block;
+}
+
+.contact-counter.is-ok .contact-counter__hint {
+  color: var(--cp-green);
+}
+
+/* doodle tuvali */
+.contact-sketch {
+  margin: calc(var(--L) * 0.5) 0 calc(var(--L) * 0.4);
+}
+
+.contact-sketch__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-bottom: 8px;
+}
+
+.contact-sketch__title {
+  font-family: var(--font-hand);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--cp-ink);
+}
+
+.contact-sketch__title small {
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--cp-ink-soft);
+}
+
+.contact-sketch__tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-pen {
+  --pc: #161714;
+  width: 28px;
+  height: 28px;
+  border-radius: 50% 45% 55% 48% / 48% 55% 45% 52%;
+  background: var(--pc);
+  border: 2px solid #161714;
+  box-shadow: 0 0 0 0 #fbfaf6, 0 0 0 0 #161714;
+  transition: transform 0.35s var(--ease-bounce), box-shadow 0.3s ease;
+}
+
+.contact-pen[data-pen="#6b7a3a"] { --pc: #6b7a3a; }
+.contact-pen[data-pen="#c4501f"] { --pc: #c4501f; }
+
+.contact-pen:hover { transform: scale(1.15) rotate(-8deg); }
+
+.contact-pen.is-active {
+  box-shadow: 0 0 0 3px #fbfaf6, 0 0 0 5px #161714;
+  transform: scale(1.08);
+}
+
+.contact-sketch__clear {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--cp-red);
+  padding: 0 10px;
+  border-bottom: 2px solid currentColor;
+  border-radius: 0;
+  margin-left: 4px;
+  transition: transform 0.3s var(--ease-bounce);
+}
+
+.contact-sketch__clear:hover {
+  transform: rotate(-4deg) scale(1.05);
+}
+
+.contact-sketch__pad {
+  position: relative;
+  height: 170px;
+  border: 2px dashed rgba(22, 23, 20, 0.4);
+  border-radius: var(--wobble);
+  background:
+    radial-gradient(circle, rgba(22, 23, 20, 0.12) 1.2px, transparent 1.6px) 0 0 / 18px 18px,
+    rgba(255, 255, 255, 0.55);
+  overflow: hidden;
+}
+
+.contact-sketch__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.contact-sketch__ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-hand);
+  font-size: 1.8rem;
+  color: rgba(22, 23, 20, 0.3);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.contact-sketch.has-ink .contact-sketch__ph {
+  opacity: 0;
+}
+
+/* imza */
+.contact-paper__sign {
+  position: relative;
+  margin-left: auto;
+  width: min(300px, 100%);
+  text-align: right;
+  margin-bottom: calc(var(--L) * 0.5);
+}
+
+.contact-paper__love {
+  font-size: 1.3rem;
+  color: var(--cp-ink);
+  line-height: var(--L);
+}
+
+.contact-paper__signature {
+  display: block;
+  font-family: var(--font-hand);
+  font-size: clamp(2.4rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--cp-pen);
+  line-height: 1.1;
+  min-height: 1.1em;
+  transform: rotate(-4deg);
+  transform-origin: right center;
+  overflow-wrap: anywhere;
+}
+
+.contact-paper__sigline {
+  width: 100%;
+  height: 14px;
+  overflow: visible;
+}
+
+.contact-paper__sigline path {
+  fill: none;
+  stroke: var(--cp-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  opacity: 0.55;
+}
+
+.contact-paper__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+}
+
+.contact-submit[disabled] {
+  cursor: progress;
+  opacity: 0.85;
+}
+
+.contact-paper__ps {
+  font-size: 0.95rem;
+  color: var(--cp-ink-soft);
+  max-width: 36ch;
+  line-height: 1.4;
+}
+
+/* --- teşekkür kartı --- */
+.contact-thanks-region {
+  align-self: start;
+  justify-self: center;
+  width: min(600px, 100%);
+}
+
+.contact-thanks {
+  position: relative;
+  background: var(--cp-paper);
+  color: var(--cp-ink);
+  padding: clamp(36px, 6vw, 56px) clamp(22px, 5vw, 48px) clamp(30px, 5vw, 44px);
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(22, 23, 20, 0.08);
+  transform: rotate(-1.5deg);
+  background-image:
+    repeating-linear-gradient(-45deg, #a8411a 0 14px, transparent 14px 28px, #6b7a3a 28px 42px, transparent 42px 56px);
+  background-size: 100% 10px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+}
+
+.contact-thanks[hidden] {
+  display: none;
+}
+
+.contact-thanks__stamp {
+  position: absolute;
+  top: 18px;
+  right: 16px;
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--cp-red);
+  border: 3px double var(--cp-red);
+  border-radius: 10px;
+  padding: 0 10px;
+  transform: rotate(12deg);
+  opacity: 0.85;
+}
+
+.contact-thanks__title {
+  font-size: clamp(2.6rem, 6vw, 3.8rem);
+  color: var(--cp-ink);
+  margin: 10px 0 14px;
+  outline: none;
+}
+
+.contact-thanks__title:focus,
+.contact-thanks__title:focus-visible {
+  outline: none;
+}
+
+.contact-thanks__msg {
+  color: var(--cp-ink-soft);
+  font-size: 1.15rem;
+  max-width: 40ch;
+  margin: 0 auto 22px;
+}
+
+.contact-thanks__msg strong {
+  color: var(--cp-pen);
+  font-family: var(--font-hand);
+  font-size: 1.5em;
+  line-height: 1;
+}
+
+.contact-thanks__doodle {
+  display: inline-block;
+  background: #fff;
+  padding: 10px 10px 40px;
+  position: relative;
+  transform: rotate(3deg);
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.35);
+  margin: 0 auto 24px;
+  max-width: 100%;
+}
+
+.contact-thanks__doodle[hidden] {
+  display: none;
+}
+
+.contact-thanks__doodle img {
+  display: block;
+  width: 240px;
+  max-width: 100%;
+  height: auto;
+  background: #fbfaf6;
+}
+
+.contact-thanks__doodle figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  color: #161714;
+}
+
+.contact-thanks .btn.ghost {
+  --bg: #fbfaf6;
+  --fg: #161714;
+  border-color: #161714;
+}
+
+/* --- uçuş katmanı --- */
+.contact-flight {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  pointer-events: none;
+}
+
+.contact-flight svg.contact-flight__route {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.contact-flight__route .contact-flight__trail {
+  fill: none;
+  stroke: var(--pink);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-dasharray: 12 12;
+}
+
+.contact-flight__plane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110px;
+  height: 110px;
+  margin: -55px 0 0 -55px;
+  will-change: transform;
+}
+
+.contact-flight__plane svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(4px 8px 0 rgba(0, 0, 0, 0.18));
+}
+
+.contact-flight__plane path {
+  stroke: #161714;
+  stroke-width: 2.6;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+/* =========================================================
+   3. İLETİŞİM KANALLARI (pullar)
+   ========================================================= */
+.contact-channels {
+  overflow: clip;
+}
+
+.contact-airmail {
+  position: absolute;
+  top: clamp(20px, 4vw, 40px);
+  left: -5%;
+  width: 110%;
+  height: 46px;
+  transform: rotate(-2deg);
+  overflow: hidden;
+  background: var(--paper);
+  border-block: 9px solid transparent;
+  border-image: repeating-linear-gradient(-45deg, #a8411a 0 16px, var(--paper) 16px 32px, #6b7a3a 32px 48px, var(--paper) 48px 64px) 9;
+  display: flex;
+  align-items: center;
+}
+
+.contact-airmail__track {
+  white-space: nowrap;
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 0.18em;
+  color: var(--ink-soft);
+  will-change: transform;
+}
+
+.contact-channels .section-head {
+  margin-top: 40px;
+}
+
+.contact-channels__intro {
+  margin-top: 10px;
+  max-width: 44ch;
+}
+
+.contact-stamps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(28px, 4vw, 52px) clamp(22px, 3.5vw, 44px);
+  padding: 10px 0 20px;
+}
+
+.contact-stamps__item {
+  width: clamp(240px, 28%, 300px);
+  filter: drop-shadow(3px 5px 0 rgba(22, 23, 20, 0.18));
+}
+
+[data-theme="dark"] .contact-stamps__item {
+  /* siyah zeminde siyah gölge görünmez → kum tonlu */
+  filter: drop-shadow(3px 5px 0 rgba(226, 194, 124, 0.22));
+}
+
+.contact-stamps__item:nth-child(3n + 2) { margin-top: 46px; }
+.contact-stamps__item:nth-child(3n) { margin-top: 14px; }
+
+.contact-stamp {
+  --r: -2deg;
+  --sc: #e8c4ad;
+  --sh: 8px; /* tırtık yarıçapı */
+  position: relative;
+  padding: calc(var(--sh) * 1.8);
+  background: var(--cp-paper);
+  color: var(--cp-ink);
+  -webkit-mask:
+    linear-gradient(#000 0 0) center / calc(100% - var(--sh) * 2.4) calc(100% - var(--sh) * 2.4) no-repeat,
+    radial-gradient(circle, transparent calc(var(--sh) * 0.62), #000 calc(var(--sh) * 0.66)) calc(var(--sh) * -1.25) calc(var(--sh) * -1.25) / calc(var(--sh) * 2.5) calc(var(--sh) * 2.5) round;
+  mask:
+    linear-gradient(#000 0 0) center / calc(100% - var(--sh) * 2.4) calc(100% - var(--sh) * 2.4) no-repeat,
+    radial-gradient(circle, transparent calc(var(--sh) * 0.62), #000 calc(var(--sh) * 0.66)) calc(var(--sh) * -1.25) calc(var(--sh) * -1.25) / calc(var(--sh) * 2.5) calc(var(--sh) * 2.5) round;
+  transform: rotate(var(--r));
+  transition: transform 0.45s var(--ease-bounce);
+}
+
+.contact-stamps__item:nth-child(1) .contact-stamp { --r: -3deg; }
+.contact-stamps__item:nth-child(2) .contact-stamp { --r: 2deg; }
+.contact-stamps__item:nth-child(3) .contact-stamp { --r: -1.5deg; }
+.contact-stamps__item:nth-child(4) .contact-stamp { --r: 2.5deg; }
+.contact-stamps__item:nth-child(5) .contact-stamp { --r: -2.5deg; }
+.contact-stamps__item:nth-child(6) .contact-stamp { --r: 1.5deg; }
+
+.contact-stamp:hover,
+.contact-stamp:focus-within {
+  transform: rotate(0deg) translateY(-8px) scale(1.03);
+}
+
+.contact-stamp--pink { --sc: #e8c4ad; --sa: #a8411a; }
+.contact-stamp--blue { --sc: #cfd3bd; --sa: #4f5a2a; }
+.contact-stamp--yellow { --sc: #e9dcb5; --sa: #7a5c17; }
+.contact-stamp--green { --sc: #d5d9b8; --sa: #4d6524; }
+.contact-stamp--purple { --sc: #d8d4c8; --sa: #4b5a63; }
+.contact-stamp--orange { --sc: #efcfb2; --sa: #9a3f14; }
+
+.contact-stamp__inner {
+  position: relative;
+  min-height: 230px;
+  padding: 18px 18px 20px;
+  background:
+    repeating-linear-gradient(45deg, transparent 0 10px, rgba(255, 255, 255, 0.35) 10px 12px),
+    var(--sc);
+  border: 2px solid var(--sa);
+  outline: 1px solid var(--sa);
+  outline-offset: -7px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contact-stamp__value {
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  font-family: var(--font-hand);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--sa);
+  line-height: 1;
+}
+
+.contact-stamp__icon {
+  --size: 54px;
+  --c: #161714;
+  margin-bottom: 10px;
+  transition: transform 0.5s var(--ease-bounce);
+}
+
+.contact-stamp:hover .contact-stamp__icon {
+  transform: rotate(-12deg) scale(1.12);
+}
+
+.contact-stamp__title {
+  font-size: 2.2rem;
+  color: #161714;
+  margin-bottom: 2px;
+}
+
+.contact-stamp__link {
+  position: static;
+}
+
+.contact-stamp__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.contact-stamp__link:focus-visible {
+  outline: none;
+}
+
+.contact-stamp__link:focus-visible::after {
+  outline: 3px dashed #161714;
+  outline-offset: -10px;
+}
+
+.contact-stamp__text {
+  font-weight: 700;
+  color: #161714;
+  font-size: 1.05rem;
+  overflow-wrap: anywhere;
+}
+
+.contact-stamp__meta {
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  color: rgba(22, 23, 20, 0.7);
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.contact-copy {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #161714;
+  padding: 2px 14px 2px 10px;
+  background: #fbfaf6;
+  border: 2px solid #161714;
+  border-radius: var(--wobble-2);
+  box-shadow: 2px 3px 0 #161714;
+  transition: transform 0.3s var(--ease-bounce), box-shadow 0.3s ease;
+}
+
+.contact-copy:hover {
+  transform: rotate(-3deg) translateY(-2px);
+  box-shadow: 3px 5px 0 #161714;
+}
+
+.contact-copy:active {
+  transform: translate(1px, 2px);
+  box-shadow: 0 0 0 #161714;
+}
+
+.contact-copy:focus-visible {
+  outline-color: #161714;
+}
+
+.contact-copy .doodle {
+  --c: #161714;
+}
+
+.contact-copy__note {
+  position: absolute;
+  left: 22px;
+  bottom: 58px;
+  z-index: 2;
+  font-size: 1.4rem;
+  color: var(--sa);
+  pointer-events: none;
+  max-width: 80%;
+  text-align: left;
+  line-height: 1.1;
+}
+
+.contact-stamp__mark {
+  position: absolute;
+  top: 4px;
+  right: -18px;
+  width: 104px;
+  height: 104px;
+  z-index: 1;
+  pointer-events: none;
+  transform: rotate(-16deg);
+  opacity: 0.6;
+}
+
+.contact-stamp__mark svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.contact-stamp__mark circle,
+.contact-stamp__mark path {
+  fill: none;
+  stroke: #3b3f33;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+/* =========================================================
+   4. SSS (post-it akordeon)
+   ========================================================= */
+.contact-faq__board {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(32px, 4vw, 52px) clamp(24px, 4vw, 52px);
+  max-width: 980px;
+  margin-inline: auto;
+}
+
+.contact-faq__wrap:nth-child(even) {
+  margin-top: 34px;
+}
+
+.contact-note {
+  padding: 30px 26px 26px;
+  border-radius: 2px;
+  overflow: visible;
+}
+
+.contact-note .pin {
+  top: -12px;
+}
+
+/* katlanmış köşe */
+.contact-note::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 34px;
+  height: 34px;
+  background: linear-gradient(315deg, var(--paper) 0 50%, rgba(22, 23, 20, 0.18) 50% 56%, color-mix(in srgb, var(--c) 80%, #161714 12%) 56%);
+  transform-origin: 100% 100%;
+  transition: transform 0.45s var(--ease-bounce);
+  box-shadow: -2px -2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.contact-note[open]::after {
+  transform: scale(0);
+}
+
+.contact-note__q {
+  list-style: none;
+  cursor: pointer;
+  font-family: var(--font-hand);
+  font-size: clamp(1.7rem, 2.4vw, 2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #161714;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  border-radius: 4px;
+}
+
+.contact-note__q::-webkit-details-marker {
+  display: none;
+}
+
+.contact-note__q:focus-visible {
+  outline-color: #161714;
+  outline-offset: 6px;
+}
+
+.contact-note__plus {
+  position: relative;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  margin-top: 4px;
+  border: 2px solid #161714;
+  border-radius: 50% 45% 55% 48% / 48% 55% 45% 52%;
+  transition: transform 0.5s var(--ease-bounce), background-color 0.3s ease;
+}
+
+.contact-note__plus::before,
+.contact-note__plus::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 14px;
+  height: 2.5px;
+  margin: -1.25px 0 0 -7px;
+  border-radius: 2px;
+  background: #161714;
+}
+
+.contact-note__plus::after {
+  transform: rotate(90deg);
+}
+
+.contact-note[open] .contact-note__plus {
+  transform: rotate(225deg);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.contact-note__a {
+  padding-top: 14px;
+  margin-top: 14px;
+  border-top: 2px dashed rgba(22, 23, 20, 0.25);
+  transform-origin: 50% 0;
+}
+
+.contact-note__a p {
+  font-size: 1.08rem;
+}
+
+.contact-note__a strong {
+  color: #161714;
+}
+
+/* =========================================================
+   5. HARİTA
+   ========================================================= */
+.contact-map {
+  overflow: clip;
+}
+
+.contact-map__grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: clamp(30px, 5vw, 70px);
+  align-items: center;
+}
+
+.contact-map__text > p {
+  max-width: 40ch;
+  margin-bottom: 30px;
+}
+
+.contact-map__clock-wrap {
+  display: inline-block;
+}
+
+.contact-map__clock {
+  --r: -3deg;
+  display: inline-block;
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: #161714 !important;
+  padding: 20px 28px;
+}
+
+.contact-map__clock strong {
+  font-size: 3.2rem;
+  line-height: 1;
+}
+
+.contact-map__figure {
+  position: relative;
+  margin: 0;
+}
+
+.contact-map__svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.contact-map__svg path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-map__svg .cm-frame { stroke: var(--ink); stroke-width: 3; }
+.contact-map__svg .cm-coast { stroke: var(--blue); stroke-width: 4; }
+.contact-map__svg .cm-bridge { stroke: var(--orange); stroke-width: 3.4; }
+.contact-map__svg .cm-build { stroke: var(--ink); stroke-width: 2.8; }
+.contact-map__svg .cm-wave { stroke: var(--blue); stroke-width: 2.2; opacity: 0.7; }
+.contact-map__svg .cm-tree { stroke: var(--green); stroke-width: 2.6; }
+.contact-map__svg .cm-route { stroke: var(--pink); stroke-width: 2.6; }
+
+.contact-map__svg .cm-label {
+  font-family: var(--font-hand);
+  font-size: 30px;
+  font-weight: 700;
+  fill: var(--ink-soft);
+}
+
+.contact-map__svg .cm-label--sm { font-size: 26px; }
+.contact-map__svg .cm-label--xs { font-size: 20px; fill: var(--blue); }
+
+.contact-map__ferry {
+  position: absolute;
+  left: 49%;
+  top: 60%;
+  width: 10%;
+  height: auto;
+  overflow: visible;
+}
+
+.contact-map__ferry path {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 2.4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.contact-map__gull {
+  position: absolute;
+  width: 6%;
+  height: auto;
+  overflow: visible;
+}
+
+.contact-map__gull path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+
+.contact-map__gull--1 { left: 22%; top: 13%; }
+.contact-map__gull--2 { left: 30%; top: 8%; width: 4.5%; }
+.contact-map__gull--3 { left: 82%; top: 16%; width: 5%; }
+
+.contact-map__pin {
+  position: absolute;
+  left: 66.6%;
+  top: 48.6%;
+  width: 7%;
+  transform: translate(-50%, -100%);
+}
+
+.contact-map__pin svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  transform-origin: 50% 100%;
+}
+
+.contact-map__pin path {
+  fill: var(--pink);
+  stroke: var(--ink);
+  stroke-width: 2.6;
+  stroke-linejoin: round;
+}
+
+.contact-map__pin circle {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 2.4;
+}
+
+.contact-map__pin-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 70%;
+  height: 8px;
+  margin-left: -35%;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--ink) 22%, transparent);
+  z-index: -1;
+}
+
+.contact-map__cap {
+  position: absolute;
+  left: 60%;
+  top: 54%;
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  white-space: nowrap;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width: 900px) {
+  .contact-hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-hero__art {
+    width: min(78%, 360px);
+    order: -1;
+    margin-top: 10px;
+  }
+
+  .contact-hero__arrow {
+    display: none;
+  }
+
+  .contact-hero__scroll {
+    display: none;
+  }
+
+  .contact-map__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-stamps__item {
+    width: min(300px, 44%);
+  }
+
+  .contact-stamps__item:nth-child(n) { margin-top: 0; }
+  .contact-stamps__item:nth-child(even) { margin-top: 30px; }
+}
+
+@media (max-width: 680px) {
+  .contact-faq__board {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-faq__wrap:nth-child(even) {
+    margin-top: 0;
+  }
+
+  .contact-stamps__item {
+    width: min(330px, 100%);
+  }
+
+  .contact-stamps__item:nth-child(even) { margin-top: 0; }
+}
+
+@media (max-width: 600px) {
+  .contact-paper {
+    --L: 3.1rem;
+    padding-left: 40px;
+    padding-right: 20px;
+  }
+
+  .contact-paper::before {
+    left: 26px;
+  }
+
+  .contact-paper::after {
+    left: 6px;
+  }
+
+  .contact-paper__postage {
+    transform: scale(0.72);
+    transform-origin: top right;
+    top: 10px;
+    right: 8px;
+  }
+
+  .contact-paper__date {
+    padding-right: 84px;
+    font-size: 1.3rem;
+    text-align: left;
+  }
+
+  /* mad-libs alanları tam genişlik */
+  .contact-field {
+    display: block;
+    margin: 2px 0 26px;
+  }
+
+  .contact-field__input {
+    width: 100% !important;
+    padding-right: 1.6em;
+  }
+
+  .contact-field__tick,
+  .contact-field--select .contact-field__tick {
+    right: 2px;
+  }
+
+  .contact-field--select .contact-field__caret {
+    right: 1.4em;
+  }
+
+  .contact-field--area {
+    margin-bottom: 12px;
+  }
+
+  .contact-paper__txt {
+    display: block;
+  }
+
+  .contact-paper__sentence {
+    line-height: 1.6;
+  }
+
+  .contact-paper__sentence .contact-paper__lbl,
+  .contact-paper__sentence .contact-paper__txt {
+    font-size: 1.15rem;
+  }
+
+  .contact-paper__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contact-hero__plane-note {
+    right: -4%;
+    font-size: 1.4rem;
+  }
+
+  .contact-stamp__mark {
+    width: 84px;
+    height: 84px;
+    right: -8px;
+  }
+
+  .contact-airmail__track {
+    font-size: 1.1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-status__dot::after,
+  .contact-hero__scroll .doodle {
+    animation: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-paper__comma {
+    display: none;
+  }
+}
+
+.contact-field--select .contact-field__input:invalid {
+  color: rgba(22, 23, 20, 0.55);
+  font-weight: 400;
+}
+
+@media (max-width: 900px) {
+  .contact-hero__deco--2,
+  .contact-hero__deco--3 {
+    display: none;
+  }
+}
+
+/* =========================================================
+   Ek: hero ikincil link, durum mesajı, adres etiketi, EN düzeltmeleri
+   ========================================================= */
+.contact-hero__alt {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-hand);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--pink);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 6px;
+  transition: transform 0.35s var(--ease-bounce), color 0.2s ease;
+}
+
+.contact-hero__alt .doodle {
+  --c: var(--pink);
+}
+
+.contact-hero__alt:hover {
+  color: var(--pink);
+  transform: rotate(-2deg);
+}
+
+.contact-paper__status {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--cp-red);
+  margin-top: 14px;
+}
+
+.contact-paper__status:empty {
+  display: none;
+}
+
+.contact-sketch__ph .doodle {
+  --sw: 2.5;
+}
+
+/* --- adres etiketi (kargo etiketi) --- */
+.contact-label-wrap {
+  margin-bottom: 34px;
+  max-width: 460px;
+}
+
+.contact-label {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  font-style: normal;
+  color: #161714;
+  background-color: #e9dcb5;
+  background-image: linear-gradient(to bottom, rgba(22, 23, 20, 0.05), transparent 40%);
+  padding: 30px 26px 22px 30px;
+  border-radius: 4px 4px 14px 4px;
+  transform: rotate(-1.2deg);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 16px 30px -14px rgba(22, 23, 20, 0.45);
+}
+
+[data-theme="dark"] .contact-label {
+  box-shadow: 5px 7px 0 rgba(226, 194, 124, 0.18);
+}
+
+/* kesik çizgi iç çerçeve */
+.contact-label::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 2px dashed rgba(22, 23, 20, 0.32);
+  border-radius: 3px 3px 10px 3px;
+  pointer-events: none;
+}
+
+.contact-label__tape {
+  top: -13px;
+  left: auto;
+  right: 18%;
+  width: 84px;
+  transform: rotate(4deg);
+}
+
+.contact-label__head {
+  justify-self: start;
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a8411a;
+  border: 2px solid #a8411a;
+  border-radius: 6px;
+  padding: 0 8px;
+  line-height: 1.5;
+  transform: rotate(-3deg);
+}
+
+.contact-label__name {
+  font-family: var(--font-hand);
+  font-size: 2.3rem;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.contact-label__row {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  align-items: start;
+  gap: 10px;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: #161714;
+  overflow-wrap: anywhere;
+}
+
+.contact-label__row .doodle {
+  --size: 24px;
+  --c: #4f5a2a;
+  --sw: 2.6;
+  margin-top: 1px;
+}
+
+.contact-label__row a {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(168, 65, 26, 0.6);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: color 0.2s ease;
+}
+
+.contact-label__row a:hover {
+  color: #a8411a;
+}
+
+.contact-label a:focus-visible {
+  outline-color: #161714;
+}
+
+.contact-label__note {
+  font-size: 0.85rem;
+  color: rgba(22, 23, 20, 0.7);
+  border-top: 1.5px dashed rgba(22, 23, 20, 0.28);
+  padding-top: 8px;
+  margin-top: 2px;
+}
+
+.contact-stamp__value {
+  font-size: 1.45rem;
+}
+
+/* İngilizce cümlede tek başına nokta mobilde ayrı satıra düşmesin */
+@media (max-width: 600px) {
+  [data-lang="en"] .contact-paper__txt--1 {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .contact-label-wrap {
+    max-width: none;
+  }
+}

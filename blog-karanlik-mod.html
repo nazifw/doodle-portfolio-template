@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="tr" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CSS custom property token&#x27;ları, [data-theme] seçicisi, localStorage ile tercih hatırlama, ilk boyamada yanıp sönmeyi önleyen head betiği ve View Transitions ile dairesel tema geçişi." data-i18n-attr="content:blog.dm.desc">
+  <meta name="author" content="Ad Soyad">
+  <meta name="theme-color" content="#fbfaf6">
+  <title data-i18n="blog.dm.metaTitle">CSS değişkenleriyle karanlık mod | Ad Soyad Blog</title>
+  <meta property="og:title" content="CSS değişkenleriyle karanlık mod | Ad Soyad Blog" data-i18n-attr="content:blog.dm.metaTitle">
+  <meta property="og:description" content="CSS custom property token&#x27;ları, [data-theme] seçicisi, localStorage ile tercih hatırlama, ilk boyamada yanıp sönmeyi önleyen head betiği ve View Transitions ile dairesel tema geçişi." data-i18n-attr="content:blog.dm.desc">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="img/blog/dm-split.webp">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="article:published_time" content="2026-10-30">
+  <meta property="article:author" content="Ad Soyad">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%8F%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/caveat-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/caveat-400-700-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/kalam-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/kalam-400-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/core.css">
+  <link rel="stylesheet" href="css/pages/blog.css">
+  <script>
+    (function () {
+      var d = document.documentElement, t = null, l = null;
+      try { t = localStorage.getItem("theme"); l = localStorage.getItem("lang"); } catch (e) {}
+      if (t === "dark" || (!t && matchMedia("(prefers-color-scheme: dark)").matches)) d.setAttribute("data-theme", "dark");
+      if (l === "en") { d.lang = "en"; d.classList.add("lang-pending"); }
+      try {
+        if (!matchMedia("(prefers-reduced-motion: reduce)").matches &&
+            (!sessionStorage.getItem("doodle-visited") || sessionStorage.getItem("doodle-transition") === "1")) d.classList.add("doodle-cover");
+      } catch (e) {}
+    })();
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "CSS değişkenleriyle karanlık mod: beyaz defter, siyah defter",
+  "alternativeHeadline": "Dark mode with CSS variables: a white notebook, a black notebook",
+  "description": "CSS custom property token'ları, [data-theme] seçicisi, localStorage ile tercih hatırlama, ilk boyamada yanıp sönmeyi önleyen head betiği ve View Transitions ile dairesel tema geçişi.",
+  "image": [
+    "img/blog/dm-split.webp",
+    "img/blog/dm-tokens.webp",
+    "img/blog/dm-transition.webp"
+  ],
+  "datePublished": "2026-10-30",
+  "dateModified": "2026-10-30",
+  "inLanguage": "tr",
+  "wordCount": 650,
+  "timeRequired": "PT5M",
+  "keywords": "CSS, Custom Properties, localStorage, View Transitions",
+  "articleSection": "Frontend",
+  "url": "blog-karanlik-mod.html",
+  "mainEntityOfPage": "blog-karanlik-mod.html",
+  "author": {
+    "@type": "Person",
+    "name": "Ad Soyad",
+    "email": "mailto:ornek@mail.com",
+    "url": "hakkimda.html",
+    "jobTitle": "Bilgisayar Mühendisliği öğrencisi, frontend geliştirici"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Ad Soyad"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "Ad Soyad — Kod Defteri",
+    "url": "blog.html"
+  }
+}
+  </script>
+</head>
+<body class="blog-page blog-page--post" data-page-name="blog" data-page-name-en="blog">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">İçeriğe geç</a>
+
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Ad Soyad">
+        <span class="doodle" data-doodle="sparkle"></span>ad.soyad
+      </a>
+      <nav aria-label="Ana menü" data-i18n-attr="aria-label:nav.menuLabel">
+        <ul class="nav__links">
+          <li><a class="nav__link" href="index.html" data-page-name="ana sayfa" data-page-name-en="home" data-i18n="nav.home">Ana Sayfa</a></li>
+          <li><a class="nav__link" href="hakkimda.html" data-page-name="hakkımda" data-page-name-en="about" data-i18n="nav.about">Hakkımda</a></li>
+          <li><a class="nav__link" href="projeler.html" data-page-name="projeler" data-page-name-en="projects" data-i18n="nav.work">Projeler</a></li>
+          <li><a class="nav__link" href="blog.html" data-page-name="blog" data-page-name-en="blog" data-i18n="nav.blog">Blog</a></li>
+          <li><a class="nav__link" href="galeri.html" data-page-name="galeri" data-page-name-en="gallery" data-i18n="nav.gallery">Galeri</a></li>
+          <li><a class="nav__link" href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact" data-i18n="nav.contact">İletişim</a></li>
+        </ul>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn lang-toggle" type="button" aria-label="Switch to English">
+          <span class="lang-toggle__label">EN</span>
+        </button>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Temayı değiştir">
+          <span class="doodle doodle--moon" data-doodle="moon"></span>
+          <span class="doodle doodle--sun" data-doodle="sun"></span>
+        </button>
+        <button class="icon-btn burger" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobileMenu">
+          <span class="burger__lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="index.html" data-page-name="ana sayfa" data-page-name-en="home"><small>01</small><span data-i18n="nav.home">Ana Sayfa</span></a>
+    <a href="hakkimda.html" data-page-name="hakkımda" data-page-name-en="about"><small>02</small><span data-i18n="nav.about">Hakkımda</span></a>
+    <a href="projeler.html" data-page-name="projeler" data-page-name-en="projects"><small>03</small><span data-i18n="nav.work">Projeler</span></a>
+    <a href="blog.html" data-page-name="blog" data-page-name-en="blog"><small>04</small><span data-i18n="nav.blog">Blog</span></a>
+    <a href="galeri.html" data-page-name="galeri" data-page-name-en="gallery"><small>05</small><span data-i18n="nav.gallery">Galeri</span></a>
+    <a href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact"><small>06</small><span data-i18n="nav.contact">İletişim</span></a>
+  </div>
+
+  <main id="main" class="blog-main">
+    <div class="blog-progress" aria-hidden="true">
+      <svg class="blog-progress__svg" viewBox="0 0 1000 12" preserveAspectRatio="none"><path class="blog-progress__track" d="M0 6 C 80 2, 160 10, 250 6 S 420 2, 500 6 S 670 10, 750 6 S 920 2, 1000 6"/><path class="blog-progress__ink" pathLength="1" d="M0 6 C 80 2, 160 10, 250 6 S 420 2, 500 6 S 670 10, 750 6 S 920 2, 1000 6"/></svg>
+      <span class="blog-progress__tip"><svg viewBox="0 0 46 26"><path d="M4 5 L32 5 L44 13 L32 21 L4 21 Z" fill="var(--yellow)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><path d="M32 5 L44 13 L32 21 Z" fill="#f3d9b1" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><path d="M40 10.3 L44 13 L40 15.7 Z" fill="var(--ink)"/><path d="M4 5 L10 5 L10 21 L4 21 Z" fill="var(--pink)" stroke="var(--ink)" stroke-width="2"/></svg></span>
+    </div>
+
+    <article class="blog-post" aria-labelledby="postTitle">
+      <header class="blog-post__head container">
+        <a class="blog-back" href="blog.html" data-page-name="blog"><span class="doodle" data-doodle="arrow" style="--size:30px;--c:var(--pink)"></span><span data-i18n="blog.ui.allPosts">Tüm yazılar</span></a>
+        <ul class="blog-tags" aria-label="Etiketler" data-i18n-attr="aria-label:blog.ui.tags">
+          <li class="chip" style="--r:1.2deg">CSS</li>
+          <li class="chip" style="--r:-1.5deg">Custom Properties</li>
+          <li class="chip" style="--r:1.2deg">localStorage</li>
+          <li class="chip" style="--r:-1.5deg">View Transitions</li>
+        </ul>
+        <h1 id="postTitle" class="blog-post__title" data-split data-i18n="blog.dm.title">CSS değişkenleriyle karanlık mod: beyaz defter, siyah defter</h1>
+        <p class="blog-post__lead" data-reveal="up" data-delay="0.3" data-i18n="blog.dm.lead">Bu sitenin iki hali var: açık temada <strong>beyaz defter, siyah mürekkep</strong>; koyu temada <strong>siyah defter, beyaz mürekkep</strong>. Geçiş tek bir öznitelikle oluyor. Bu yazıda token yapısını, tercihi hatırlamayı, sayfa açılırken yanıp sönmeyi önlemeyi ve ay düğmesinden yayılan dairesel geçişi anlatıyorum.</p>
+        <p class="blog-post__meta" data-reveal="fade" data-delay="0.45">
+          <img class="blog-post__avatar" src="img/avatar.svg" width="44" height="44" alt="">
+          <span><span class="blog-post__author" data-bind="name">Ad Soyad</span>
+          <span class="blog-post__sub"><time datetime="2026-10-30" data-i18n="blog.dm.date">30 Ekim 2026</time> · <span data-i18n="blog.dm.read">5 dk okuma</span></span></span>
+        </p>
+      </header>
+
+      <div class="blog-post__layout container">
+        <nav class="blog-toc" aria-label="İçindekiler" data-i18n-attr="aria-label:blog.ui.toc">
+          <details class="blog-toc__box" open>
+            <summary class="blog-toc__sum"><span class="doodle" data-doodle="hash" style="--size:22px;--c:var(--pink)"></span><span data-i18n="blog.ui.toc">İçindekiler</span></summary>
+            <ol class="blog-toc__list">
+            <li><a href="#s-token" data-i18n="blog.dm.b2">Token'lar: renge değil, role isim ver</a></li>
+            <li><a href="#s-hatirla" data-i18n="blog.dm.b10">Tercihi hatırlamak</a></li>
+            <li><a href="#s-flas" data-i18n="blog.dm.b14">İlk boyamadaki beyaz flaşı önlemek</a></li>
+            <li><a href="#s-gecis" data-i18n="blog.dm.b19">View Transitions ile dairesel geçiş</a></li>
+            <li><a href="#s-ozet" data-i18n="blog.dm.b26">Kısaca</a></li>
+            </ol>
+          </details>
+        </nav>
+
+        <div class="blog-prose">
+        <figure class="blog-fig" style="--r:-0.8deg">
+          <button class="blog-fig__frame" type="button" data-zoom>
+            <span class="tape" aria-hidden="true"></span>
+            <img src="img/blog/dm-split.webp" width="1280" height="800" loading="lazy" decoding="async" alt="Projeler sayfasının üst kısmı çapraz bir pas rengi çizgiyle ikiye bölünmüş: sol taraf açık temada beyaz defter, sağ taraf koyu temada siyah defter." data-i18n-attr="alt:blog.dm.b1.alt">
+            <span class="blog-fig__zoom" aria-hidden="true"><span class="doodle" data-doodle="eye" style="--size:24px;--c:#161714"></span></span>
+            <span class="sr-only" data-i18n="blog.ui.zoom">(büyütmek için tıkla)</span>
+          </button>
+          <figcaption data-i18n="blog.dm.b1.cap">Aynı sayfa, aynı HTML: soldan sağa değişen tek şey <code>data-theme</code>.</figcaption>
+        </figure>
+      <section class="blog-sec" id="s-token" aria-labelledby="s-token-t">
+        <h2 id="s-token-t" data-i18n="blog.dm.b2">Token'lar: renge değil, role isim ver</h2>
+        <svg class="blog-h2-line" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true" data-draw><path d="M3 9 C 60 3, 120 12, 180 7 S 262 3, 297 8"/></svg>
+        <p data-i18n="blog.dm.b3">Karanlık modun sırrı, CSS'te renkleri hiçbir zaman doğrudan yazmamak. Her renk bir değişkenin (custom property) arkasında duruyor: <code>--paper</code> defterin zemini, <code>--ink</code> mürekkep, <code>--pink</code> ana vurgu. Bileşenler sadece bu isimleri kullanıyor. Koyu tema da bileşenlere dokunmuyor; aynı isimlere yeni değerler veriyor.</p>
+        <div class="blog-code" data-lang="css">
+          <div class="blog-code__bar">
+            <span class="blog-code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="blog-code__file">core.css</span>
+            <button class="blog-code__copy" type="button" data-juice><span class="doodle" data-doodle="check" style="--size:18px"></span><span class="blog-code__copy-label" data-i18n="blog.ui.copy">kopyala</span></button>
+          </div>
+          <pre tabindex="0"><code class="language-css" data-i18n="blog.dm.b4">:root {
+  --paper: #fbfaf6;  /* defter zemini */
+  --ink: #161714;    /* mürekkep */
+  --pink: #c4501f;   /* adı pembe, kendisi pas: ana vurgu */
+  --shadow-hard: 5px 6px 0 var(--ink);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --paper: #121311;
+  --ink: #f2f0ea;
+  --pink: #e07a4a;
+  /* siyah zeminde siyah gölge görünmez → kum tonlu gölge */
+  --shadow-hard: 5px 6px 0 rgba(226, 194, 124, 0.28);
+  color-scheme: dark;
+}
+
+body { background: var(--paper); color: var(--ink); }</code></pre>
+        </div>
+        <p data-i18n="blog.dm.b5">Koddaki yoruma dikkat: <code>--pink</code> artık pembe değil. Sitenin ilk taslağında pastel bir palet vardı, sonra toprak tonlarına (haki, kum, pas) geçtim. Değişken adları aynı kaldı, sadece değerler değişti ve yüzlerce satır CSS'e dokunmadım. Yine de bugün baştan yazsam <code>--accent</code> gibi role göre isim verirdim; bu yüzden core.css'e <code>--accent: var(--pink)</code> gibi anlamlı takma adlar ekledim.</p>
+        <figure class="blog-fig" style="--r:0.8deg">
+          <button class="blog-fig__frame" type="button" data-zoom>
+            <span class="tape" aria-hidden="true"></span>
+            <img src="img/blog/dm-tokens.webp" width="950" height="455" loading="lazy" decoding="async" alt="İki sütunlu bir panel: solda açık tema değerleri, sağda koyu tema değerleri. Her satırda renk dairesi, değişken adı ve onaltılık değer var; örneğin --paper açıkta #fbfaf6, koyuda #121311." data-i18n-attr="alt:blog.dm.b6.alt">
+            <span class="blog-fig__zoom" aria-hidden="true"><span class="doodle" data-doodle="eye" style="--size:24px;--c:#161714"></span></span>
+            <span class="sr-only" data-i18n="blog.ui.zoom">(büyütmek için tıkla)</span>
+          </button>
+          <figcaption data-i18n="blog.dm.b6.cap">Sayfanın içinden <code>getComputedStyle</code> ile okuduğum token'lar: aynı isim, iki değer.</figcaption>
+        </figure>
+        <p data-i18n="blog.dm.b7"><code>color-scheme</code> satırını atlama. Bu özellik tarayıcıya kaydırma çubuklarını, form alanlarını ve otomatik doldurma renklerini de temaya uydurmasını söylüyor. Onu yazmazsan siyah defterin kenarında bembeyaz bir kaydırma çubuğu kalıyor.</p>
+        <h3 data-i18n="blog.dm.b8">Kağıt her temada kağıttır</h3>
+        <p data-i18n="blog.dm.b9">Her şey değişkene bağlı olunca ters giden bir şey oldu: post-it'ler de koyu temada kararıyordu. Gerçek hayatta siyah bir defterin üstüne yapıştırdığın sarı not kağıdı sararmaya devam eder. Bu yüzden post-it ve polaroid gibi “fiziksel” nesneler iki temada da açık renk, üstlerindeki yazı her zaman koyu mürekkep. Kural basit: zemin ve mürekkep temaya uyar, üstüne yapıştırılan nesneler uymaz.</p>
+      </section>
+      <section class="blog-sec" id="s-hatirla" aria-labelledby="s-hatirla-t">
+        <h2 id="s-hatirla-t" data-i18n="blog.dm.b10">Tercihi hatırlamak</h2>
+        <svg class="blog-h2-line" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true" data-draw><path d="M3 9 C 60 3, 120 12, 180 7 S 262 3, 297 8"/></svg>
+        <p data-i18n="blog.dm.b11">Kullanıcı ay düğmesine bastığında üç şey oluyor: <code>&lt;html&gt;</code> öğesine <code>data-theme</code> yazılıyor, seçim <code>localStorage</code>'a kaydediliyor ve diğer scriptler haberdar olsun diye bir olay yayınlanıyor. Düğmenin <code>aria-pressed</code> durumu da güncelleniyor; ekran okuyucu kullanıcısı düğmenin açık mı kapalı mı olduğunu duyabiliyor.</p>
+        <div class="blog-code" data-lang="js">
+          <div class="blog-code__bar">
+            <span class="blog-code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="blog-code__file">core.js</span>
+            <button class="blog-code__copy" type="button" data-juice><span class="doodle" data-doodle="check" style="--size:18px"></span><span class="blog-code__copy-label" data-i18n="blog.ui.copy">kopyala</span></button>
+          </div>
+          <pre tabindex="0"><code class="language-js">btn.addEventListener("click", () =&gt; {
+  const next = root.dataset.theme === "dark" ? "light" : "dark";
+  root.setAttribute("data-theme", next);
+  localStorage.setItem("theme", next);
+  btn.setAttribute("aria-pressed", String(next === "dark"));
+  document.dispatchEvent(new CustomEvent("doodle:theme", { detail: next }));
+});</code></pre>
+        </div>
+        <p data-i18n="blog.dm.b13">Kullanıcı hiç seçim yapmadıysa ne olacak? O zaman işletim sistemine soruyoruz: <code>prefers-color-scheme: dark</code> eşleşiyorsa siyah defterle açılıyoruz. Yani site, gece telefonunu karanlık modda kullanan birine ilk ziyarette bile göz kamaştırmıyor.</p>
+      </section>
+      <section class="blog-sec" id="s-flas" aria-labelledby="s-flas-t">
+        <h2 id="s-flas-t" data-i18n="blog.dm.b14">İlk boyamadaki beyaz flaşı önlemek</h2>
+        <svg class="blog-h2-line" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true" data-draw><path d="M3 9 C 60 3, 120 12, 180 7 S 262 3, 297 8"/></svg>
+        <p data-i18n="blog.dm.b15">Tema kodunu sayfanın sonundaki JavaScript dosyasına koyarsan şu olur: tarayıcı önce HTML'i ve CSS'i okur, sayfayı varsayılan açık temayla boyar, ancak sonra script çalışıp koyu temaya geçer. Sonuç: koyu tema seçmiş kullanıcının gözüne her sayfa açılışında bir beyaz flaş. Çözüm, birkaç satırlık küçük bir betiği <code>&lt;head&gt;</code> içine, CSS'ten hemen sonra ve gövdeden önce koymak.</p>
+        <div class="blog-code" data-lang="html">
+          <div class="blog-code__bar">
+            <span class="blog-code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="blog-code__file">her-sayfa.html</span>
+            <button class="blog-code__copy" type="button" data-juice><span class="doodle" data-doodle="check" style="--size:18px"></span><span class="blog-code__copy-label" data-i18n="blog.ui.copy">kopyala</span></button>
+          </div>
+          <pre tabindex="0"><code class="language-html">&lt;head&gt;
+  &lt;link rel="stylesheet" href="css/core.css"&gt;
+  &lt;script&gt;
+    (function () {
+      var d = document.documentElement, t = null;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (t === "dark" || (!t &amp;&amp; matchMedia("(prefers-color-scheme: dark)").matches))
+        d.setAttribute("data-theme", "dark");
+    })();
+  &lt;/script&gt;
+&lt;/head&gt;</code></pre>
+        </div>
+        <p data-i18n="blog.dm.b17">Bu betik senkron çalışır ve ilk boyamadan önce biter, bu yüzden sayfa doğrudan doğru temayla çizilir. <code>try/catch</code> gereksiz görünebilir ama bazı gizli pencerelerde <code>localStorage</code>'a erişmek hata fırlatır; hata olursa da sayfa sistem tercihine göre açılmaya devam eder. Sitenin dil tercihi (TR/EN) de aynı betikte aynı şekilde okunuyor.</p>
+        <aside class="blog-note" data-reveal="up">
+          <div class="sticky pink blog-note__paper" style="--r:1.4deg">
+            <span class="pin" aria-hidden="true"></span>
+            <p class="blog-note__title" data-i18n="blog.dm.b18.t">Neden harici dosya değil?</p>
+            <p data-i18n="blog.dm.b18">Harici bir <code>theme.js</code> dosyası ağdan inene kadar sayfayı bekletir. Satır içi dört satır ise HTML ile birlikte gelir. Burada performans ile doğruluk aynı tarafta.</p>
+          </div>
+        </aside>
+      </section>
+      <section class="blog-sec" id="s-gecis" aria-labelledby="s-gecis-t">
+        <h2 id="s-gecis-t" data-i18n="blog.dm.b19">View Transitions ile dairesel geçiş</h2>
+        <svg class="blog-h2-line" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true" data-draw><path d="M3 9 C 60 3, 120 12, 180 7 S 262 3, 297 8"/></svg>
+        <p data-i18n="blog.dm.b20">Tema anında değişebilir, ama defter temasında daha güzel bir şey mümkün: siyah mürekkep, ay düğmesinden başlayıp sayfaya bir daire gibi yayılıyor. Bunu View Transitions API ile yapıyorum. <code>document.startViewTransition()</code> tarayıcıdan eski ekranın bir fotoğrafını çekmesini, değişikliği uygulamasını ve yeni ekranın fotoğrafını çekmesini istiyor. Sonra yeni fotoğrafı bir <code>clip-path</code> dairesiyle açıyorum.</p>
+        <div class="blog-code" data-lang="js">
+          <div class="blog-code__bar">
+            <span class="blog-code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="blog-code__file">core.js</span>
+            <button class="blog-code__copy" type="button" data-juice><span class="doodle" data-doodle="check" style="--size:18px"></span><span class="blog-code__copy-label" data-i18n="blog.ui.copy">kopyala</span></button>
+          </div>
+          <pre tabindex="0"><code class="language-js" data-i18n="blog.dm.b21">const x = e.clientX, y = e.clientY;
+// tıklanan noktadan en uzak köşeye mesafe = dairenin son yarıçapı
+const r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+
+if (document.startViewTransition &amp;&amp; !reducedMotion) {
+  const vt = document.startViewTransition(apply);
+  vt.ready.then(() =&gt; {
+    document.documentElement.animate(
+      { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${r}px at ${x}px ${y}px)`] },
+      { duration: 700, easing: "cubic-bezier(.22,1,.36,1)",
+        pseudoElement: "::view-transition-new(root)" }
+    );
+  });
+} else {
+  apply(); // desteklemeyen tarayıcı veya azaltılmış hareket: anında değiş
+}</code></pre>
+        </div>
+        <figure class="blog-fig" style="--r:1deg">
+          <button class="blog-fig__frame" type="button" data-zoom>
+            <span class="tape" aria-hidden="true"></span>
+            <img src="img/blog/dm-transition.webp" width="1280" height="800" loading="lazy" decoding="async" alt="Tema geçişinin ortasında durdurulmuş an: sayfanın büyük kısmı siyah defter, sol alt köşede kalan kavisli bir alan hâlâ beyaz defter." data-i18n-attr="alt:blog.dm.b22.alt">
+            <span class="blog-fig__zoom" aria-hidden="true"><span class="doodle" data-doodle="eye" style="--size:24px;--c:#161714"></span></span>
+            <span class="sr-only" data-i18n="blog.ui.zoom">(büyütmek için tıkla)</span>
+          </button>
+          <figcaption data-i18n="blog.dm.b22.cap">Animasyonu <code>document.getAnimations()</code> ile ortasında durdurdum: daire sağ üstteki düğmeden yayılıyor.</figcaption>
+        </figure>
+        <p data-i18n="blog.dm.b23">Ekran görüntüsünü alırken bir şey fark ettim: tarayıcı, eski ve yeni fotoğrafa varsayılan olarak bir de çapraz solma (crossfade) animasyonu uyguluyor. Dairenin dışında kalan eski görüntü yavaşça soluklaşıyor ve kısa bir an gri bir ara ton beliriyor. Dairenin tek başına çalışması için bu varsayılanı kapatmak gerekiyor:</p>
+        <div class="blog-code" data-lang="css">
+          <div class="blog-code__bar">
+            <span class="blog-code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="blog-code__file">tema.css</span>
+            <button class="blog-code__copy" type="button" data-juice><span class="doodle" data-doodle="check" style="--size:18px"></span><span class="blog-code__copy-label" data-i18n="blog.ui.copy">kopyala</span></button>
+          </div>
+          <pre tabindex="0"><code class="language-css" data-i18n="blog.dm.b24">/* varsayılan çapraz solmayı kapat: daire tek başına çalışsın */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}</code></pre>
+        </div>
+        <p data-i18n="blog.dm.b25">View Transitions'ı desteklemeyen tarayıcılarda ve hareketi azaltmayı seçen kullanıcılarda tema yine değişiyor, sadece animasyonsuz. Efekt bir ödül; işlevin ön koşulu değil.</p>
+      </section>
+      <section class="blog-sec" id="s-ozet" aria-labelledby="s-ozet-t">
+        <h2 id="s-ozet-t" data-i18n="blog.dm.b26">Kısaca</h2>
+        <svg class="blog-h2-line" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true" data-draw><path d="M3 9 C 60 3, 120 12, 180 7 S 262 3, 297 8"/></svg>
+        <ul class="blog-check">
+          <li><span class="doodle" data-doodle="check" style="--size:26px;--c:var(--blue)"></span><span data-i18n="blog.dm.b27.0">Renkleri hep değişkenle yaz; koyu tema yalnızca değerleri değiştirsin.</span></li>
+          <li><span class="doodle" data-doodle="check" style="--size:26px;--c:var(--blue)"></span><span data-i18n="blog.dm.b27.1"><code>color-scheme</code> ile kaydırma çubuğu ve form alanlarını da temaya uydur.</span></li>
+          <li><span class="doodle" data-doodle="check" style="--size:26px;--c:var(--blue)"></span><span data-i18n="blog.dm.b27.2">Fiziksel nesneler (post-it, polaroid) iki temada da kağıt rengi kalsın.</span></li>
+          <li><span class="doodle" data-doodle="check" style="--size:26px;--c:var(--blue)"></span><span data-i18n="blog.dm.b27.3">Tercihi <code>localStorage</code>'a yaz, yoksa <code>prefers-color-scheme</code>'a bak.</span></li>
+          <li><span class="doodle" data-doodle="check" style="--size:26px;--c:var(--blue)"></span><span data-i18n="blog.dm.b27.4">Temayı <code>&lt;head&gt;</code> içindeki satır içi betikle uygula: flaş yok.</span></li>
+          <li><span class="doodle" data-doodle="check" style="--size:26px;--c:var(--blue)"></span><span data-i18n="blog.dm.b27.5">View Transitions bir süs; desteklenmiyorsa anında geçiş yeter.</span></li>
+        </ul>
+      </section>
+
+        <footer class="blog-end">
+          <p class="blog-end__stamp" aria-hidden="true" data-i18n="blog.ui.stamp">bitti!</p>
+          <p class="blog-end__text" data-i18n="blog.ui.thanks">Okuduğun için teşekkürler. Bir yanlış ya da eklemek istediğin bir şey mi gördün? <a href="iletisim.html" data-page-name="iletişim">Bana yaz</a>, defterime not alayım.</p>
+        </footer>
+        </div>
+      </div>
+    </article>
+
+    <nav class="blog-pager container" aria-labelledby="pagerTitle">
+      <h2 id="pagerTitle" class="blog-pager__title" data-i18n="blog.ui.more">Defterde başka ne var?</h2>
+      <div class="blog-pager__grid">
+          <a class="blog-pager__link blog-pager__link--prev" href="blog-mobile-first.html" data-page-name="önce 375 piksel">
+            <span class="blog-pager__dir" data-i18n="blog.ui.older">← Önceki yazı</span>
+            <span class="blog-pager__name" data-i18n="blog.mf.short">Önce 375 piksel</span>
+          </a>
+          <a class="blog-pager__link blog-pager__link--next" href="blog-scrolltrigger.html" data-page-name="kaydırdıkça canlanan sayfalar">
+            <span class="blog-pager__dir" data-i18n="blog.ui.newer">Sonraki yazı →</span>
+            <span class="blog-pager__name" data-i18n="blog.st.short">Kaydırdıkça canlanan sayfalar</span>
+          </a>
+      </div>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <svg class="footer__wave" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true" data-draw="scrub" data-start="top 95%" data-end="top 50%">
+      <path d="M0 30 C 100 5, 200 55, 300 30 S 500 5, 600 30 S 800 55, 900 30 S 1100 5, 1200 30"/>
+    </svg>
+    <div class="container">
+      <p class="footer__big"><a href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact" data-i18n="footer.big">Hadi <span class="scribble-u">konuşalım</span>!</a></p>
+      <div class="footer__row">
+        <div class="footer__socials">
+          <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub" data-bind-href="{github}"><span class="doodle" data-doodle="github" style="--size:26px"></span></a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn" data-bind-href="{linkedin}"><span class="doodle" data-doodle="linkedin" style="--size:26px"></span></a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" data-bind-href="{instagram}"><span class="doodle" data-doodle="instagram" style="--size:26px"></span></a>
+          <a href="mailto:ornek@mail.com" aria-label="E-posta" data-bind-href="mailto:{email}"><span class="doodle" data-doodle="mail" style="--size:26px"></span></a>
+        </div>
+        <p class="footer__copy" data-i18n="footer.copy">© <span data-year>2026</span> Ad Soyad — kalemle, kahveyle ve biraz JavaScript'le çizildi.</p>
+        <a class="footer__admin" href="admin.html" data-i18n="footer.admin">yönetim</a>
+      </div>
+    </div>
+  </footer>
+  <dialog class="blog-lightbox" id="blogLightbox" aria-label="Büyütülmüş ekran görüntüsü" data-i18n-attr="aria-label:blog.ui.lightbox" data-lenis-prevent>
+    <figure class="blog-lightbox__fig">
+      <img class="blog-lightbox__img" src="data:," alt="">
+      <figcaption class="blog-lightbox__cap"></figcaption>
+    </figure>
+    <button class="blog-lightbox__close" type="button" aria-label="Kapat" data-i18n-attr="aria-label:blog.ui.close" data-juice><span class="doodle" data-doodle="x" style="--size:24px;--c:#161714"></span></button>
+  </dialog>
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/pages/blog-karanlik-mod.i18n.js"></script>
+  <script src="js/pages/blog.js"></script>
+</body>
+</html>

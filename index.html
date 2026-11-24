@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="tr" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ad Soyad — Bilgisayar Mühendisliği öğrencisi ve frontend geliştirici. Kendini tanıttığı eskiz defteri: kısa bir hakkımda, Grafik Animasyon çalışmaları ve galeriden kareler." data-i18n-attr="content:home.meta.desc">
+  <meta name="theme-color" content="#fbfaf6">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ad Soyad — eskiz defteri" data-i18n-attr="content:home.meta.ogTitle">
+  <meta property="og:description" content="Bilgisayar Mühendisliği öğrencisi Ad Soyad'ın kişisel sitesi: hakkımda, projeler, galeri." data-i18n-attr="content:home.meta.ogDesc">
+  <meta property="og:image" content="img/profil/vesikalik.jpg">
+  <title data-i18n="home.meta.title">Ana Sayfa | Ad Soyad</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%8F%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/caveat-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/caveat-400-700-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/kalam-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/kalam-400-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/core.css">
+  <link rel="stylesheet" href="css/pages/home.css">
+  <script>
+    (function () {
+      var d = document.documentElement, t = null, l = null;
+      try { t = localStorage.getItem("theme"); l = localStorage.getItem("lang"); } catch (e) {}
+      if (t === "dark" || (!t && matchMedia("(prefers-color-scheme: dark)").matches)) d.setAttribute("data-theme", "dark");
+      if (l === "en") { d.lang = "en"; d.classList.add("lang-pending"); }
+      try {
+        if (!matchMedia("(prefers-reduced-motion: reduce)").matches &&
+            (!sessionStorage.getItem("doodle-visited") || sessionStorage.getItem("doodle-transition") === "1")) d.classList.add("doodle-cover");
+      } catch (e) {}
+    })();
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "#website",
+        "name": "Ad Soyad — Eskiz Defteri",
+        "description": "Bilgisayar Mühendisliği öğrencisi Ad Soyad'ın kişisel web sitesi: hakkımda, projeler, blog, galeri ve iletişim.",
+        "inLanguage": ["tr", "en"],
+        "author": { "@id": "#person" }
+      },
+      {
+        "@type": "Person",
+        "@id": "#person",
+        "name": "Ad Soyad",
+        "email": "mailto:ornek@mail.com",
+        "jobTitle": "Bilgisayar Mühendisliği öğrencisi, frontend geliştirici",
+        "image": "img/profil/vesikalik.jpg",
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Örnek Üniversitesi" },
+        "knowsAbout": ["HTML", "CSS", "JavaScript", "Arayüz tasarımı", "Grafik animasyon", "Adobe Animate", "After Effects"],
+        "address": { "@type": "PostalAddress", "addressLocality": "İstanbul", "addressCountry": "TR" }
+      }
+    ]
+  }
+  </script>
+</head>
+<body data-page-name="ana sayfa" data-page-name-en="home">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">İçeriğe geç</a>
+
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Ad Soyad">
+        <span class="doodle" data-doodle="sparkle"></span>ad.soyad
+      </a>
+      <nav aria-label="Ana menü" data-i18n-attr="aria-label:nav.menuLabel">
+        <ul class="nav__links">
+          <li><a class="nav__link" href="index.html" data-page-name="ana sayfa" data-page-name-en="home" data-i18n="nav.home">Ana Sayfa</a></li>
+          <li><a class="nav__link" href="hakkimda.html" data-page-name="hakkımda" data-page-name-en="about" data-i18n="nav.about">Hakkımda</a></li>
+          <li><a class="nav__link" href="projeler.html" data-page-name="projeler" data-page-name-en="projects" data-i18n="nav.work">Projeler</a></li>
+          <li><a class="nav__link" href="blog.html" data-page-name="blog" data-page-name-en="blog" data-i18n="nav.blog">Blog</a></li>
+          <li><a class="nav__link" href="galeri.html" data-page-name="galeri" data-page-name-en="gallery" data-i18n="nav.gallery">Galeri</a></li>
+          <li><a class="nav__link" href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact" data-i18n="nav.contact">İletişim</a></li>
+        </ul>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn lang-toggle" type="button" aria-label="Switch to English">
+          <span class="lang-toggle__label">EN</span>
+        </button>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Temayı değiştir">
+          <span class="doodle doodle--moon" data-doodle="moon"></span>
+          <span class="doodle doodle--sun" data-doodle="sun"></span>
+        </button>
+        <button class="icon-btn burger" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobileMenu">
+          <span class="burger__lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="index.html" data-page-name="ana sayfa" data-page-name-en="home"><small>01</small><span data-i18n="nav.home">Ana Sayfa</span></a>
+    <a href="hakkimda.html" data-page-name="hakkımda" data-page-name-en="about"><small>02</small><span data-i18n="nav.about">Hakkımda</span></a>
+    <a href="projeler.html" data-page-name="projeler" data-page-name-en="projects"><small>03</small><span data-i18n="nav.work">Projeler</span></a>
+    <a href="blog.html" data-page-name="blog" data-page-name-en="blog"><small>04</small><span data-i18n="nav.blog">Blog</span></a>
+    <a href="galeri.html" data-page-name="galeri" data-page-name-en="gallery"><small>05</small><span data-i18n="nav.gallery">Galeri</span></a>
+    <a href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact"><small>06</small><span data-i18n="nav.contact">İletişim</span></a>
+  </div>
+
+  <main id="main">
+
+    <!-- ============ 1. HERO: defterin kapağı açılıyor ============ -->
+    <section class="home-hero" aria-labelledby="homeName">
+      <div class="home-hero__doodles" aria-hidden="true">
+        <span class="home-hd" style="--x:7%;--y:17%" data-depth="0.9"><span class="home-hd__in"><span class="doodle filled boil" data-doodle="star" style="--size:66px;--c:var(--ink);--fill:var(--pink);--rot:-14deg"></span></span></span>
+        <span class="home-hd" style="--x:84%;--y:15%" data-depth="0.6"><span class="home-hd__in"><span class="doodle" data-doodle="spiral" style="--size:92px;--c:var(--blue);--sw:3.5;--rot:10deg"></span></span></span>
+        <span class="home-hd" style="--x:80%;--y:60%" data-depth="1.1"><span class="home-hd__in"><span class="doodle filled boil" data-doodle="lightning" style="--size:74px;--c:var(--ink);--fill:var(--yellow);--rot:12deg"></span></span></span>
+        <span class="home-hd" style="--x:11%;--y:68%" data-depth="0.8"><span class="home-hd__in"><span class="doodle filled" data-doodle="heart" style="--size:58px;--c:var(--ink);--fill:var(--pink);--rot:-8deg"></span></span></span>
+        <span class="home-hd home-hd--xl" style="--x:58%;--y:9%" data-depth="0.4"><span class="home-hd__in"><span class="doodle" data-doodle="cloud" style="--size:104px;--c:var(--blue);--rot:-4deg"></span></span></span>
+        <span class="home-hd" style="--x:93%;--y:39%" data-depth="1.3"><span class="home-hd__in"><span class="doodle filled" data-doodle="sparkle" style="--size:44px;--c:var(--orange);--rot:0deg"></span></span></span>
+        <span class="home-hd" style="--x:3%;--y:43%" data-depth="0.5"><span class="home-hd__in"><span class="doodle boil" data-doodle="sun" style="--size:76px;--c:var(--orange);--rot:8deg"></span></span></span>
+        <span class="home-hd" style="--x:27%;--y:84%" data-depth="0.7"><span class="home-hd__in"><span class="doodle" data-doodle="flower" style="--size:70px;--c:var(--green);--rot:-10deg"></span></span></span>
+        <span class="home-hd" style="--x:89%;--y:80%" data-depth="1"><span class="home-hd__in"><span class="doodle" data-doodle="rocket" style="--size:72px;--c:var(--purple);--rot:28deg"></span></span></span>
+        <span class="home-hd home-hd--xl" style="--x:21%;--y:9%" data-depth="0.6"><span class="home-hd__in"><span class="doodle" data-doodle="squiggle" style="--size:94px;--c:var(--green);--sw:3.5;--rot:-6deg"></span></span></span>
+        <span class="home-hd home-hd--xl" style="--x:66%;--y:86%" data-depth="0.9"><span class="home-hd__in"><span class="doodle boil" data-doodle="code" style="--size:60px;--c:var(--ink);--rot:-8deg"></span></span></span>
+        <span class="home-hd home-hd--xl" style="--x:46%;--y:91%" data-depth="1.2"><span class="home-hd__in"><span class="doodle" data-doodle="asterisk" style="--size:38px;--c:var(--pink);--rot:0deg"></span></span></span>
+      </div>
+
+      <div class="container home-hero__inner">
+        <p class="home-hero__hello"><span class="hand-note" data-i18n="home.hero.hello">merhaba, ben</span></p>
+
+        <div class="home-hero__title">
+          <span class="home-hero__crown" aria-hidden="true"><span class="doodle" data-doodle="crown" style="--size:100%;--c:var(--yellow);--sw:3.5"></span></span>
+          <h1 class="home-hero__name" id="homeName"><span class="home-hero__line">Ad</span> <span class="home-hero__line home-hero__line--2">Soyad</span></h1>
+          <svg class="home-hero__swoosh" viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M8 26 C120 10 260 8 380 16 C460 21 540 20 592 12"/>
+            <path d="M60 34 C200 24 360 26 520 30"/>
+          </svg>
+        </div>
+
+        <p class="home-hero__role" data-i18n="home.hero.role">
+          <span class="marker" data-delay="1.4">Frontend geliştirici</span> &amp;
+          <span class="marker pink" data-delay="1.8">Bilgisayar Mühendisliği</span> öğrencisi
+        </p>
+        <p class="home-hero__lead" data-i18n="home.hero.lead">Kodla çizim yapıyorum: hızlı, erişilebilir ve kaydırdıkça canlanan arayüzler. İstanbul'dan, bir fincan kahve ve bolca karalamayla.</p>
+
+        <div class="home-hero__ctas">
+          <span class="home-hero__cta"><a class="btn" href="projeler.html" data-magnetic data-page-name="projeler"><span class="doodle" data-doodle="rocket"></span><span data-i18n="home.hero.cta1">Projelerimi gör</span></a></span>
+          <span class="home-hero__cta"><a class="btn ghost" href="iletisim.html" data-magnetic data-page-name="iletişim"><span class="doodle" data-doodle="mail"></span><span data-i18n="home.hero.cta2">İletişime geç</span></a></span>
+        </div>
+
+        <div class="home-hero__note" aria-hidden="true">
+          <div class="sticky yellow" style="--r:5deg">
+            <span class="tape"></span>
+            <span data-i18n="home.hero.note"><strong>şu an:</strong> bu defteri çiziyorum</span> <span class="doodle" data-doodle="pencil" style="--size:24px"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="home-hero__hint" aria-hidden="true">
+        <div class="home-hero__hint-in">
+          <span class="hand-note" data-i18n="home.hero.hint">kaydır!</span>
+          <svg class="home-hero__hint-arrow" viewBox="0 0 120 160">
+            <path d="M30 6 C80 10 104 40 84 62 C64 84 30 70 44 50 C58 30 92 56 80 92 C72 116 60 130 58 150"/>
+            <path d="M40 132 C48 140 54 146 58 152 C64 144 70 136 80 128"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 2. MANİFESTO (sabitlenen paragraf) ============ -->
+    <section class="home-manifesto" aria-labelledby="manifestoTitle">
+      <div class="home-manifesto__side" aria-hidden="true">
+        <span class="home-ms" style="--x:4%;--y:16%"><span class="doodle" data-doodle="spiral" style="--size:80px;--c:var(--pink)"></span></span>
+        <span class="home-ms" style="--x:90%;--y:12%"><span class="doodle" data-doodle="asterisk" style="--size:56px;--c:var(--blue)"></span></span>
+        <span class="home-ms" style="--x:6%;--y:78%"><span class="doodle" data-doodle="sun" style="--size:64px;--c:var(--orange)"></span></span>
+        <span class="home-ms" style="--x:88%;--y:74%"><span class="doodle" data-doodle="flower" style="--size:76px;--c:var(--green)"></span></span>
+      </div>
+      <div class="container home-manifesto__inner">
+        <div class="section-head">
+          <span class="eyebrow"><span class="doodle" data-doodle="pencil"></span><span data-i18n="home.man.eyebrow">sayfa 01 — manifesto</span></span>
+          <h2 id="manifestoTitle" class="home-manifesto__title" data-i18n="home.man.title">Neden çiziyorum?</h2>
+        </div>
+        <p class="home-manifesto__text" data-i18n="home.man.text">
+          Bence iyi bir arayüz bir defter sayfası gibidir:
+          <span class="home-key home-key--o" data-color="blue">sade<svg class="home-key__o" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><path d="M110 8 C60 2 10 18 8 50 C6 82 60 96 110 92 C160 88 196 70 192 44 C188 18 140 4 80 12"/></svg></span>,
+          samimi ve biraz da karalama dolu. Kodu sadece çalışsın diye değil,
+          <span class="home-key home-key--u" data-color="pink">hissettirsin<svg class="home-key__u" viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 12 C40 5 90 4 130 8 C160 11 185 9 197 6 M18 16 C70 11 120 12 182 14"/></svg></span>
+          diye yazıyorum. Piksel piksel düşünür,
+          <span class="home-key home-key--m" data-color="yellow"><span class="home-key__mk" aria-hidden="true"></span>hareketle anlatır</span>,
+          telefonda da dev ekranda da aynı özeni gösteririm. Merak ederim, dener, bozarım ve
+          <span class="home-key home-key--o" data-color="pink">yeniden<svg class="home-key__o" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><path d="M110 8 C60 2 10 18 8 50 C6 82 60 96 110 92 C160 88 196 70 192 44 C188 18 140 4 80 12"/></svg></span>
+          <span class="home-key home-key--m" data-color="green"><span class="home-key__mk" aria-hidden="true"></span>çizerim.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ 3. HAKKIMDA ÖZETİ (polaroid banyo edilir) ============ -->
+    <section class="home-about" aria-labelledby="aboutTitle">
+      <div class="container home-about__grid">
+        <div class="home-about__photo-col">
+          <div class="home-about__drop">
+            <button class="home-about__flip" type="button" aria-pressed="false" data-cursor="hover"
+                    aria-label="Fotoğrafı çevir, arkasındaki notu oku" data-i18n-attr="aria-label:home.about.flipLabel">
+              <span class="home-about__card">
+                <span class="home-about__face home-about__face--front">
+                  <span class="home-about__img">
+                    <img src="img/profil/vesikalik.jpg" width="600" height="800" loading="lazy" decoding="async"
+                         alt="Ad Soyad'ın vesikalık fotoğrafı" data-i18n-attr="alt:home.about.alt">
+                    <span class="home-about__develop" aria-hidden="true"></span>
+                  </span>
+                  <span class="home-about__cap" data-i18n="home.about.cap">ben (genelde bu kadar ciddi değilim)</span>
+                </span>
+                <span class="home-about__face home-about__face--back" aria-hidden="true">
+                  <span class="home-about__back-note" data-i18n="home.about.back">Arka yüze not:<br>en sevdiğim tuş <b>Ctrl+Z</b>,<br>en sevdiğim renk <b>pas</b>,<br>en büyük korkum<br><b>kayıtsız bir dosya</b>.</span>
+                </span>
+              </span>
+            </button>
+            <span class="tape home-about__tape home-about__tape--a" aria-hidden="true"></span>
+            <span class="tape home-about__tape home-about__tape--b" aria-hidden="true"></span>
+          </div>
+          <p class="home-about__flip-hint hand-note" aria-hidden="true">
+            <svg viewBox="0 0 90 60" class="home-about__flip-arrow"><path d="M84 52 C60 56 26 46 18 14"/><path d="M8 24 C12 18 16 12 18 8 C22 14 26 18 32 22"/></svg>
+            <span data-i18n="home.about.flipHint">tıkla, çevir!</span>
+          </p>
+        </div>
+
+        <div class="home-about__text">
+          <div class="section-head">
+            <span class="eyebrow"><span class="doodle" data-doodle="smiley"></span><span data-i18n="home.about.eyebrow">sayfa 02 — kısaca ben</span></span>
+            <h2 id="aboutTitle" data-i18n="home.about.title">Defterin <span class="scribble-u" data-color="var(--pink)">sahibi</span></h2>
+          </div>
+          <p class="home-about__lead" data-i18n="home.about.p1">Merhaba! Ben Ad; <span class="marker">Bilgisayar Mühendisliği</span> 2. sınıf öğrencisiyim. Gündüzleri algoritma ve veri yapılarıyla boğuşuyor, geceleri arayüzlere hareket katıyorum.</p>
+          <p data-i18n="home.about.p2">Tek satır kod yazmadan önce defterime karalarım: iyi bir arayüzün de iyi bir algoritma kadar özen istediğine inanırım. Bu dönem Grafik Animasyon dersinde zamanlamanın ve <span class="marker green">squash &amp; stretch</span>'in büyüsünü keşfettim.</p>
+          <ul class="home-about__facts">
+            <li><span class="doodle" data-doodle="map-pin" style="--size:26px;--c:var(--pink)"></span><span class="sr-only" data-i18n="home.about.factCity">Şehir:</span> <span data-bind="city">İstanbul</span></li>
+            <li><span class="doodle" data-doodle="bulb" style="--size:26px;--c:var(--blue)"></span><span class="sr-only" data-i18n="home.about.factUni">Üniversite:</span> <span data-bind="university">Örnek Üniversitesi</span></li>
+            <li><span class="doodle" data-doodle="code" style="--size:26px;--c:var(--green)"></span><span data-i18n="home.about.factYear">2. sınıf, güz dönemi</span></li>
+          </ul>
+          <a class="home-about__more" href="hakkimda.html" data-page-name="hakkımda">
+            <span data-i18n="home.about.more">devamını oku</span>
+            <svg class="home-about__more-arrow" viewBox="0 0 100 40" aria-hidden="true"><path d="M4 22 C30 14 58 26 88 18"/><path d="M74 6 C80 12 86 16 92 18 C86 22 80 28 76 34"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. NELER YAPIYORUM (yatay eskiz defteri) ============ -->
+    <section class="home-services" aria-labelledby="servicesTitle">
+      <div class="container home-services__head">
+        <div class="section-head">
+          <span class="eyebrow"><span class="doodle" data-doodle="arrow"></span><span data-i18n="home.svc.eyebrow">sayfa 03 — eskiz defteri</span></span>
+          <h2 id="servicesTitle" data-i18n="home.svc.title">Neler <span class="scribble-u" data-color="var(--blue)">yapıyorum</span>?</h2>
+        </div>
+        <p class="home-services__tip hand-note" aria-hidden="true" data-i18n="home.svc.tip">kaydırmaya devam → sayfalar akıyor</p>
+      </div>
+
+      <div class="home-services__viewport">
+        <div class="home-services__track">
+          <svg class="home-services__line" viewBox="0 0 2400 600" preserveAspectRatio="none" aria-hidden="true">
+            <path class="home-services__line-a" d="M0 430 C 180 120, 360 560, 600 300 S 900 70, 1080 360 S 1320 560, 1480 320 C 1560 170, 1720 170, 1700 310 C 1680 450, 1540 420, 1610 270 S 1900 90, 2060 380 S 2300 420, 2400 180"/>
+            <path class="home-services__line-b" d="M0 470 C 220 200, 380 600, 620 350 S 940 130, 1100 410 S 1360 600, 1520 370 S 1820 140, 2080 430 S 2320 460, 2400 240"/>
+          </svg>
+
+          <div class="home-panel-wrap">
+            <article class="home-panel home-panel--lined" style="--r:-3deg">
+              <span class="tape"></span>
+              <span class="home-panel__num" aria-hidden="true">01</span>
+              <span class="home-panel__icon home-panel__pop"><span class="doodle" data-doodle="code" style="--size:64px;--c:var(--blue);--sw:3.5"></span></span>
+              <h3 data-i18n="home.svc.1.t">Web Geliştirme</h3>
+              <p data-i18n="home.svc.1.p">Semantik HTML, temiz CSS ve modüler JavaScript ile hızlı açılan, bakımı kolay siteler kuruyorum.</p>
+              <ul class="home-panel__list">
+                <li><span class="doodle" data-doodle="check"></span><span data-i18n="home.svc.1.a">HTML5 &amp; erişilebilirlik</span></li>
+                <li><span class="doodle" data-doodle="check"></span><span data-i18n="home.svc.1.b">Modern CSS (grid, flex)</span></li>
+                <li><span class="doodle" data-doodle="check"></span><span data-i18n="home.svc.1.c">Vanilla JS &amp; API</span></li>
+              </ul>
+              <span class="home-panel__deco home-panel__pop" aria-hidden="true"><span class="doodle" data-doodle="lightning" style="--size:46px;--c:#c4501f"></span></span>
+            </article>
+          </div>
+
+          <div class="home-panel-wrap">
+            <article class="home-panel home-panel--sticky" style="--r:2.5deg">
+              <span class="pin"></span>
+              <span class="home-panel__num" aria-hidden="true">02</span>
+              <span class="home-panel__icon home-panel__pop"><span class="doodle" data-doodle="pencil" style="--size:64px;--c:#161714;--sw:3.5"></span></span>
+              <h3 data-i18n="home.svc.2.t">UI / UX Tasarım</h3>
+              <p data-i18n="home.svc.2.p">Önce kağıda karalarım, sonra Figma'da düzenlerim. Kullanıcının yolunu kısa, deneyimini keyifli tutarım.</p>
+              <ul class="home-panel__list">
+                <li><span class="doodle" data-doodle="check"></span><span data-i18n="home.svc.2.a">Wireframe &amp; prototip</span></li>
+                <li><span class="doodle" data-doodle="check"></span><span data-i18n="home.svc.2.b">Renk &amp; tipografi</span></li>
+                <li><span class="doodle" data-doodle="check"></span><span data-i18n="home.svc.2.c">Kullanılabilirlik testi</span></li>
+              </ul>
+              <span class="home-panel__deco home-panel__pop" aria-hidden="true"><span class="doodle" data-doodle="eye" style="--size:50px;--c:#c4501f"></span></span>
+            </article>
+          </div>
+
+          <div class="home-panel-wrap">
+            <article class="home-panel home-panel--grid" style="--r:-1.5deg">
+              <span class="tape home-panel__tape-l"></span>
+              <span class="tape home-panel__tape-r"></span>
+              <span class="home-panel__num" aria-hidden="true">03</span>
+              <span class="home-panel__icon home-panel__pop"><span class="doodle" data-doodle="phone" style="--size:64px;--c:#4f5a2a;--sw:3.5"></span></span>
+              <h3 data-i18n="home.svc.3.t">Responsive</h3>
+              <p data-i18n="home.svc.3.p">360 pikselden geniş monitöre kadar her ekranda düzgün duran, parmak dostu arayüzler tasarlıyorum.</p>
+              <ul class="home-panel__list">
+                <li><span class="doodle" data-doodle="check"></span><span data-i18n="home.svc.3.a">Mobil öncelikli</span></li>
+                <li><span class="doodle" data-doodle="check"></span><span data-i18n="home.svc.3.b">Akışkan tipografi</span></li>
+                <li><span class="doodle" data-doodle="check"></span><span data-i18n="home.svc.3.c">Dokunmatik etkileşim</span></li>
+              </ul>
+              <span class="home-panel__deco home-panel__pop" aria-hidden="true"><span class="doodle" data-doodle="globe" style="--size:48px;--c:#6b7a3a"></span></span>
+            </article>
+          </div>
+
+          <div class="home-panel-wrap">
+            <article class="home-panel home-panel--rust" style="--r:3.5deg">
+              <span class="tape"></span>
+              <span class="home-panel__num" aria-hidden="true">04</span>
+              <span class="home-panel__icon home-panel__pop"><span class="doodle" data-doodle="sparkle" style="--size:64px;--c:#161714;--sw:3.5"></span></span>
+              <h3 data-i18n="home.svc.4.t">Animasyon</h3>
+              <p data-i18n="home.svc.4.p">After Effects'te kare kare, tarayıcıda GSAP ve CSS ile: kaydırmaya bağlı hikâyeler, mikro etkileşimler, kendini çizen çizgiler.</p>
+              <ul class="home-panel__list">
+                <li><span class="doodle" data-doodle="check"></span><span data-i18n="home.svc.4.a">12 animasyon prensibi</span></li>
+                <li><span class="doodle" data-doodle="check"></span><span data-i18n="home.svc.4.b">SVG çizim efektleri</span></li>
+                <li><span class="doodle" data-doodle="check"></span><span data-i18n="home.svc.4.c">Hareket azaltma desteği</span></li>
+              </ul>
+              <span class="home-panel__deco home-panel__pop" aria-hidden="true"><span class="doodle" data-doodle="rocket" style="--size:50px;--c:#161714"></span></span>
+            </article>
+          </div>
+
+          <div class="home-panel-wrap home-panel-wrap--end">
+            <a class="home-panel-end" href="projeler.html" data-page-name="projeler">
+              <span class="home-panel-end__arrow home-panel__pop" aria-hidden="true"><span class="doodle" data-doodle="arrow-curly" style="--size:120px;--c:var(--pink);--sw:3.5"></span></span>
+              <span class="home-panel-end__text" data-i18n="home.svc.end">Hepsini iş başında gör: <strong>projeler</strong></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5. ÇAPRAZ BANT MARQUEE ============ -->
+    <section class="home-tapes" aria-labelledby="tapesTitle">
+      <h2 id="tapesTitle" class="sr-only" data-i18n="home.tapes.title">Kullandığım araçlar ve yetenekler</h2>
+      <ul class="sr-only">
+        <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Figma</li><li>Git</li><li>GSAP</li><li>SVG</li><li data-i18n="home.tapes.a11y">Erişilebilirlik</li>
+        <li>Adobe Animate</li><li>After Effects</li><li>Illustrator</li><li>UI/UX</li><li>Python</li><li data-i18n="home.tapes.anim">Animasyon</li>
+      </ul>
+      <div class="home-tape home-tape--a" aria-hidden="true">
+        <div class="home-tape__track">
+          <div class="home-tape__group">
+            <span>HTML</span><span class="doodle" data-doodle="star"></span>
+            <span>CSS</span><span class="doodle" data-doodle="heart"></span>
+            <span>JavaScript</span><span class="doodle" data-doodle="lightning"></span>
+            <span>Figma</span><span class="doodle" data-doodle="sparkle"></span>
+            <span>Git</span><span class="doodle" data-doodle="star"></span>
+            <span>GSAP</span><span class="doodle" data-doodle="heart"></span>
+            <span>SVG</span><span class="doodle" data-doodle="lightning"></span>
+            <span data-i18n="home.tapes.a11y">Erişilebilirlik</span><span class="doodle" data-doodle="sparkle"></span>
+          </div>
+        </div>
+      </div>
+      <div class="home-tape home-tape--b" aria-hidden="true">
+        <div class="home-tape__track">
+          <div class="home-tape__group">
+            <span>After Effects</span><span class="doodle" data-doodle="asterisk"></span>
+            <span>UI/UX</span><span class="doodle" data-doodle="smiley"></span>
+            <span>Adobe Animate</span><span class="doodle" data-doodle="asterisk"></span>
+            <span>Python</span><span class="doodle" data-doodle="smiley"></span>
+            <span data-i18n="home.tapes.anim">Animasyon</span><span class="doodle" data-doodle="asterisk"></span>
+            <span>Illustrator</span><span class="doodle" data-doodle="smiley"></span>
+            <span data-i18n="home.tapes.proto">Prototip</span><span class="doodle" data-doodle="asterisk"></span>
+            <span data-i18n="home.tapes.coffee">Kahve</span><span class="doodle" data-doodle="coffee"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6. GRAFİK ANİMASYON (deste → yelpaze) ============ -->
+    <section class="home-work" aria-labelledby="workTitle">
+      <div class="container">
+        <div class="section-head center home-work__head">
+          <span class="eyebrow"><span class="doodle" data-doodle="star"></span><span data-i18n="home.work.eyebrow">sayfa 04 — Grafik Animasyon 1</span></span>
+          <h2 id="workTitle" data-i18n="home.work.title">Kare kare <span class="scribble-circle" data-color="var(--pink)">projeler</span></h2>
+          <p class="home-work__tip hand-note" aria-hidden="true" data-i18n="home.work.tip">kaydır, deste dağılsın!</p>
+        </div>
+
+        <div class="home-deck">
+          <a class="home-card" href="projeler.html" data-page-name="projeler">
+            <div class="home-card__inner" style="--r:-3deg">
+              <span class="tape"></span>
+              <span class="home-card__img">
+                <img src="img/projeler/ga-01.jpg" width="1200" height="900" loading="lazy" decoding="async"
+                     alt="Zıplayan Top animasyonundan bir kare" data-i18n-attr="alt:home.work.1.alt">
+                <span class="home-card__play" aria-hidden="true"><svg viewBox="0 0 60 60"><path d="M30 4 C14 4 4 16 4 30 C4 46 16 56 30 56 C46 56 56 44 56 30 C56 14 44 4 28 6"/><path d="M24 19 L42 30 L24 41 Z"/></svg></span>
+                <span class="home-card__frame" aria-hidden="true">ga-01</span>
+              </span>
+              <div class="home-card__body">
+                <h3 class="home-card__title" data-i18n="home.work.1.t">Zıplayan Top</h3>
+                <span class="home-card__desc" data-i18n="home.work.1.d">Squash &amp; stretch ile 12 animasyon prensibinin ilk dersi: yerçekimine gerçekten inanan bir top.</span>
+                <span class="home-card__tags"><span class="chip">Adobe Animate</span></span>
+              </div>
+            </div>
+          </a>
+          <a class="home-card" href="projeler.html" data-page-name="projeler">
+            <div class="home-card__inner" style="--r:2deg">
+              <span class="tape"></span>
+              <span class="home-card__img">
+                <img src="img/projeler/ga-02.jpg" width="1200" height="900" loading="lazy" decoding="async"
+                     alt="Kinetik Tipografi çalışmasından bir kare" data-i18n-attr="alt:home.work.2.alt">
+                <span class="home-card__play" aria-hidden="true"><svg viewBox="0 0 60 60"><path d="M30 4 C14 4 4 16 4 30 C4 46 16 56 30 56 C46 56 56 44 56 30 C56 14 44 4 28 6"/><path d="M24 19 L42 30 L24 41 Z"/></svg></span>
+                <span class="home-card__frame" aria-hidden="true">ga-02</span>
+              </span>
+              <div class="home-card__body">
+                <h3 class="home-card__title" data-i18n="home.work.2.t">Kinetik Tipografi</h3>
+                <span class="home-card__desc" data-i18n="home.work.2.d">Bir şarkı sözünü harf harf dans ettirdim: zamanlama, ritim ve bolca anahtar kare.</span>
+                <span class="home-card__tags"><span class="chip">After Effects</span><span class="chip">Illustrator</span></span>
+              </div>
+            </div>
+          </a>
+          <a class="home-card" href="projeler.html" data-page-name="projeler">
+            <div class="home-card__inner" style="--r:-1deg">
+              <span class="tape"></span>
+              <span class="home-card__img">
+                <img src="img/projeler/ga-04.jpg" width="1200" height="900" loading="lazy" decoding="async"
+                     alt="Yürüyüş Döngüsü karakter animasyonundan bir kare" data-i18n-attr="alt:home.work.3.alt">
+                <span class="home-card__play" aria-hidden="true"><svg viewBox="0 0 60 60"><path d="M30 4 C14 4 4 16 4 30 C4 46 16 56 30 56 C46 56 56 44 56 30 C56 14 44 4 28 6"/><path d="M24 19 L42 30 L24 41 Z"/></svg></span>
+                <span class="home-card__frame" aria-hidden="true">ga-04</span>
+              </span>
+              <div class="home-card__body">
+                <h3 class="home-card__title" data-i18n="home.work.3.t">Yürüyüş Döngüsü</h3>
+                <span class="home-card__desc" data-i18n="home.work.3.d">Karakterim için kontak, alçalma, geçiş ve yükselme pozlarından kurulan kusursuz bir walk cycle.</span>
+                <span class="home-card__tags"><span class="chip">Adobe Animate</span><span class="chip">Illustrator</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="home-work__more" data-reveal="up">
+          <a class="btn blue" href="projeler.html" data-magnetic data-page-name="projeler"><span class="doodle" data-doodle="arrow"></span><span data-i18n="home.work.more">Tüm 8 çalışma</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7. GALERİDEN KARELER (masaya fırlatılan polaroidler) ============ -->
+    <section class="home-gal" aria-labelledby="galTitle">
+      <div class="container">
+        <div class="home-gal__head">
+          <div class="section-head">
+            <span class="eyebrow"><span class="doodle" data-doodle="eye"></span><span data-i18n="home.gal.eyebrow">sayfa 05 — galeriden</span></span>
+            <h2 id="galTitle" data-i18n="home.gal.title">Masaya dökülen <span class="scribble-u" data-color="var(--yellow)">kareler</span></h2>
+          </div>
+          <p class="home-gal__lead" data-i18n="home.gal.lead">Kampüs, şehir, doğa ve defter arası: beni en iyi anlatan fotoğraflardan bir avuç. Üstüne gel, öne çıksın; tıkla, galeride büyüsün.</p>
+        </div>
+
+        <ul class="home-gal__desk">
+          <li class="home-gal__item" style="--l:1%;--t:6%;--w:27%;--r:-6deg">
+            <a class="home-gal__link" href="galeri.html#foto-01" data-page-name="galeri">
+              <figure class="home-gal__pol">
+                <span class="home-gal__img"><img src="img/galeri/galeri-01.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Kampüste, mühendislik fakültesinin merdivenlerinde" data-i18n-attr="alt:gal.01.alt"></span>
+                <figcaption data-i18n="gal.01.t">Kampüste ilk gün</figcaption>
+              </figure>
+            </a>
+          </li>
+          <li class="home-gal__item home-gal__item--p" style="--l:26%;--t:0%;--w:19%;--r:5deg">
+            <a class="home-gal__link" href="galeri.html#foto-03" data-page-name="galeri">
+              <figure class="home-gal__pol">
+                <span class="home-gal__img"><img src="img/galeri/galeri-03.jpg" width="900" height="1200" loading="lazy" decoding="async" alt="Hackathon gecesi, ekip masanın başında" data-i18n-attr="alt:gal.03.alt"></span>
+                <figcaption data-i18n="gal.03.t">48 saatlik hackathon</figcaption>
+              </figure>
+            </a>
+          </li>
+          <li class="home-gal__item" style="--l:44%;--t:12%;--w:28%;--r:-2.5deg">
+            <a class="home-gal__link" href="galeri.html#foto-05" data-page-name="galeri">
+              <figure class="home-gal__pol">
+                <span class="home-gal__img"><img src="img/galeri/galeri-05.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Kadıköy iskelesinden Boğaz'da gün batımı" data-i18n-attr="alt:gal.05.alt"></span>
+                <figcaption data-i18n="gal.05.t">Boğaz'da gün batımı</figcaption>
+              </figure>
+            </a>
+          </li>
+          <li class="home-gal__item home-gal__item--p" style="--l:74%;--t:2%;--w:19%;--r:7deg">
+            <a class="home-gal__link" href="galeri.html#foto-06" data-page-name="galeri">
+              <figure class="home-gal__pol">
+                <span class="home-gal__img"><img src="img/galeri/galeri-06.jpg" width="900" height="1200" loading="lazy" decoding="async" alt="Kareli deftere kurşun kalemle çizilmiş arayüz eskizleri" data-i18n-attr="alt:gal.06.alt"></span>
+                <figcaption data-i18n="gal.06.t">Defter eskizleri</figcaption>
+              </figure>
+            </a>
+          </li>
+          <li class="home-gal__item" style="--l:9%;--t:51%;--w:27%;--r:4deg">
+            <a class="home-gal__link" href="galeri.html#foto-08" data-page-name="galeri">
+              <figure class="home-gal__pol">
+                <span class="home-gal__img"><img src="img/galeri/galeri-08.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Sahil yolunda bisiklet" data-i18n-attr="alt:gal.08.alt"></span>
+                <figcaption data-i18n="gal.08.t">Sahil yolunda pedal</figcaption>
+              </figure>
+            </a>
+          </li>
+          <li class="home-gal__item" style="--l:50%;--t:55%;--w:28%;--r:-5deg">
+            <a class="home-gal__link" href="galeri.html#foto-10" data-page-name="galeri">
+              <figure class="home-gal__pol">
+                <span class="home-gal__img"><img src="img/galeri/galeri-10.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Arkadaşlarla ormanda piknik" data-i18n-attr="alt:gal.10.alt"></span>
+                <figcaption data-i18n="gal.10.t">Arkadaşlarla piknik</figcaption>
+              </figure>
+            </a>
+          </li>
+          <li class="home-gal__item home-gal__item--note" style="--l:81%;--t:60%;--w:16%;--r:-4deg">
+            <a class="home-gal__note" href="galeri.html" data-page-name="galeri">
+              <span class="tape"></span>
+              <span data-i18n="home.gal.note">12 karenin hepsi ipte kuruyor</span>
+              <span class="doodle" data-doodle="arrow" style="--size:46px;--c:#161714"></span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="home-gal__more">
+          <a class="btn" href="galeri.html" data-magnetic data-page-name="galeri"><span class="doodle" data-doodle="eye"></span><span data-i18n="home.gal.more">Galeriye git</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 8. SAYILARLA BEN ============ -->
+    <section class="home-stats section" aria-labelledby="statsTitle">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><span class="doodle" data-doodle="hash"></span><span data-i18n="home.stats.eyebrow">sayfa 06 — sayılarla ben</span></span>
+          <h2 id="statsTitle" data-split data-i18n="home.stats.title">Kısaca rakamlar</h2>
+        </div>
+        <ul class="home-stats__list">
+          <li class="home-stat" style="--c:var(--pink);--r:-3deg">
+            <svg class="home-stat__ring" viewBox="0 0 200 200" aria-hidden="true"><path d="M110 14 C56 8 14 42 16 100 C18 156 64 188 112 184 C160 180 190 142 186 94 C182 44 142 10 84 18 C74 20 66 24 60 30"/></svg>
+            <span class="home-stat__icon doodle" data-doodle="code" style="--size:36px"></span>
+            <strong class="home-stat__num" data-count="12" data-suffix="+">12+</strong>
+            <span class="home-stat__label" data-i18n="home.stats.1">tamamlanan proje</span>
+          </li>
+          <li class="home-stat" style="--c:var(--blue);--r:2deg">
+            <svg class="home-stat__ring" viewBox="0 0 200 200" aria-hidden="true"><path d="M96 12 C40 16 10 60 16 108 C22 158 70 190 118 182 C166 174 192 128 184 84 C176 38 134 8 76 18 C66 20 58 26 52 32"/></svg>
+            <span class="home-stat__icon doodle" data-doodle="sparkle" style="--size:36px"></span>
+            <strong class="home-stat__num" data-count="8" data-suffix="">8</strong>
+            <span class="home-stat__label" data-i18n="home.stats.2">animasyon çalışması</span>
+          </li>
+          <li class="home-stat" style="--c:var(--orange);--r:-1deg">
+            <svg class="home-stat__ring" viewBox="0 0 200 200" aria-hidden="true"><path d="M104 16 C50 10 12 50 18 104 C24 156 72 188 120 180 C168 172 190 130 184 86 C178 40 136 12 80 20 C70 22 62 26 56 32"/></svg>
+            <span class="home-stat__icon doodle" data-doodle="coffee" style="--size:36px"></span>
+            <strong class="home-stat__num" data-count="1000" data-suffix="+">1000+</strong>
+            <span class="home-stat__label" data-i18n="home.stats.3">fincan kahve</span>
+          </li>
+          <li class="home-stat" style="--c:var(--green);--r:3deg">
+            <svg class="home-stat__ring" viewBox="0 0 200 200" aria-hidden="true"><path d="M100 10 C46 14 12 56 16 106 C20 156 66 190 116 184 C166 178 194 134 186 88 C178 42 140 8 84 16 C74 18 66 22 60 28"/></svg>
+            <span class="home-stat__icon doodle" data-doodle="pencil" style="--size:36px"></span>
+            <strong class="home-stat__num home-stat__num--inf">∞</strong>
+            <span class="home-stat__label" data-i18n="home.stats.4">karalama</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ 9. CTA: kağıt uçak ============ -->
+    <section class="home-cta" aria-labelledby="ctaTitle">
+      <div class="container">
+        <svg class="home-cta__flight" viewBox="0 0 1000 300" aria-hidden="true">
+          <path class="home-cta__trail" d="M-20 270 C 140 290, 210 130, 320 170 C 430 210, 410 300, 330 270 C 250 240, 330 100, 480 120 S 760 230, 860 110 S 960 30, 1010 20"/>
+          <g class="home-cta__plane" transform="translate(1010 20)">
+            <g transform="rotate(22.7) translate(-30 -30) scale(0.6)">
+              <path d="M6 46 L92 10 L70 88 L48 62 Z"/>
+              <path d="M48 62 L92 10"/>
+              <path d="M48 62 L44 86 L58 70"/>
+            </g>
+          </g>
+        </svg>
+
+        <div class="home-cta__wrap" data-reveal="rotate">
+          <div class="home-cta__paper">
+            <span class="tape"></span>
+            <span class="home-cta__doodle home-cta__doodle--a" aria-hidden="true"><span class="doodle" data-doodle="bulb" style="--size:60px;--c:#161714"></span></span>
+            <span class="home-cta__doodle home-cta__doodle--b" aria-hidden="true"><span class="doodle filled" data-doodle="heart" style="--size:44px;--c:#161714;--fill:#c4501f"></span></span>
+            <h2 id="ctaTitle" class="home-cta__title" data-i18n="home.cta.title">Bir fikrin mi var?</h2>
+            <p class="home-cta__text" data-i18n="home.cta.text">Bir proje, staj ya da sadece kahve eşliğinde sohbet — ne olursa. Birlikte çizelim, birlikte kodlayalım.</p>
+            <div class="home-cta__actions">
+              <a class="btn pink" href="iletisim.html" data-magnetic data-page-name="iletişim"><span class="doodle" data-doodle="plane"></span><span data-i18n="home.cta.btn">Mesaj gönder</span></a>
+              <a class="home-cta__mail" href="mailto:ornek@mail.com" data-bind="email" data-bind-href="mailto:{email}">ornek@mail.com</a>
+            </div>
+            <span class="home-cta__note" data-i18n="home.cta.note">genelde 1 gün içinde dönerim!</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <svg class="footer__wave" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true" data-draw="scrub" data-start="top 95%" data-end="top 50%">
+      <path d="M0 30 C 100 5, 200 55, 300 30 S 500 5, 600 30 S 800 55, 900 30 S 1100 5, 1200 30"/>
+    </svg>
+    <div class="container">
+      <p class="footer__big"><a href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact" data-i18n="footer.big">Hadi <span class="scribble-u">konuşalım</span>!</a></p>
+      <div class="footer__row">
+        <div class="footer__socials">
+          <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub" data-bind-href="{github}"><span class="doodle" data-doodle="github" style="--size:26px"></span></a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn" data-bind-href="{linkedin}"><span class="doodle" data-doodle="linkedin" style="--size:26px"></span></a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" data-bind-href="{instagram}"><span class="doodle" data-doodle="instagram" style="--size:26px"></span></a>
+          <a href="mailto:ornek@mail.com" aria-label="E-posta" data-bind-href="mailto:{email}"><span class="doodle" data-doodle="mail" style="--size:26px"></span></a>
+        </div>
+        <p class="footer__copy" data-i18n="footer.copy">© <span data-year>2026</span> Ad Soyad — kalemle, kahveyle ve biraz JavaScript'le çizildi.</p>
+        <a class="footer__admin" href="admin.html" data-i18n="footer.admin">yönetim</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/pages/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="tr" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title data-i18n="admin.meta.title">Yönetim Paneli | Ad Soyad</title>
+  <meta name="description" content="Ad Soyad kişisel sitesinin tarayıcıda çalışan demo yönetim paneli: iletişim formundan gelen mesajlar, profil içeriği ve ayarlar." data-i18n-attr="content:admin.meta.desc">
+  <meta name="theme-color" content="#fbfaf6">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%8F%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/caveat-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/caveat-400-700-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/kalam-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/kalam-400-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/core.css">
+  <link rel="stylesheet" href="css/pages/admin.css">
+  <script>
+    (function () {
+      var d = document.documentElement, t = null, l = null;
+      try { t = localStorage.getItem("theme"); l = localStorage.getItem("lang"); } catch (e) {}
+      if (t === "dark" || (!t && matchMedia("(prefers-color-scheme: dark)").matches)) d.setAttribute("data-theme", "dark");
+      if (l === "en") { d.lang = "en"; d.classList.add("lang-pending"); }
+      try {
+        if (!matchMedia("(prefers-reduced-motion: reduce)").matches &&
+            (!sessionStorage.getItem("doodle-visited") || sessionStorage.getItem("doodle-transition") === "1")) d.classList.add("doodle-cover");
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body data-page-name="yönetim" data-page-name-en="admin" class="admin-body">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">İçeriğe geç</a>
+
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Ad Soyad">
+        <span class="doodle" data-doodle="sparkle"></span>ad.soyad
+      </a>
+      <nav aria-label="Ana menü" data-i18n-attr="aria-label:nav.menuLabel">
+        <ul class="nav__links">
+          <li><a class="nav__link" href="index.html" data-page-name="ana sayfa" data-page-name-en="home" data-i18n="nav.home">Ana Sayfa</a></li>
+          <li><a class="nav__link" href="hakkimda.html" data-page-name="hakkımda" data-page-name-en="about" data-i18n="nav.about">Hakkımda</a></li>
+          <li><a class="nav__link" href="projeler.html" data-page-name="projeler" data-page-name-en="projects" data-i18n="nav.work">Projeler</a></li>
+          <li><a class="nav__link" href="blog.html" data-page-name="blog" data-page-name-en="blog" data-i18n="nav.blog">Blog</a></li>
+          <li><a class="nav__link" href="galeri.html" data-page-name="galeri" data-page-name-en="gallery" data-i18n="nav.gallery">Galeri</a></li>
+          <li><a class="nav__link" href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact" data-i18n="nav.contact">İletişim</a></li>
+        </ul>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn lang-toggle" type="button" aria-label="Switch to English">
+          <span class="lang-toggle__label">EN</span>
+        </button>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Temayı değiştir">
+          <span class="doodle doodle--moon" data-doodle="moon"></span>
+          <span class="doodle doodle--sun" data-doodle="sun"></span>
+        </button>
+        <button class="icon-btn burger" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobileMenu">
+          <span class="burger__lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="index.html" data-page-name="ana sayfa" data-page-name-en="home"><small>01</small><span data-i18n="nav.home">Ana Sayfa</span></a>
+    <a href="hakkimda.html" data-page-name="hakkımda" data-page-name-en="about"><small>02</small><span data-i18n="nav.about">Hakkımda</span></a>
+    <a href="projeler.html" data-page-name="projeler" data-page-name-en="projects"><small>03</small><span data-i18n="nav.work">Projeler</span></a>
+    <a href="blog.html" data-page-name="blog" data-page-name-en="blog"><small>04</small><span data-i18n="nav.blog">Blog</span></a>
+    <a href="galeri.html" data-page-name="galeri" data-page-name-en="gallery"><small>05</small><span data-i18n="nav.gallery">Galeri</span></a>
+    <a href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact"><small>06</small><span data-i18n="nav.contact">İletişim</span></a>
+  </div>
+
+  <main id="main" class="admin">
+    <div class="container admin__wrap">
+
+      <header class="admin-head">
+        <h1 class="admin-head__title"><span class="doodle" data-doodle="pencil"></span><span data-i18n="admin.h1">Yönetim paneli</span></h1>
+        <p class="admin-head__demo"><span class="doodle" data-doodle="asterisk"></span><span data-i18n="admin.demo"><strong>Demo panel:</strong> veriler yalnızca bu tarayıcıda (localStorage) saklanır, sunucuya gitmez.</span></p>
+      </header>
+
+      <!-- ================= GİRİŞ ================= -->
+      <section class="admin-gate" id="adminGate" aria-labelledby="gate-title">
+        <div class="admin-book" id="adminBook">
+          <div class="admin-book__page" aria-hidden="true">
+            <span class="admin-book__lines"></span>
+            <span class="admin-book__scribble hand-note" data-i18n="admin.gate.inside">hoş geldin!</span>
+          </div>
+          <div class="admin-book__cover" id="adminCover">
+            <span class="admin-book__band" aria-hidden="true"></span>
+            <span class="admin-book__corner" aria-hidden="true"></span>
+            <div class="admin-book__label">
+              <span class="tape admin-book__tape" aria-hidden="true"></span>
+              <h2 class="admin-book__title" id="gate-title" data-i18n="admin.gate.title">Defteri aç</h2>
+              <p class="admin-book__sub" data-i18n="admin.gate.sub">ad.soyad · yönetim defteri</p>
+
+              <form class="admin-login" id="loginForm" novalidate>
+                <label class="admin-label" for="loginPass" data-i18n="admin.gate.pass">Şifre</label>
+                <div class="admin-pass">
+                  <input class="admin-input" id="loginPass" name="password" type="password" autocomplete="current-password" required aria-describedby="loginError" spellcheck="false" autocapitalize="off">
+                  <button class="admin-pass__eye" type="button" data-toggle-pass="loginPass" aria-pressed="false" aria-label="Şifreyi göster" data-i18n-attr="aria-label:admin.pass.show"><span class="doodle" data-doodle="eye"></span></button>
+                </div>
+                <p class="admin-error" id="loginError" role="alert"></p>
+                <button class="admin-btn admin-btn--primary admin-login__submit" type="submit" data-juice><span data-i18n="admin.gate.open">Defteri aç</span><span class="doodle" data-doodle="arrow"></span></button>
+              </form>
+
+              <details class="admin-hint">
+                <summary data-i18n="admin.gate.hintQ">Şifreyi bilmiyor musun?</summary>
+                <p data-i18n="admin.gate.hintA">Varsayılan şifre proje teslim notunda yazıyor. Değiştirip unuttuysan bu sitenin tarayıcı verilerini silmek şifreyi varsayılana döndürür (mesajlar da silinir).</p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PANEL ================= -->
+      <div class="admin-app" id="adminApp" hidden>
+        <aside class="admin-side">
+          <div class="admin-tabs" role="tablist" aria-label="Panel bölümleri" data-i18n-attr="aria-label:admin.tabs.label">
+            <button class="admin-tab" role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true" data-tab="overview" type="button">
+              <span class="doodle" data-doodle="sun"></span><span data-i18n="admin.tab.overview">Özet</span>
+            </button>
+            <button class="admin-tab" role="tab" id="tab-messages" aria-controls="panel-messages" aria-selected="false" tabindex="-1" data-tab="messages" type="button">
+              <span class="doodle" data-doodle="mail"></span><span data-i18n="admin.tab.messages">Mesajlar</span><span class="admin-badge" id="unreadBadge" hidden></span>
+            </button>
+            <button class="admin-tab" role="tab" id="tab-profile" aria-controls="panel-profile" aria-selected="false" tabindex="-1" data-tab="profile" type="button">
+              <span class="doodle" data-doodle="smiley"></span><span data-i18n="admin.tab.profile">Profil</span>
+            </button>
+            <button class="admin-tab" role="tab" id="tab-settings" aria-controls="panel-settings" aria-selected="false" tabindex="-1" data-tab="settings" type="button">
+              <span class="doodle" data-doodle="asterisk"></span><span data-i18n="admin.tab.settings">Ayarlar</span>
+            </button>
+          </div>
+          <div class="admin-side__foot">
+            <a class="admin-link" href="index.html"><span class="doodle" data-doodle="globe"></span><span data-i18n="admin.side.site">Siteyi gör</span></a>
+            <button class="admin-link" type="button" id="logoutBtn"><span class="doodle" data-doodle="x"></span><span data-i18n="admin.side.logout">Çıkış yap</span></button>
+          </div>
+        </aside>
+
+        <div class="admin-panels">
+
+          <!-- ---------- ÖZET ---------- -->
+          <section class="admin-panel" role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" tabindex="-1">
+            <div class="admin-panel__head">
+              <h2 class="admin-panel__title" data-i18n="admin.ov.title">Özet</h2>
+              <p class="admin-panel__lead" id="ovToday"></p>
+            </div>
+
+            <div class="admin-ov">
+              <div class="admin-sheet admin-ov__ledger">
+                <h3 class="admin-h3" data-i18n="admin.ov.ledger">Defter durumu</h3>
+                <dl class="admin-ledger">
+                  <div class="admin-ledger__row"><dt data-i18n="admin.ov.unread">Okunmamış mesaj</dt><dd id="ovUnread">0</dd></div>
+                  <div class="admin-ledger__row"><dt data-i18n="admin.ov.total">Toplam mesaj</dt><dd id="ovTotal">0</dd></div>
+                  <div class="admin-ledger__row"><dt data-i18n="admin.ov.last">Son mesaj</dt><dd id="ovLast">—</dd></div>
+                  <div class="admin-ledger__row"><dt data-i18n="admin.ov.content">Profil içeriği</dt><dd id="ovContent">—</dd></div>
+                </dl>
+              </div>
+
+              <figure class="admin-sheet admin-chart">
+                <figcaption class="admin-h3" id="chartTitle" data-i18n="admin.ov.chart">Son 7 gün</figcaption>
+                <svg class="admin-chart__svg" id="adminChart" viewBox="0 0 420 200" role="img" aria-labelledby="chartTitle chartDesc"><desc id="chartDesc"></desc></svg>
+                <table class="sr-only" id="chartTable">
+                  <caption data-i18n="admin.ov.chartTable">Son 7 günde gelen mesaj sayıları</caption>
+                  <thead><tr><th scope="col" data-i18n="admin.ov.day">Gün</th><th scope="col" data-i18n="admin.ov.count">Mesaj</th></tr></thead>
+                  <tbody></tbody>
+                </table>
+              </figure>
+
+              <div class="admin-sheet admin-ov__recent">
+                <div class="admin-row-head">
+                  <h3 class="admin-h3" data-i18n="admin.ov.recent">Son mesajlar</h3>
+                  <button class="admin-link admin-link--sm" type="button" data-goto="messages"><span data-i18n="admin.ov.all">hepsini gör</span><span class="doodle" data-doodle="arrow"></span></button>
+                </div>
+                <ul class="admin-recent" id="ovRecent"></ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- ---------- MESAJLAR ---------- -->
+          <section class="admin-panel" role="tabpanel" id="panel-messages" aria-labelledby="tab-messages" tabindex="-1" hidden>
+            <div class="admin-panel__head">
+              <h2 class="admin-panel__title" data-i18n="admin.msg.title">Mesajlar</h2>
+              <p class="admin-panel__lead" id="msgSummary"></p>
+            </div>
+
+            <div class="admin-toolbar">
+              <div class="admin-search">
+                <label class="admin-label admin-label--inline" for="msgSearch"><span class="doodle" data-doodle="eye"></span><span class="sr-only" data-i18n="admin.msg.searchLabel">Mesajlarda ara</span></label>
+                <input class="admin-input" id="msgSearch" type="search" placeholder="ad, e-posta, konu ya da metin ara" data-i18n-attr="placeholder:admin.msg.searchPh" autocomplete="off">
+              </div>
+              <div class="admin-seg" role="group" aria-label="Filtre" data-i18n-attr="aria-label:admin.msg.filter">
+                <button class="admin-seg__btn" type="button" data-filter="all" aria-pressed="true" data-i18n="admin.msg.fAll">Tümü</button>
+                <button class="admin-seg__btn" type="button" data-filter="unread" aria-pressed="false" data-i18n="admin.msg.fUnread">Okunmamış</button>
+                <button class="admin-seg__btn" type="button" data-filter="read" aria-pressed="false" data-i18n="admin.msg.fRead">Okunmuş</button>
+              </div>
+              <div class="admin-toolbar__actions">
+                <button class="admin-btn admin-btn--ghost admin-btn--sm" type="button" id="markAllBtn" data-juice><span class="doodle" data-doodle="check"></span><span data-i18n="admin.msg.markAll">Tümünü okundu say</span></button>
+                <button class="admin-btn admin-btn--ghost admin-btn--sm" type="button" id="exportJson" data-juice><span class="doodle" data-doodle="arrow-down"></span>JSON</button>
+                <button class="admin-btn admin-btn--ghost admin-btn--sm" type="button" id="exportCsv" data-juice><span class="doodle" data-doodle="arrow-down"></span>CSV</button>
+              </div>
+            </div>
+
+            <div class="admin-mail" id="adminMail">
+              <div class="admin-mail__list">
+                <p class="sr-only" id="msgListLabel" data-i18n="admin.msg.listLabel">Mesaj listesi</p>
+                <ul class="admin-list" id="msgList" aria-labelledby="msgListLabel" data-lenis-prevent></ul>
+                <div class="admin-empty" id="msgEmpty" hidden></div>
+              </div>
+              <article class="admin-detail admin-sheet" id="msgDetail" aria-labelledby="detailSubject" tabindex="-1">
+                <div class="admin-detail__placeholder" id="detailEmpty">
+                  <span class="doodle" data-doodle="arrow-curly"></span>
+                  <p data-i18n="admin.msg.pick">Okumak için listeden bir mesaj seç.</p>
+                </div>
+                <div class="admin-detail__body" id="detailBody" hidden>
+                  <button class="admin-link admin-link--sm admin-detail__back" type="button" id="detailBack"><span class="doodle" data-doodle="arrow"></span><span data-i18n="admin.msg.back">listeye dön</span></button>
+                  <p class="admin-detail__topic" id="detailTopic"></p>
+                  <h3 class="admin-detail__subject" id="detailSubject"></h3>
+                  <dl class="admin-detail__meta">
+                    <div><dt data-i18n="admin.msg.from">Kimden</dt><dd id="detailFrom"></dd></div>
+                    <div><dt data-i18n="admin.msg.email">E-posta</dt><dd id="detailEmail"></dd></div>
+                    <div><dt data-i18n="admin.msg.date">Tarih</dt><dd id="detailDate"></dd></div>
+                  </dl>
+                  <div class="admin-detail__text" id="detailText"></div>
+                  <figure class="admin-detail__doodle" id="detailDoodle" hidden>
+                    <img id="detailImg" alt="" width="400" height="170">
+                    <figcaption data-i18n="admin.msg.doodle">ekteki doodle</figcaption>
+                  </figure>
+                  <div class="admin-detail__actions">
+                    <a class="admin-btn admin-btn--primary" id="detailReply" href="#"><span class="doodle" data-doodle="mail"></span><span data-i18n="admin.msg.reply">Yanıtla</span></a>
+                    <button class="admin-btn admin-btn--ghost" type="button" id="detailToggle" data-juice><span class="doodle" data-doodle="eye"></span><span id="detailToggleLabel"></span></button>
+                    <button class="admin-btn admin-btn--danger" type="button" id="detailDelete" data-juice><span class="doodle" data-doodle="x"></span><span data-i18n="admin.msg.delete">Sil</span></button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- ---------- PROFİL ---------- -->
+          <section class="admin-panel" role="tabpanel" id="panel-profile" aria-labelledby="tab-profile" tabindex="-1" hidden>
+            <div class="admin-panel__head">
+              <h2 class="admin-panel__title" data-i18n="admin.pf.title">Profil ve içerik</h2>
+              <p class="admin-panel__lead" data-i18n="admin.pf.lead">Sitede görünen ad, iletişim bilgileri ve bağlantılar. Kaydettikten sonra açık sayfaları yenileyince yeni hâli görünür.</p>
+            </div>
+
+            <div class="admin-pf">
+              <form class="admin-sheet admin-form" id="profileForm" novalidate>
+                <fieldset class="admin-fs">
+                  <legend data-i18n="admin.pf.fsId">Kimlik</legend>
+                  <div class="admin-field"><label class="admin-label" for="pf-name" data-i18n="admin.pf.name">Ad soyad</label><input class="admin-input" id="pf-name" name="name" maxlength="60" autocomplete="off"><p class="admin-error" id="pf-name-err"></p></div>
+                  <div class="admin-field"><label class="admin-label" for="pf-title" data-i18n="admin.pf.titleL">Unvan</label><input class="admin-input" id="pf-title" name="title" maxlength="90" autocomplete="off"><p class="admin-error" id="pf-title-err"></p></div>
+                </fieldset>
+                <fieldset class="admin-fs">
+                  <legend data-i18n="admin.pf.fsContact">İletişim</legend>
+                  <div class="admin-field"><label class="admin-label" for="pf-email" data-i18n="admin.pf.email">E-posta</label><input class="admin-input" id="pf-email" name="email" type="email" maxlength="120" autocomplete="off" spellcheck="false"><p class="admin-error" id="pf-email-err"></p></div>
+                  <div class="admin-field"><label class="admin-label" for="pf-phone" data-i18n="admin.pf.phone">Telefon</label><input class="admin-input" id="pf-phone" name="phone" type="tel" maxlength="24" autocomplete="off"><p class="admin-error" id="pf-phone-err"></p></div>
+                  <div class="admin-field admin-field--wide"><label class="admin-label" for="pf-address" data-i18n="admin.pf.address">Adres</label><input class="admin-input" id="pf-address" name="address" maxlength="140" autocomplete="off"><p class="admin-error" id="pf-address-err"></p></div>
+                  <div class="admin-field"><label class="admin-label" for="pf-city" data-i18n="admin.pf.city">Şehir</label><input class="admin-input" id="pf-city" name="city" maxlength="40" autocomplete="off"><p class="admin-error" id="pf-city-err"></p></div>
+                </fieldset>
+                <fieldset class="admin-fs">
+                  <legend data-i18n="admin.pf.fsSchool">Okul</legend>
+                  <div class="admin-field"><label class="admin-label" for="pf-university" data-i18n="admin.pf.university">Üniversite</label><input class="admin-input" id="pf-university" name="university" maxlength="80" autocomplete="off"><p class="admin-error" id="pf-university-err"></p></div>
+                  <div class="admin-field"><label class="admin-label" for="pf-department" data-i18n="admin.pf.department">Bölüm</label><input class="admin-input" id="pf-department" name="department" maxlength="80" autocomplete="off"><p class="admin-error" id="pf-department-err"></p></div>
+                </fieldset>
+                <fieldset class="admin-fs">
+                  <legend data-i18n="admin.pf.fsSocial">Bağlantılar</legend>
+                  <div class="admin-field admin-field--wide"><label class="admin-label" for="pf-github">GitHub</label><input class="admin-input" id="pf-github" name="github" type="url" maxlength="200" autocomplete="off" spellcheck="false"><p class="admin-error" id="pf-github-err"></p></div>
+                  <div class="admin-field admin-field--wide"><label class="admin-label" for="pf-linkedin">LinkedIn</label><input class="admin-input" id="pf-linkedin" name="linkedin" type="url" maxlength="200" autocomplete="off" spellcheck="false"><p class="admin-error" id="pf-linkedin-err"></p></div>
+                  <div class="admin-field admin-field--wide"><label class="admin-label" for="pf-instagram">Instagram</label><input class="admin-input" id="pf-instagram" name="instagram" type="url" maxlength="200" autocomplete="off" spellcheck="false"><p class="admin-error" id="pf-instagram-err"></p></div>
+                </fieldset>
+
+                <div class="admin-form__actions">
+                  <button class="admin-btn admin-btn--primary" type="submit" id="profileSave" data-juice><span class="doodle" data-doodle="check"></span><span data-i18n="admin.pf.save">Kaydet</span></button>
+                  <button class="admin-btn admin-btn--ghost" type="button" id="profileReset" data-juice><span class="doodle" data-doodle="loop"></span><span data-i18n="admin.pf.reset">Varsayılana dön</span></button>
+                  <p class="admin-form__state" id="profileState" aria-live="polite"></p>
+                </div>
+              </form>
+
+              <aside class="admin-pf__preview" aria-labelledby="previewTitle">
+                <h3 class="admin-h3" id="previewTitle" data-i18n="admin.pf.preview">Önizleme</h3>
+                <div class="admin-card" id="previewCard">
+                  <span class="tape admin-card__tape" aria-hidden="true"></span>
+                  <p class="admin-card__name" data-pv="name"></p>
+                  <p class="admin-card__title" data-pv="title"></p>
+                  <p class="admin-card__school"><span data-pv="department"></span> · <span data-pv="university"></span></p>
+                  <ul class="admin-card__rows">
+                    <li><span class="doodle" data-doodle="mail"></span><span data-pv="email"></span></li>
+                    <li><span class="doodle" data-doodle="phone"></span><span data-pv="phone"></span></li>
+                    <li><span class="doodle" data-doodle="map-pin"></span><span data-pv="address"></span></li>
+                  </ul>
+                  <p class="admin-card__social" aria-hidden="true">
+                    <span class="doodle" data-doodle="github"></span><span class="doodle" data-doodle="linkedin"></span><span class="doodle" data-doodle="instagram"></span>
+                  </p>
+                </div>
+                <p class="admin-note" data-i18n="admin.pf.note">Bu bilgiler tek dilde saklanır; İngilizce sayfada da aynı metin görünür.</p>
+              </aside>
+            </div>
+          </section>
+
+          <!-- ---------- AYARLAR ---------- -->
+          <section class="admin-panel" role="tabpanel" id="panel-settings" aria-labelledby="tab-settings" tabindex="-1" hidden>
+            <div class="admin-panel__head">
+              <h2 class="admin-panel__title" data-i18n="admin.st.title">Ayarlar</h2>
+            </div>
+
+            <div class="admin-st">
+              <form class="admin-sheet admin-form" id="passForm" novalidate>
+                <h3 class="admin-h3" data-i18n="admin.st.pass">Şifreyi değiştir</h3>
+                <div class="admin-field"><label class="admin-label" for="st-cur" data-i18n="admin.st.cur">Şu anki şifre</label><input class="admin-input" id="st-cur" type="password" autocomplete="current-password" spellcheck="false"><p class="admin-error" id="st-cur-err"></p></div>
+                <div class="admin-field"><label class="admin-label" for="st-new" data-i18n="admin.st.new">Yeni şifre</label><input class="admin-input" id="st-new" type="password" autocomplete="new-password" spellcheck="false" aria-describedby="st-new-hint st-new-err"><p class="admin-hintline" id="st-new-hint" data-i18n="admin.st.newHint">En az 6 karakter.</p><p class="admin-error" id="st-new-err"></p></div>
+                <div class="admin-field"><label class="admin-label" for="st-rep" data-i18n="admin.st.rep">Yeni şifre (tekrar)</label><input class="admin-input" id="st-rep" type="password" autocomplete="new-password" spellcheck="false"><p class="admin-error" id="st-rep-err"></p></div>
+                <div class="admin-form__actions">
+                  <button class="admin-btn admin-btn--primary" type="submit" data-juice><span class="doodle" data-doodle="check"></span><span data-i18n="admin.st.passSave">Şifreyi kaydet</span></button>
+                </div>
+                <p class="admin-note" id="cryptoNote" hidden></p>
+              </form>
+
+              <div class="admin-sheet admin-st__backup">
+                <h3 class="admin-h3" data-i18n="admin.st.backup">Yedek</h3>
+                <p class="admin-note" data-i18n="admin.st.backupLead">Mesajları ve profil içeriğini tek bir JSON dosyasına indir, başka bir tarayıcıda geri yükle.</p>
+                <div class="admin-form__actions">
+                  <button class="admin-btn admin-btn--ghost" type="button" id="backupBtn" data-juice><span class="doodle" data-doodle="arrow-down"></span><span data-i18n="admin.st.download">Yedeği indir</span></button>
+                  <label class="admin-btn admin-btn--ghost admin-file" data-juice>
+                    <span class="doodle" data-doodle="arrow-curly"></span><span data-i18n="admin.st.restore">Yedekten yükle</span>
+                    <input class="admin-file__input" type="file" id="restoreInput" accept="application/json,.json">
+                  </label>
+                </div>
+              </div>
+
+              <fieldset class="admin-sheet admin-st__look">
+                <legend class="admin-h3" data-i18n="admin.st.look">Görünüm</legend>
+                <p class="admin-label" id="themeLbl" data-i18n="admin.st.theme">Tema</p>
+                <div class="admin-radios" role="radiogroup" aria-labelledby="themeLbl">
+                  <label class="admin-radio"><input type="radio" name="theme" value="light"><span data-i18n="admin.st.light">Açık (beyaz defter)</span></label>
+                  <label class="admin-radio"><input type="radio" name="theme" value="dark"><span data-i18n="admin.st.dark">Koyu (siyah defter)</span></label>
+                  <label class="admin-radio"><input type="radio" name="theme" value="system"><span data-i18n="admin.st.system">Sistemle aynı</span></label>
+                </div>
+                <p class="admin-label" id="langLbl" data-i18n="admin.st.lang">Dil</p>
+                <div class="admin-radios" role="radiogroup" aria-labelledby="langLbl">
+                  <label class="admin-radio"><input type="radio" name="lang" value="tr"><span>Türkçe</span></label>
+                  <label class="admin-radio"><input type="radio" name="lang" value="en"><span>English</span></label>
+                </div>
+              </fieldset>
+
+              <div class="admin-sheet admin-st__danger">
+                <h3 class="admin-h3" data-i18n="admin.st.danger">Sıfırlama</h3>
+                <p class="admin-note" data-i18n="admin.st.dangerLead">Tüm mesajları, profil düzenlemelerini ve değiştirilmiş şifreyi siler. Geri alınamaz; önce yedek indirmen iyi olur.</p>
+                <button class="admin-btn admin-btn--danger" type="button" id="wipeBtn" data-juice><span class="doodle" data-doodle="x"></span><span data-i18n="admin.st.wipe">Tüm verileri sıfırla</span></button>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-toasts" id="adminToasts" role="status" aria-live="polite" aria-atomic="false"></div>
+
+    <dialog class="admin-dialog" id="adminDialog" aria-labelledby="dlgTitle" aria-describedby="dlgText" data-lenis-prevent>
+      <form method="dialog" class="admin-dialog__inner">
+        <span class="tape admin-dialog__tape" aria-hidden="true"></span>
+        <h2 class="admin-dialog__title" id="dlgTitle"></h2>
+        <p class="admin-dialog__text" id="dlgText"></p>
+        <div class="admin-dialog__actions">
+          <button class="admin-btn admin-btn--ghost" value="cancel" id="dlgCancel" type="submit"></button>
+          <button class="admin-btn admin-btn--danger" value="ok" id="dlgOk" type="submit" data-juice></button>
+        </div>
+      </form>
+    </dialog>
+  </main>
+
+  <footer class="footer">
+    <svg class="footer__wave" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true" data-draw="scrub" data-start="top 95%" data-end="top 50%">
+      <path d="M0 30 C 100 5, 200 55, 300 30 S 500 5, 600 30 S 800 55, 900 30 S 1100 5, 1200 30"/>
+    </svg>
+    <div class="container">
+      <p class="footer__big"><a href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact" data-i18n="footer.big">Hadi <span class="scribble-u">konuşalım</span>!</a></p>
+      <div class="footer__row">
+        <div class="footer__socials">
+          <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub" data-bind-href="{github}"><span class="doodle" data-doodle="github" style="--size:26px"></span></a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn" data-bind-href="{linkedin}"><span class="doodle" data-doodle="linkedin" style="--size:26px"></span></a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" data-bind-href="{instagram}"><span class="doodle" data-doodle="instagram" style="--size:26px"></span></a>
+          <a href="mailto:ornek@mail.com" aria-label="E-posta" data-bind-href="mailto:{email}"><span class="doodle" data-doodle="mail" style="--size:26px"></span></a>
+        </div>
+        <p class="footer__copy" data-i18n="footer.copy">© <span data-year>2026</span> Ad Soyad — kalemle, kahveyle ve biraz JavaScript'le çizildi.</p>
+        <a class="footer__admin" href="admin.html" data-i18n="footer.admin">yönetim</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/pages/admin.js"></script>
+</body>
+</html>

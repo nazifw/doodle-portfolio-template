@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="tr" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mobile first yaklaşımı: içeriğe göre breakpoint seçimi, clamp() ile akışkan tipografi, 44 piksellik dokunmatik hedefler ve aynı sayfanın 375 ile 1280 piksel genişlikte karşılaştırması." data-i18n-attr="content:blog.mf.desc">
+  <meta name="author" content="Ad Soyad">
+  <meta name="theme-color" content="#fbfaf6">
+  <title data-i18n="blog.mf.metaTitle">Mobile first responsive tasarım | Ad Soyad Blog</title>
+  <meta property="og:title" content="Mobile first responsive tasarım | Ad Soyad Blog" data-i18n-attr="content:blog.mf.metaTitle">
+  <meta property="og:description" content="Mobile first yaklaşımı: içeriğe göre breakpoint seçimi, clamp() ile akışkan tipografi, 44 piksellik dokunmatik hedefler ve aynı sayfanın 375 ile 1280 piksel genişlikte karşılaştırması." data-i18n-attr="content:blog.mf.desc">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="img/blog/mf-1280.webp">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="article:published_time" content="2026-10-12">
+  <meta property="article:author" content="Ad Soyad">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%8F%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/caveat-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/caveat-400-700-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/kalam-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/kalam-400-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/core.css">
+  <link rel="stylesheet" href="css/pages/blog.css">
+  <script>
+    (function () {
+      var d = document.documentElement, t = null, l = null;
+      try { t = localStorage.getItem("theme"); l = localStorage.getItem("lang"); } catch (e) {}
+      if (t === "dark" || (!t && matchMedia("(prefers-color-scheme: dark)").matches)) d.setAttribute("data-theme", "dark");
+      if (l === "en") { d.lang = "en"; d.classList.add("lang-pending"); }
+      try {
+        if (!matchMedia("(prefers-reduced-motion: reduce)").matches &&
+            (!sessionStorage.getItem("doodle-visited") || sessionStorage.getItem("doodle-transition") === "1")) d.classList.add("doodle-cover");
+      } catch (e) {}
+    })();
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Mobile first responsive tasarım: önce 375 piksel",
+  "alternativeHeadline": "Mobile-first responsive design: 375 pixels first",
+  "description": "Mobile first yaklaşımı: içeriğe göre breakpoint seçimi, clamp() ile akışkan tipografi, 44 piksellik dokunmatik hedefler ve aynı sayfanın 375 ile 1280 piksel genişlikte karşılaştırması.",
+  "image": [
+    "img/blog/mf-1280.webp",
+    "img/blog/mf-touch.webp"
+  ],
+  "datePublished": "2026-10-12",
+  "dateModified": "2026-10-12",
+  "inLanguage": "tr",
+  "wordCount": 678,
+  "timeRequired": "PT4M",
+  "keywords": "Responsive, CSS, clamp(), Erişilebilirlik",
+  "articleSection": "Frontend",
+  "url": "blog-mobile-first.html",
+  "mainEntityOfPage": "blog-mobile-first.html",
+  "author": {
+    "@type": "Person",
+    "name": "Ad Soyad",
+    "email": "mailto:ornek@mail.com",
+    "url": "hakkimda.html",
+    "jobTitle": "Bilgisayar Mühendisliği öğrencisi, frontend geliştirici"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Ad Soyad"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "Ad Soyad — Kod Defteri",
+    "url": "blog.html"
+  }
+}
+  </script>
+</head>
+<body class="blog-page blog-page--post" data-page-name="blog" data-page-name-en="blog">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">İçeriğe geç</a>
+
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Ad Soyad">
+        <span class="doodle" data-doodle="sparkle"></span>ad.soyad
+      </a>
+      <nav aria-label="Ana menü" data-i18n-attr="aria-label:nav.menuLabel">
+        <ul class="nav__links">
+          <li><a class="nav__link" href="index.html" data-page-name="ana sayfa" data-page-name-en="home" data-i18n="nav.home">Ana Sayfa</a></li>
+          <li><a class="nav__link" href="hakkimda.html" data-page-name="hakkımda" data-page-name-en="about" data-i18n="nav.about">Hakkımda</a></li>
+          <li><a class="nav__link" href="projeler.html" data-page-name="projeler" data-page-name-en="projects" data-i18n="nav.work">Projeler</a></li>
+          <li><a class="nav__link" href="blog.html" data-page-name="blog" data-page-name-en="blog" data-i18n="nav.blog">Blog</a></li>
+          <li><a class="nav__link" href="galeri.html" data-page-name="galeri" data-page-name-en="gallery" data-i18n="nav.gallery">Galeri</a></li>
+          <li><a class="nav__link" href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact" data-i18n="nav.contact">İletişim</a></li>
+        </ul>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn lang-toggle" type="button" aria-label="Switch to English">
+          <span class="lang-toggle__label">EN</span>
+        </button>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Temayı değiştir">
+          <span class="doodle doodle--moon" data-doodle="moon"></span>
+          <span class="doodle doodle--sun" data-doodle="sun"></span>
+        </button>
+        <button class="icon-btn burger" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobileMenu">
+          <span class="burger__lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="index.html" data-page-name="ana sayfa" data-page-name-en="home"><small>01</small><span data-i18n="nav.home">Ana Sayfa</span></a>
+    <a href="hakkimda.html" data-page-name="hakkımda" data-page-name-en="about"><small>02</small><span data-i18n="nav.about">Hakkımda</span></a>
+    <a href="projeler.html" data-page-name="projeler" data-page-name-en="projects"><small>03</small><span data-i18n="nav.work">Projeler</span></a>
+    <a href="blog.html" data-page-name="blog" data-page-name-en="blog"><small>04</small><span data-i18n="nav.blog">Blog</span></a>
+    <a href="galeri.html" data-page-name="galeri" data-page-name-en="gallery"><small>05</small><span data-i18n="nav.gallery">Galeri</span></a>
+    <a href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact"><small>06</small><span data-i18n="nav.contact">İletişim</span></a>
+  </div>
+
+  <main id="main" class="blog-main">
+    <div class="blog-progress" aria-hidden="true">
+      <svg class="blog-progress__svg" viewBox="0 0 1000 12" preserveAspectRatio="none"><path class="blog-progress__track" d="M0 6 C 80 2, 160 10, 250 6 S 420 2, 500 6 S 670 10, 750 6 S 920 2, 1000 6"/><path class="blog-progress__ink" pathLength="1" d="M0 6 C 80 2, 160 10, 250 6 S 420 2, 500 6 S 670 10, 750 6 S 920 2, 1000 6"/></svg>
+      <span class="blog-progress__tip"><svg viewBox="0 0 46 26"><path d="M4 5 L32 5 L44 13 L32 21 L4 21 Z" fill="var(--yellow)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><path d="M32 5 L44 13 L32 21 Z" fill="#f3d9b1" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><path d="M40 10.3 L44 13 L40 15.7 Z" fill="var(--ink)"/><path d="M4 5 L10 5 L10 21 L4 21 Z" fill="var(--pink)" stroke="var(--ink)" stroke-width="2"/></svg></span>
+    </div>
+
+    <article class="blog-post" aria-labelledby="postTitle">
+      <header class="blog-post__head container">
+        <a class="blog-back" href="blog.html" data-page-name="blog"><span class="doodle" data-doodle="arrow" style="--size:30px;--c:var(--pink)"></span><span data-i18n="blog.ui.allPosts">Tüm yazılar</span></a>
+        <ul class="blog-tags" aria-label="Etiketler" data-i18n-attr="aria-label:blog.ui.tags">
+          <li class="chip" style="--r:1.2deg">Responsive</li>
+          <li class="chip" style="--r:-1.5deg">CSS</li>
+          <li class="chip" style="--r:1.2deg">clamp()</li>
+          <li class="chip" style="--r:-1.5deg" data-i18n="blog.mf.tag3">Erişilebilirlik</li>
+        </ul>
+        <h1 id="postTitle" class="blog-post__title" data-split data-i18n="blog.mf.title">Mobile first responsive tasarım: önce 375 piksel</h1>
+        <p class="blog-post__lead" data-reveal="up" data-delay="0.3" data-i18n="blog.mf.lead">Bu siteyi tasarlarken ilk açtığım ekran 1280 piksellik masaüstü değil, <strong>375 piksellik bir telefon</strong>du. Mobile first, küçük ekranı sonradan “sığdırılacak” bir sorun değil, tasarımın başlangıç noktası olarak görmek demek. Bu yazıda breakpoint stratejimi, <code>clamp()</code> ile tipografiyi, dokunmatik hedef boyutlarını ve aynı sayfanın iki ekrandaki halini anlatıyorum.</p>
+        <p class="blog-post__meta" data-reveal="fade" data-delay="0.45">
+          <img class="blog-post__avatar" src="img/avatar.svg" width="44" height="44" alt="">
+          <span><span class="blog-post__author" data-bind="name">Ad Soyad</span>
+          <span class="blog-post__sub"><time datetime="2026-10-12" data-i18n="blog.mf.date">12 Ekim 2026</time> · <span data-i18n="blog.mf.read">4 dk okuma</span></span></span>
+        </p>
+      </header>
+
+      <div class="blog-post__layout container">
+        <nav class="blog-toc" aria-label="İçindekiler" data-i18n-attr="aria-label:blog.ui.toc">
+          <details class="blog-toc__box" open>
+            <summary class="blog-toc__sum"><span class="doodle" data-doodle="hash" style="--size:22px;--c:var(--pink)"></span><span data-i18n="blog.ui.toc">İçindekiler</span></summary>
+            <ol class="blog-toc__list">
+            <li><a href="#s-neden" data-i18n="blog.mf.b1">Neden önce küçük ekran?</a></li>
+            <li><a href="#s-breakpoint" data-i18n="blog.mf.b6">Breakpoint'leri cihaza değil içeriğe göre seç</a></li>
+            <li><a href="#s-clamp" data-i18n="blog.mf.b9">clamp() ile akışkan tipografi</a></li>
+            <li><a href="#s-dokunmatik" data-i18n="blog.mf.b14">Dokunmatik hedef: parmak imleç değildir</a></li>
+            <li><a href="#s-karsilastirma" data-i18n="blog.mf.b20">375 ve 1280 yan yana</a></li>
+            <li><a href="#s-ozet" data-i18n="blog.mf.b27">Kısaca</a></li>
+            </ol>
+          </details>
+        </nav>
+
+        <div class="blog-prose">
+      <section class="blog-sec" id="s-neden" aria-labelledby="s-neden-t">
+        <h2 id="s-neden-t" data-i18n="blog.mf.b1">Neden önce küçük ekran?</h2>
+        <svg class="blog-h2-line" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true" data-draw><path d="M3 9 C 60 3, 120 12, 180 7 S 262 3, 297 8"/></svg>
+        <p data-i18n="blog.mf.b2">Küçük ekran seni karar vermeye zorlar. 375 piksele sığmayan her şey için “bu gerçekten gerekli mi?” diye sorarsın. Masaüstünden başlayınca ise tasarım dolu bir masa olur ve telefonda her şeyi tek sütuna dizip aşağı doğru uzatırsın. Ziyaretçilerin önemli bir kısmının siteyi telefondan açtığını düşününce, en kalabalık kitleye en çok özeni göstermek mantıklı.</p>
+        <p data-i18n="blog.mf.b3">CSS tarafında mobile first şu demek: temel stiller hiçbir medya sorgusu olmadan telefon için yazılır. Ekran genişledikçe <code>min-width</code> sorgularıyla yeni özellikler <em>eklenir</em>. Büyük ekrandan başlayıp <code>max-width</code> ile bir şeyleri geri almaya çalışmaktan çok daha az kod tutar.</p>
+        <div class="blog-code" data-lang="css">
+          <div class="blog-code__bar">
+            <span class="blog-code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="blog-code__file">sayfa.css</span>
+            <button class="blog-code__copy" type="button" data-juice><span class="doodle" data-doodle="check" style="--size:18px"></span><span class="blog-code__copy-label" data-i18n="blog.ui.copy">kopyala</span></button>
+          </div>
+          <pre tabindex="0"><code class="language-css" data-i18n="blog.mf.b4">/* 1) temel: telefon. medya sorgusu yok */
+.hero__actions { display: grid; gap: 14px; }
+
+/* 2) yer açıldıkça ekle */
+@media (min-width: 768px) {
+  .hero__actions { grid-auto-flow: column; justify-content: center; }
+}
+
+@media (min-width: 1100px) {
+  .nav__links { display: flex; } /* altı menü linki ancak burada sığıyor */
+}</code></pre>
+        </div>
+        <aside class="blog-note" data-reveal="up">
+          <div class="sticky green blog-note__paper" style="--r:-1.6deg">
+            <span class="pin" aria-hidden="true"></span>
+            <p class="blog-note__title" data-i18n="blog.mf.b5.t">Unutma</p>
+            <p data-i18n="blog.mf.b5">Hiçbir medya sorgusu, <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code> satırı olmadan çalışmaz. O yoksa telefon sayfayı 980 piksel sanıp küçülterek gösterir.</p>
+          </div>
+        </aside>
+      </section>
+      <section class="blog-sec" id="s-breakpoint" aria-labelledby="s-breakpoint-t">
+        <h2 id="s-breakpoint-t" data-i18n="blog.mf.b6">Breakpoint'leri cihaza değil içeriğe göre seç</h2>
+        <svg class="blog-h2-line" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true" data-draw><path d="M3 9 C 60 3, 120 12, 180 7 S 262 3, 297 8"/></svg>
+        <p data-i18n="blog.mf.b7">“iPhone kaç piksel, iPad kaç piksel?” diye breakpoint seçmek her yeni cihazla eskiyen bir liste tutmak demek. Ben tersini yapıyorum: tarayıcı penceresini yavaşça genişletiyorum ve tasarımın nerede bozulduğuna ya da nerede boşa yer kaldığına bakıyorum. O nokta breakpoint oluyor.</p>
+        <p data-i18n="blog.mf.b8">Bu sitede üç ana eşik var. <strong>600 piksel</strong> altında düğmeler ve ikonlar biraz küçülüyor. <strong>768 piksel</strong> üstünde iki sütunlu düzenler ve pinlenen kaydırma efektleri açılıyor. <strong>1100 piksel</strong> ise tamamen içerikten geliyor: Caveat yazı tipiyle yazılmış altı menü linki ancak bu genişlikte tek satıra sığıyor; altında menü, hamburger düğmesinin arkasına geçiyor.</p>
+      </section>
+      <section class="blog-sec" id="s-clamp" aria-labelledby="s-clamp-t">
+        <h2 id="s-clamp-t" data-i18n="blog.mf.b9">clamp() ile akışkan tipografi</h2>
+        <svg class="blog-h2-line" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true" data-draw><path d="M3 9 C 60 3, 120 12, 180 7 S 262 3, 297 8"/></svg>
+        <p data-i18n="blog.mf.b10">Eskiden başlık boyutunu her breakpoint'te ayrı ayrı yazardık. <code>clamp(en küçük, tercih edilen, en büyük)</code> bunu tek satıra indiriyor. Tercih edilen değer ekran genişliğine bağlı (<code>vw</code>) olduğu için başlık ekranla birlikte akıcı şekilde büyüyor, ama asla alt ve üst sınırın dışına çıkmıyor.</p>
+        <div class="blog-code" data-lang="css">
+          <div class="blog-code__bar">
+            <span class="blog-code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="blog-code__file">core.css</span>
+            <button class="blog-code__copy" type="button" data-juice><span class="doodle" data-doodle="check" style="--size:18px"></span><span class="blog-code__copy-label" data-i18n="blog.ui.copy">kopyala</span></button>
+          </div>
+          <pre tabindex="0"><code class="language-css" data-i18n="blog.mf.b11">h1 { font-size: clamp(3.2rem, 9vw, 7.5rem); }
+h2 { font-size: clamp(2.6rem, 6vw, 4.8rem); }
+
+/* içerik kenara yapışmasın, dev ekranda da dağılmasın */
+.container { width: min(1200px, 88%); margin-inline: auto; }</code></pre>
+        </div>
+        <p data-i18n="blog.mf.b12">Rakamlarla bakalım. 375 piksellik ekranda <code>9vw</code> yaklaşık 34 piksel eder; bu alt sınırın (3.2rem = 51 piksel) altında kaldığı için başlık 51 pikselde durur. 1280 pikselde <code>9vw</code> 115 piksel eder ve iki sınırın arasında olduğu için aynen kullanılır. Sınırları <code>rem</code> ile yazmanın bir faydası daha var: kullanıcı tarayıcıda yazı boyutunu büyüttüğünde başlıklar da onunla büyür.</p>
+        <p data-i18n="blog.mf.b13">Gövde metninde ise akışkanlıktan çok tutarlılık istiyorum: telefonda 16–17 piksel, masaüstünde 18 piksel ve satır başına 65 karakter civarı. Bu blogdaki yazılar da tam olarak bu ölçüyle dizildi.</p>
+      </section>
+      <section class="blog-sec" id="s-dokunmatik" aria-labelledby="s-dokunmatik-t">
+        <h2 id="s-dokunmatik-t" data-i18n="blog.mf.b14">Dokunmatik hedef: parmak imleç değildir</h2>
+        <svg class="blog-h2-line" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true" data-draw><path d="M3 9 C 60 3, 120 12, 180 7 S 262 3, 297 8"/></svg>
+        <p data-i18n="blog.mf.b15">Fare imleci tek bir pikseli hedefleyebilir; parmak ucu ise ekranda yaklaşık 1 santimetrelik bir alana basar. Bu yüzden dokunulabilen her şeyin en az <strong>44×44 piksel</strong> olmasını hedefliyorum (WCAG 2.5.5). Asgari kabul edilebilir sınır 24×24 (WCAG 2.5.8), ama o sınırda yanlış düğmeye basmak çok kolay.</p>
+        <p data-i18n="blog.mf.b16">Kendi sitemi denetlemek için konsolda küçük bir betik çalıştırdım: ekrandaki her link ve düğmenin etrafına boyutunu yazan bir kutu çiziyor. 44 pikseli geçenler haki, geçemeyenler pas rengi.</p>
+        <figure class="blog-fig blog-fig--tall" style="--r:-1deg">
+          <button class="blog-fig__frame" type="button" data-zoom>
+            <span class="tape" aria-hidden="true"></span>
+            <img src="img/blog/mf-touch.webp" width="600" height="1299" loading="lazy" decoding="async" alt="Ana sayfanın 375 piksellik telefon görünümü; her tıklanabilir öğenin çevresinde boyut etiketli kutular var. EN, tema ve menü düğmeleri 44×44 ile haki, iki büyük düğme 207×52 ve 189×52 ile haki, logo linki de 44 piksel yükseklikle haki işaretli." data-i18n-attr="alt:blog.mf.b17.alt">
+            <span class="blog-fig__zoom" aria-hidden="true"><span class="doodle" data-doodle="eye" style="--size:24px;--c:#161714"></span></span>
+            <span class="sr-only" data-i18n="blog.ui.zoom">(büyütmek için tıkla)</span>
+          </button>
+          <figcaption data-i18n="blog.mf.b17.cap">Sonuç: hepsi geçiyor. İlk ölçümde logo linki 34 pikselde kalmıştı; <code>min-height: 44px</code> ile düzelttim.</figcaption>
+        </figure>
+        <p data-i18n="blog.mf.b18">Logo gibi görünür boyutunu büyütmek istemediğin öğelerde hile basit: görünüş aynı kalır, tıklanan alan bir sözde öğeyle genişletilir.</p>
+        <div class="blog-code" data-lang="css">
+          <div class="blog-code__bar">
+            <span class="blog-code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="blog-code__file">dokunmatik.css</span>
+            <button class="blog-code__copy" type="button" data-juice><span class="doodle" data-doodle="check" style="--size:18px"></span><span class="blog-code__copy-label" data-i18n="blog.ui.copy">kopyala</span></button>
+          </div>
+          <pre tabindex="0"><code class="language-css" data-i18n="blog.mf.b19">.icon-btn { width: 50px; height: 50px; }
+
+@media (max-width: 600px) {
+  .icon-btn { width: 44px; height: 44px; } /* küçülür ama 44'ün altına inmez */
+}
+
+/* görünüş aynı, tıklanan alan daha büyük */
+.nav__logo { position: relative; }
+.nav__logo::after { content: ""; position: absolute; inset: -6px -4px; }</code></pre>
+        </div>
+      </section>
+      <section class="blog-sec" id="s-karsilastirma" aria-labelledby="s-karsilastirma-t">
+        <h2 id="s-karsilastirma-t" data-i18n="blog.mf.b20">375 ve 1280 yan yana</h2>
+        <svg class="blog-h2-line" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true" data-draw><path d="M3 9 C 60 3, 120 12, 180 7 S 262 3, 297 8"/></svg>
+        <p data-i18n="blog.mf.b21">Aynı ana sayfa, iki farklı genişlik. Değişenlere bakın: masaüstünde menü linkleri üst çubukta, telefonda hamburger düğmesinin arkasında. İsim başlığı iki ekranda da iki satır, ama 1280 pikselde neredeyse iki kat büyük. Düğmeler masaüstünde yan yana, telefonda alt alta ve tam başparmak boyunda. Dekor çizimleri telefonda daha az ve kenarlara çekilmiş; okuma alanını kalabalıklaştırmıyorlar.</p>
+        <div class="blog-fig-pair">
+          <figure class="blog-fig" style="--r:1.2deg">
+          <button class="blog-fig__frame" type="button" data-zoom>
+            <span class="tape" aria-hidden="true"></span>
+            <img src="img/blog/mf-375.webp" width="600" height="1299" loading="lazy" decoding="async" alt="Ana sayfanın üst kısmı 375 piksel genişlikte: Ad Soyad başlığı iki satır, altında alt alta dizilmiş “Projelerimi gör” ve “İletişime geç” düğmeleri." data-i18n-attr="alt:blog.mf.b22.0.alt">
+            <span class="blog-fig__zoom" aria-hidden="true"><span class="doodle" data-doodle="eye" style="--size:24px;--c:#161714"></span></span>
+            <span class="sr-only" data-i18n="blog.ui.zoom">(büyütmek için tıkla)</span>
+          </button>
+          <figcaption data-i18n="blog.mf.b22.0.cap">375 px: tek sütun, alt alta düğmeler.</figcaption>
+        </figure>
+          <figure class="blog-fig" style="--r:-0.8deg">
+          <button class="blog-fig__frame" type="button" data-zoom>
+            <span class="tape" aria-hidden="true"></span>
+            <img src="img/blog/mf-1280.webp" width="1280" height="800" loading="lazy" decoding="async" alt="Ana sayfanın üst kısmı 1280 piksel genişlikte: üstte altı menü linki, ortada büyük isim başlığı, altta yan yana iki düğme ve etrafta dağılmış çizimler." data-i18n-attr="alt:blog.mf.b22.1.alt">
+            <span class="blog-fig__zoom" aria-hidden="true"><span class="doodle" data-doodle="eye" style="--size:24px;--c:#161714"></span></span>
+            <span class="sr-only" data-i18n="blog.ui.zoom">(büyütmek için tıkla)</span>
+          </button>
+          <figcaption data-i18n="blog.mf.b22.1.cap">1280 px: menü açık, düğmeler yan yana, dekor serbest.</figcaption>
+        </figure>
+        </div>
+        <h3 data-i18n="blog.mf.b23">Taşma avı</h3>
+        <p data-i18n="blog.mf.b24">Telefonda en sinir bozucu hata, sayfanın yana kayması. Genellikle tek bir öğe suçludur: sabit genişlikli bir görsel, kırılmayan uzun bir kelime ya da ekran dışına taşan bir dekor. Bulmak için konsola şunu yapıştırıyorum:</p>
+        <div class="blog-code" data-lang="js">
+          <div class="blog-code__bar">
+            <span class="blog-code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="blog-code__file">console</span>
+            <button class="blog-code__copy" type="button" data-juice><span class="doodle" data-doodle="check" style="--size:18px"></span><span class="blog-code__copy-label" data-i18n="blog.ui.copy">kopyala</span></button>
+          </div>
+          <pre tabindex="0"><code class="language-js" data-i18n="blog.mf.b25">// ekrandan taşan öğeleri kırmızıyla işaretle
+[...document.querySelectorAll("body *")]
+  .filter((el) =&gt; el.getBoundingClientRect().right &gt; innerWidth + 1)
+  .forEach((el) =&gt; (el.style.outline = "2px solid red"));</code></pre>
+        </div>
+        <p data-i18n="blog.mf.b26">Bu blogdaki kod blokları da bir örnek: uzun satırlar sayfayı değil, yalnızca kendi kutularını yatay kaydırıyor (<code>overflow-x: auto</code>). Sayfanın geri kalanı yerinde duruyor.</p>
+      </section>
+      <section class="blog-sec" id="s-ozet" aria-labelledby="s-ozet-t">
+        <h2 id="s-ozet-t" data-i18n="blog.mf.b27">Kısaca</h2>
+        <svg class="blog-h2-line" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true" data-draw><path d="M3 9 C 60 3, 120 12, 180 7 S 262 3, 297 8"/></svg>
+        <ul class="blog-check">
+          <li><span class="doodle" data-doodle="check" style="--size:26px;--c:var(--blue)"></span><span data-i18n="blog.mf.b28.0">Temel stilleri telefon için yaz, genişledikçe <code>min-width</code> ile ekle.</span></li>
+          <li><span class="doodle" data-doodle="check" style="--size:26px;--c:var(--blue)"></span><span data-i18n="blog.mf.b28.1">Breakpoint'i tasarımın bozulduğu yerde koy, cihaz listesine bakma.</span></li>
+          <li><span class="doodle" data-doodle="check" style="--size:26px;--c:var(--blue)"></span><span data-i18n="blog.mf.b28.2">Başlıklarda <code>clamp()</code>, sınırlarda <code>rem</code>: akıcı ve yakınlaştırılabilir.</span></li>
+          <li><span class="doodle" data-doodle="check" style="--size:26px;--c:var(--blue)"></span><span data-i18n="blog.mf.b28.3">Dokunulan her şey en az 44×44 piksel; gerekirse görünmez alanla büyüt.</span></li>
+          <li><span class="doodle" data-doodle="check" style="--size:26px;--c:var(--blue)"></span><span data-i18n="blog.mf.b28.4">Her değişiklikten sonra 360, 768 ve 1280 pikselde yatay taşmayı kontrol et.</span></li>
+        </ul>
+      </section>
+
+        <footer class="blog-end">
+          <p class="blog-end__stamp" aria-hidden="true" data-i18n="blog.ui.stamp">bitti!</p>
+          <p class="blog-end__text" data-i18n="blog.ui.thanks">Okuduğun için teşekkürler. Bir yanlış ya da eklemek istediğin bir şey mi gördün? <a href="iletisim.html" data-page-name="iletişim">Bana yaz</a>, defterime not alayım.</p>
+        </footer>
+        </div>
+      </div>
+    </article>
+
+    <nav class="blog-pager container" aria-labelledby="pagerTitle">
+      <h2 id="pagerTitle" class="blog-pager__title" data-i18n="blog.ui.more">Defterde başka ne var?</h2>
+      <div class="blog-pager__grid">
+          <a class="blog-pager__link blog-pager__link--prev blog-pager__link--home" href="blog.html" data-page-name="blog">
+            <span class="blog-pager__dir" data-i18n="blog.ui.older">← Önceki yazı</span>
+            <span class="blog-pager__name" data-i18n="blog.ui.allPosts">Tüm yazılar</span>
+          </a>
+          <a class="blog-pager__link blog-pager__link--next" href="blog-karanlik-mod.html" data-page-name="beyaz defter, siyah defter">
+            <span class="blog-pager__dir" data-i18n="blog.ui.newer">Sonraki yazı →</span>
+            <span class="blog-pager__name" data-i18n="blog.dm.short">Beyaz defter, siyah defter</span>
+          </a>
+      </div>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <svg class="footer__wave" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true" data-draw="scrub" data-start="top 95%" data-end="top 50%">
+      <path d="M0 30 C 100 5, 200 55, 300 30 S 500 5, 600 30 S 800 55, 900 30 S 1100 5, 1200 30"/>
+    </svg>
+    <div class="container">
+      <p class="footer__big"><a href="iletisim.html" data-page-name="iletişim" data-page-name-en="contact" data-i18n="footer.big">Hadi <span class="scribble-u">konuşalım</span>!</a></p>
+      <div class="footer__row">
+        <div class="footer__socials">
+          <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub" data-bind-href="{github}"><span class="doodle" data-doodle="github" style="--size:26px"></span></a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn" data-bind-href="{linkedin}"><span class="doodle" data-doodle="linkedin" style="--size:26px"></span></a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" data-bind-href="{instagram}"><span class="doodle" data-doodle="instagram" style="--size:26px"></span></a>
+          <a href="mailto:ornek@mail.com" aria-label="E-posta" data-bind-href="mailto:{email}"><span class="doodle" data-doodle="mail" style="--size:26px"></span></a>
+        </div>
+        <p class="footer__copy" data-i18n="footer.copy">© <span data-year>2026</span> Ad Soyad — kalemle, kahveyle ve biraz JavaScript'le çizildi.</p>
+        <a class="footer__admin" href="admin.html" data-i18n="footer.admin">yönetim</a>
+      </div>
+    </div>
+  </footer>
+  <dialog class="blog-lightbox" id="blogLightbox" aria-label="Büyütülmüş ekran görüntüsü" data-i18n-attr="aria-label:blog.ui.lightbox" data-lenis-prevent>
+    <figure class="blog-lightbox__fig">
+      <img class="blog-lightbox__img" src="data:," alt="">
+      <figcaption class="blog-lightbox__cap"></figcaption>
+    </figure>
+    <button class="blog-lightbox__close" type="button" aria-label="Kapat" data-i18n-attr="aria-label:blog.ui.close" data-juice><span class="doodle" data-doodle="x" style="--size:24px;--c:#161714"></span></button>
+  </dialog>
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/pages/blog-mobile-first.i18n.js"></script>
+  <script src="js/pages/blog.js"></script>
+</body>
+</html>
