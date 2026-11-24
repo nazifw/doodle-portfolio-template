@@ -1,5 +1,7 @@
 <div align="center">
 
+**🇹🇷 Türkçe · [🇬🇧 English](README.en.md)**
+
 # ✏️ Doodle Portföy Şablonu
 
 **Kaydırdıkça kendini çizen, eskiz defteri temalı kişisel web sitesi şablonu.**
@@ -116,22 +118,7 @@ Tasarım sistemi, `data-reveal` / `data-split` / `data-draw` gibi bildirimsel an
 
 ---
 
-<details>
-<summary><b>🇬🇧 English</b></summary>
-
-### Doodle Portfolio Template
-
-A multi-page personal website template themed as a sketchbook that **draws itself as you scroll**. White notebook / black notebook themes, a Turkish/English toggle, six pages plus a blog and a browser-based admin panel. Plain HTML5, CSS3 and JavaScript — no build step, just open `index.html`.
-
-- Letter-by-letter headings, self-drawing SVG doodles, highlighter marks that paint on scroll
-- Pinned sections: a manifesto that inks word by word, a horizontal sketchbook strip, a project deck that fans out
-- "Juicy" interactions: squash & stretch buttons, ink particle bursts, a pencil cursor that wraps buttons in a hand-drawn frame
-- Accessible (single `h1`, keyboard support, reduced-motion support), SEO/GEO ready (per-page meta, JSON-LD, sitemap, `llms.txt`)
-- Works offline: GSAP, Lenis and fonts are bundled
-
-**Customise:** replace "Ad Soyad" and `ornek@mail.com`, drop your photos into `img/` with the same file names and run `python tools/optimize_images.py`. The admin panel's default password is `vize2026`.
-
-</details>
+> 🇬🇧 **English version:** the full README is available in **[README.en.md](README.en.md)**.
 
 ## 📜 Lisans ve kaynaklar
 
